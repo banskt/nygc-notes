@@ -7,6 +7,13 @@
     "text": "I maintain this open-source lab notebook in an effort to make my research reproducible. This is an erratic collection of ideas, figures and notes, mostly meant for personal use. If you are looking for my main portfolio, it’s here."
   },
   {
+    "objectID": "2023/april/2023-04-12-adas-group-meeting.html",
+    "href": "2023/april/2023-04-12-adas-group-meeting.html",
+    "title": "NYGC Lab Notebook",
+    "section": "",
+    "text": "Gene based RV association test. Deep learning burden test\nRare variant association tests: - burden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants. - adaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT - dispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU - combined tests, burden + dispersion tests combined, e.g. SKAT-O, Fisher, MIST - annotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST\nFST. Coding variants - within start/end of genes defined by ensemble\nNC variants - Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.\nRare variants only – gnomAD AF < 0.05\nMap to annotations\nMap to ADSP individuals\nFunctional Score Test\nWhy is the Mahattan plot skewed? Do you have a p-value from null model?\nESM annotaton."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
