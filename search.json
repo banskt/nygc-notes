@@ -1,16 +1,16 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NYGC Lab Notebook",
+    "section": "",
+    "text": "I maintain this open-source lab notebook in an effort to make my research reproducible. This is an erratic collection of ideas, figures and notes, mostly meant for personal use. If you are looking for my main portfolio, it’s here."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "nygc-site",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
