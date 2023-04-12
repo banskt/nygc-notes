@@ -1,0 +1,12 @@
+---
+title: 2023, April
+---
+
+## 2023-04-12
+
+This is the beginning of my NYGC journal, on my third day here.
+
+  - Attend general group meeting, presentation by Anjali.
+  - Attend ADSP group meeting.
+  - Setup Quarto journal.
+  - Work on GradVI manuscript.

@@ -1,7 +1,8 @@
 ---
-title: "NYGC Lab Notebook"
+title: "NYGC Journal"
 ---
 
 I maintain this open-source lab notebook in an effort to make my research reproducible.
 This is an erratic collection of ideas, figures and notes, mostly meant for personal use.
-If you are looking for my main portfolio, it's [here](https://saik.at).
+Mostly, I keep track of things I learn or think.
+My main portfolio website is [here](https://saik.at).

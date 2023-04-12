@@ -1,0 +1,43 @@
+---
+title: Group Meeting, 2023-04-12
+---
+
+## Presentation by Anjali Das
+
+She is using functional annotation to improve finding rare variants which are associated with Alzheimer's disease.
+
+
+#### Excerpts from the talk.
+
+Two types of test:
+
+  - Gene based RV association test. 
+  - Deep learning burden test
+
+Types of rare variant association tests:
+
+  - burden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS
+    Loses power when variant effects are in opposing directions, or many non-causal variants.
+  - adaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT
+  - dispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU
+  - combined tests, burden + dispersion tests combined,  e.g. SKAT-O, Fisher, MIST
+  - annotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST
+
+Funtional score test (FST) workflow:
+
+  1. Coding variants, within start/end of genes defined by ensemble
+  2. NC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.
+  3. Rare variants only -- gnomAD AF < 0.05
+  4. Map to annotations
+  5. Map to ADSP individuals
+
+Things I did not understand:
+
+  - Why is the Mahattan plot skewed?
+  - How does the p-value distribution looks in null data?
+
+Interesting comments:
+
+  - Jiayu mentioned about the ESM annotation from this paper: 
+[Language models enable zero-shot prediction of the effects of mutations on protein function](https://www.biorxiv.org/content/10.1101/2021.07.09.450648v2.full)
+by Meier, Rao, Verkuil, Liu, Sercu and Rives.

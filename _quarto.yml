@@ -2,18 +2,54 @@ project:
   type: website
 
 website:
-  title: "NYGC Lab Notebook"
+  title: "NYGC Journal"
   navbar:
+    background: primary
+    search: true
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+      - text: "Journal"
+        file: journal.qmd
+      - text: "Read"
+        file: read.qmd
+      - text: "Listen"
+        file: listen.qmd
+      - text: "Think"
+        file: think.qmd
+      - text: "Code"
+        file: code.qmd
+      - text: "About"
+        file: about.qmd
+
+  sidebar:
+    - title: "Journal"
+      style: "docked"
+      search: true
+      background: light
+      contents: 
+        - journal.qmd
+        - auto: journal/*
+#
+    - title: "Read"
+      contents:
+        - read.qmd
+#
+    - title: "Listen"
+      contents: 
+        - listen.qmd
+        - auto: talks/*
+#
+    - title: "Think"
+      contents:
+        - think.qmd
+
+  page-navigation: true
+  repo-url: https://github.com/banskt/nygc-notes
+  repo-actions: [edit, issue]
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-
