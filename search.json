@@ -1,17 +1,73 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "NYGC Lab Notebook",
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "Notes",
     "section": "",
-    "text": "I maintain this open-source lab notebook in an effort to make my research reproducible. This is an erratic collection of ideas, figures and notes, mostly meant for personal use. If you are looking for my main portfolio, it’s here."
+    "text": "I think and I write notes, which I collect here."
   },
   {
-    "objectID": "2023/april/2023-04-12-adas-group-meeting.html",
-    "href": "2023/april/2023-04-12-adas-group-meeting.html",
-    "title": "NYGC Lab Notebook",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NYGC Journal",
     "section": "",
-    "text": "Gene based RV association test. Deep learning burden test\nRare variant association tests: - burden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants. - adaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT - dispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU - combined tests, burden + dispersion tests combined, e.g. SKAT-O, Fisher, MIST - annotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST\nFST. Coding variants - within start/end of genes defined by ensemble\nNC variants - Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.\nRare variants only – gnomAD AF < 0.05\nMap to annotations\nMap to ADSP individuals\nFunctional Score Test\nWhy is the Mahattan plot skewed? Do you have a p-value from null model?\nESM annotaton."
+    "text": "I maintain this open-source lab notebook in an effort to make my research reproducible. This is an erratic collection of ideas, figures and notes, mostly meant for personal use. Mostly, I keep track of things I learn or think. My main portfolio website is here."
+  },
+  {
+    "objectID": "journal.html",
+    "href": "journal.html",
+    "title": "Daily Journal",
+    "section": "",
+    "text": "This is my daily journal, so I don’t have to remember what I did every day."
+  },
+  {
+    "objectID": "listen.html",
+    "href": "listen.html",
+    "title": "Listen",
+    "section": "",
+    "text": "I attend talks and meetings. Here, I track the things I listen."
+  },
+  {
+    "objectID": "talks/2023-04-12-adas-group-meeting.html",
+    "href": "talks/2023-04-12-adas-group-meeting.html",
+    "title": "Group Meeting, 2023-04-12",
+    "section": "",
+    "text": "She is using functional annotation to improve finding rare variants which are associated with Alzheimer’s disease.\n\n\nTwo types of test:\n\nGene based RV association test.\nDeep learning burden test\n\nTypes of rare variant association tests:\n\nburden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants.\nadaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT\ndispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU\ncombined tests, burden + dispersion tests combined, e.g. SKAT-O, Fisher, MIST\nannotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST\n\nFuntional score test (FST) workflow:\n\nCoding variants, within start/end of genes defined by ensemble\nNC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.\nRare variants only – gnomAD AF < 0.05\nMap to annotations\nMap to ADSP individuals\n\nThings I did not understand:\n\nWhy is the Mahattan plot skewed?\nHow does the p-value distribution looks in null data?\n\nInteresting comments:\n\nJiayu mentioned about the ESM annotation from this paper: Language models enable zero-shot prediction of the effects of mutations on protein function by Meier, Rao, Verkuil, Liu, Sercu and Rives."
+  },
+  {
+    "objectID": "read.html",
+    "href": "read.html",
+    "title": "Read",
+    "section": "",
+    "text": "I read articles from journals and other sources."
+  },
+  {
+    "objectID": "code.html",
+    "href": "code.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "listen2.html",
+    "href": "listen2.html",
+    "title": "Listen2",
+    "section": "",
+    "text": "This is only accessible from the sidebar."
+  },
+  {
+    "objectID": "think.html",
+    "href": "think.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "journal/2023-04.html",
+    "href": "journal/2023-04.html",
+    "title": "2023, April",
+    "section": "",
+    "text": "This is the beginning of my NYGC journal, on my third day here.\n\nAttend general group meeting, presentation by Anjali.\nAttend ADSP group meeting.\nSetup Quarto journal.\nWork on GradVI manuscript."
   },
   {
     "objectID": "about.html",
