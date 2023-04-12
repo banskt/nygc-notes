@@ -1,7 +1,3 @@
-# Quarto
-.quarto
-_site/
-
 # Vim
 *.swp
 
@@ -134,3 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Quarto
+_site/
+/.quarto/

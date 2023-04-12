@@ -1,2 +1,3 @@
-# nygc-notes
-A daily lab notebook to catch all for NYGC projects
+# Lab Notes
+My lab notebook to document daily work at the NYGC. 
+It is a simple catch all for all miscellaneous discussions, ideas and scripts. 
