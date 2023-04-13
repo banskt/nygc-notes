@@ -4,7 +4,7 @@ project:
 website:
   title: "Tajurba"
   navbar:
-    background: primary
+    background: "#c8635a"
     search: true
     left:
       - text: "Journal"
