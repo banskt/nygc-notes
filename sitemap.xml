@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/banskt/nygc-notes/notes.html</loc>
-    <lastmod>2023-04-12T22:08:54.132Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/banskt/nygc-notes/index.html</loc>
-    <lastmod>2023-04-12T22:08:54.868Z</lastmod>
+    <lastmod>2023-04-13T14:27:31.750Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal.html</loc>
-    <lastmod>2023-04-12T22:08:55.260Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/read/index.html</loc>
+    <lastmod>2023-04-13T14:27:32.602Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen.html</loc>
-    <lastmod>2023-04-12T22:08:55.600Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/code/index.html</loc>
+    <lastmod>2023-04-13T14:27:33.406Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/talks/2023-04-12-adas-group-meeting.html</loc>
-    <lastmod>2023-04-12T22:08:56.396Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/think/index.html</loc>
+    <lastmod>2023-04-13T14:27:33.710Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/read.html</loc>
-    <lastmod>2023-04-12T22:08:56.728Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/listen/index.html</loc>
+    <lastmod>2023-04-13T14:27:33.990Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code.html</loc>
-    <lastmod>2023-04-12T22:08:57.112Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meetings/2023-04-12-adas-group-meeting.html</loc>
+    <lastmod>2023-04-13T14:27:34.310Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen2.html</loc>
-    <lastmod>2023-04-12T22:08:57.480Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/think.html</loc>
-    <lastmod>2023-04-12T22:08:57.824Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/journal/index.html</loc>
+    <lastmod>2023-04-13T14:27:34.610Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/banskt/nygc-notes/journal/2023-04.html</loc>
-    <lastmod>2023-04-12T22:08:58.220Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/about.html</loc>
-    <lastmod>2023-04-12T22:08:58.584Z</lastmod>
+    <lastmod>2023-04-13T14:27:34.890Z</lastmod>
   </url>
 </urlset>
