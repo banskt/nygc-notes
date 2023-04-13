@@ -1,5 +1,0 @@
----
-title: "Daily Journal"
----
-
-This is my daily journal, so I don't have to remember what I did every day.

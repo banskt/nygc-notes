@@ -1,6 +1,0 @@
----
-title: "Listen"
----
-
-I attend talks and meetings.
-Here, I track the things I listen.

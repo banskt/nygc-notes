@@ -1,8 +1,33 @@
 ---
-title: "NYGC Journal"
+title: "My research journal at the NYGC"
 ---
 
-I maintain this open-source lab notebook in an effort to make my research reproducible.
-This is an erratic collection of ideas, figures and notes, mostly meant for personal use.
-Mostly, I keep track of things I learn or think.
+Welcome to my journal, where I keep track of my daily work 
+and thoughts at the New York Genome Center. 
+My primary goals in maintaining this journal are twofold: 
+(1) to make my research reproducible and 
+(2) to increase my productivity by avoiding repetition
+and sharing my work with colleagues.
+
+In these pages, you will find an eclectic (sometimes erratic) mix of my research activities, 
+including ideas, equations, code snippets, figures, and more.
+Thank you for joining me on this journey of discovery and exploration in genomics research.
+<!--
+I believe in open-source research, so please feel free to use 
+#anything you find here that may be helpful in your own work.
+-->
+
+To learn more about my work and research interests, 
+please visit my main [portfolio website](https://saik.at).
+
+<!--
+I keep track of my daily work at the NYGC using this journal. 
+There are two main goals: (1) make my research reproducible,
+and (2) become more productive because it helps to avoid repeating,
+to remember, and to share with colleagues.
+
+This is an erratic collection of things I do, learn and think.
+There may be some ideas, equations, code snippets, figures, etc.
+I believe in open-source research, feel free to borrow anything you may find useful.
 My main portfolio website is [here](https://saik.at).
+-->

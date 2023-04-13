@@ -2,25 +2,21 @@ project:
   type: website
 
 website:
-  title: "NYGC Journal"
+  title: "Tajurba"
   navbar:
     background: primary
     search: true
     left:
-      - text: "Home"
-        file: index.qmd
       - text: "Journal"
-        file: journal.qmd
+        file: journal/index.qmd
       - text: "Read"
-        file: read.qmd
+        file: read/index.qmd
       - text: "Listen"
-        file: listen.qmd
+        file: listen/index.qmd
       - text: "Think"
-        file: think.qmd
+        file: think/index.qmd
       - text: "Code"
-        file: code.qmd
-      - text: "About"
-        file: about.qmd
+        file: code/index.qmd
 
   sidebar:
     - title: "Journal"
@@ -28,21 +24,30 @@ website:
       search: true
       background: light
       contents: 
-        - journal.qmd
+        - journal/index.qmd
         - auto: journal/*
 #
     - title: "Read"
       contents:
-        - read.qmd
+        - read/index.qmd
+        - auto: read/*
 #
     - title: "Listen"
       contents: 
-        - listen.qmd
-        - auto: talks/*
+        - listen/index.qmd
+        - section: "Group Meetings"
+          contents:
+          - auto: listen/group-meetings/*
 #
     - title: "Think"
       contents:
-        - think.qmd
+        - think/index.qmd
+        - auto: think/*
+
+    - title: "Code"
+      contents:
+        - code/index.qmd
+        - auto: code/*
 
   page-navigation: true
   repo-url: https://github.com/banskt/nygc-notes
