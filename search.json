@@ -35,8 +35,15 @@
     "text": "In this section, I write down my notes and excerpts from talks, tutorials, group meetings and seminars that I listen to."
   },
   {
-    "objectID": "listen/group-meetings/2023-04-12-adas-group-meeting.html",
-    "href": "listen/group-meetings/2023-04-12-adas-group-meeting.html",
+    "objectID": "listen/journal-club/2023-04-13-coop-book-chapter-6.html",
+    "href": "listen/journal-club/2023-04-13-coop-book-chapter-6.html",
+    "title": "Chapter 6, Population Genetics by Graham Coop",
+    "section": "",
+    "text": "The chapter discusses how genetic differentiation build up between closely related population. Using \\(F_{ST}\\) statistic, Coop provided quantitative formulation to understand the genetic divergence between two sub-population, for example, after migration.\n\n\n\nTo understand the effect of genetic drift of population structure, imagine a population of constant size of \\(N_e\\) diploid individuals that \\(T\\) generations in the past split into two sub-populations each of size \\(N_e\\) individuals, which do not subsequently exchange migrants. In the current day we sample an equal number of alleles from both subpopulations.\nConsider a pair of alleles sampled within one of our sub-populations and think about their per site heterozygosity. These alleles have experienced a population of size \\(N_e\\) and so the probability that they differ is \\(H_S \\approx 4N_e \\mu\\) (assuming that \\(N_e \\mu \\ll 1\\), using the equation for heterozygosity within a population).\nAssume equal sampling from both sub-populations, total heterozygosity is given by,\n\\[\nH_T = 0.5 H_S + 0.5 H_B\n\\] where \\(H_B\\) is the probability that a pair of alleles drawn from the two different sub-populations differ from each other. A pair of alleles from different sub-populations cannot find a common ancestor with each other for at least \\(T\\) generations into the past as they are in distinct populations (not connected by migration). Once these alleles find themselves back in the combined ancestral population it takes them on average \\(2N\\) generations to coalesce. So the total opportunity for mutation between the pair of alleles sampled from different populations is \\(2 (T + 2N )\\) generations of meioses, such that the probability that the pairs of alleles is different is \\[\nH_B \\approx 2\\mu ( T + 2 N) %\\left( 1-(1-\\mu)^{2T} \\right) + (1-\\mu)^{2T}\n  %\\frac{\\theta}{\\theta+1}\n\\]\n\\[\nF_{ST} \\approx \\frac{ \\mu T}{\\mu T +  4N_e\\mu }  = \\frac{ T}{ T +  4N_e}\n\\]\n\n\n\nSome other concepts that we discussed include a simple model of migration, incomplete lineage sorting, and testing for gene flow. Summary (from the book):\n\nOnly a small number of migrants between populations per generation is sufficient to prevent the build up of neutral allele frequency differentiation.\nIncomplete lineage sorting of ancestral variation is one source of disagreement between population/species-trees and gene trees. It occurs when the split times between populations are in quick enough succession that lineages do not have time coalese between more closely related populations.\nGene flow can also lead to patterns similar to incomplete lineage sorting. We can test between a model of incomplete lineage sorting and gene flow using tests such as ABBA-BABA."
+  },
+  {
+    "objectID": "listen/group-meeting/2023-04-12-adas-group-meeting.html",
+    "href": "listen/group-meeting/2023-04-12-adas-group-meeting.html",
     "title": "2023-04-12",
     "section": "",
     "text": "She is using functional annotation to improve finding rare variants which are associated with Alzheimer’s disease.\n\n\nTwo types of test:\n\nGene based RV association test.\nDeep learning burden test\n\nTypes of rare variant association tests:\n\nburden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants.\nadaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT\ndispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU\ncombined tests, burden + dispersion tests combined, e.g. SKAT-O, Fisher, MIST\nannotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST\n\nFuntional score test (FST) workflow:\n\nCoding variants, within start/end of genes defined by ensemble\nNC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.\nRare variants only – gnomAD AF < 0.05\nMap to annotations\nMap to ADSP individuals\n\nThings I did not understand:\n\nWhy is the Mahattan plot skewed?\nHow does the p-value distribution looks in null data?\n\nInteresting comments:\n\nJiayu mentioned about the ESM annotation from this paper: Language models enable zero-shot prediction of the effects of mutations on protein function by Meier, Rao, Verkuil, Liu, Sercu and Rives."
@@ -53,6 +60,13 @@
     "href": "journal/2023-04.html",
     "title": "2023, April",
     "section": "",
-    "text": "This is the beginning of my NYGC journal, on my third day here.\n\nAttend general group meeting, presentation by Anjali.\nAttend ADSP group meeting.\nSetup Quarto journal.\nWork on GradVI manuscript."
+    "text": "Setup navigation in Quarto journal.\nProbgen Reading Club, presentation by Sei Chang\nGradVI. Create new notebook for linear regression with correlated variables, find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples, submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization)."
+  },
+  {
+    "objectID": "journal/2023-04.html#section-1",
+    "href": "journal/2023-04.html#section-1",
+    "title": "2023, April",
+    "section": "2023-04-12",
+    "text": "2023-04-12\nThis is the beginning of my NYGC journal, on my third day here.\n\nAttend general group meeting, presentation by Anjali.\nAttend ADSP group meeting.\nSetup Quarto journal.\nWork on GradVI manuscript."
   }
 ]
