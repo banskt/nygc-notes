@@ -1,0 +1,65 @@
+---
+title: Chapter 6, Population Genetics by Graham Coop
+---
+
+## Neutral Diversity and Population Structure
+
+### Presented by Sei Chang
+
+The chapter discusses how genetic differentiation build up between
+closely related population.
+Using $F_{ST}$ statistic, Coop provided quantitative formulation
+to understand the genetic divergence between two sub-population,
+for example, after migration.
+
+
+### Population split model
+
+To understand the effect of genetic drift of population structure,
+imagine a population of constant size of $N_e$ diploid individuals that
+$T$ generations in the past split into two sub-populations
+each of size $N_e$ individuals, which do not subsequently exchange migrants.
+In the current day we sample an equal number of alleles from both subpopulations.
+
+Consider a pair of alleles sampled within one of our
+sub-populations and think about their per site heterozygosity.
+These alleles have experienced a population of size $N_e$
+and so the probability that they differ is $H_S \approx 4N_e \mu$ 
+(assuming that $N_e \mu \ll 1$, using the equation for heterozygosity within a population).
+
+Assume equal sampling from both sub-populations, total heterozygosity is given by,
+
+$$
+H_T = 0.5 H_S + 0.5 H_B
+$$
+where $H_B$ is the probability that a pair of alleles drawn from the
+two different sub-populations differ from each other. 
+A pair of alleles from different sub-populations cannot find a common ancestor with each other for at least $T$
+generations into the past as they are in distinct populations (not connected by migration). 
+Once these alleles find themselves back in the combined ancestral
+population it takes them on average $2N$ generations to coalesce. 
+So the total opportunity for mutation between the pair of alleles 
+sampled from different populations is $2 (T + 2N )$ generations of meioses, 
+such that the probability that the pairs of alleles is different is
+$$
+H_B \approx 2\mu ( T + 2 N) %\left( 1-(1-\mu)^{2T} \right) + (1-\mu)^{2T}
+  %\frac{\theta}{\theta+1}
+$$
+
+$$
+F_{ST} \approx \frac{ \mu T}{\mu T +  4N_e\mu }  = \frac{ T}{ T +  4N_e}
+$$
+
+### Other concepts
+
+Some other concepts that we discussed include a simple model of migration,
+incomplete lineage sorting, and testing for gene flow. Summary (from the book):
+
+  - Only a small number of migrants between populations per generation is sufficient
+    to prevent the build up of neutral allele frequency differentiation.
+  - Incomplete lineage sorting of ancestral variation is one source of disagreement
+    between population/species-trees and gene trees.
+    It occurs when the split times between populations are in quick enough succession
+    that lineages do not have time coalese between more closely related populations.
+  - Gene flow can also lead to patterns similar to incomplete lineage sorting.
+    We can test between a model of incomplete lineage sorting and gene flow using tests such as ABBA-BABA.

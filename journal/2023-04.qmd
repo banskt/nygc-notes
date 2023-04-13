@@ -2,11 +2,20 @@
 title: 2023, April
 ---
 
+## 2023-04-13
+
+  - Setup navigation in Quarto journal.
+  - Probgen Reading Club, [presentation by Sei Chang](../listen/journal-club/2023-04-13-coop-book-chapter-6.qmd)
+  - GradVI. Create new notebook for linear regression with correlated variables, 
+  find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples,
+  submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization).
+
+
 ## 2023-04-12
 
 This is the beginning of my NYGC journal, on my third day here.
 
-  - Attend general group meeting, presentation by Anjali.
+  - Attend general group meeting, [presentation by Anjali](../listen/group-meeting/2023-04-12-adas-group-meeting.qmd).
   - Attend ADSP group meeting.
   - Setup Quarto journal.
   - Work on GradVI manuscript.

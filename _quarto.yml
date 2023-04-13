@@ -37,7 +37,10 @@ website:
         - listen/index.qmd
         - section: "Group Meetings"
           contents:
-          - auto: listen/group-meetings/*
+          - auto: listen/group-meeting/*
+        - section: "Journal Clubs"
+          contents:
+          - auto: listen/journal-club/*
 #
     - title: "Think"
       contents:
