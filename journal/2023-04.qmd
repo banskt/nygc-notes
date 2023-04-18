@@ -13,6 +13,11 @@ title: 2023, April
   Share figure on slack.
   - General Safety and Compliance Orientation
 
+## 2023-04-14
+
+  - [Raj/Knowles joint group meeting](../listen/group-meeting/2023-04-14-adsp-group-meeting.qmd) at ISMMS.
+  - Kick-off meeting with Niamh.
+
 ## 2023-04-13
 
   - Setup navigation in Quarto journal.
