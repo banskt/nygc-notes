@@ -2,6 +2,17 @@
 title: 2023, April
 ---
 
+## 2023-04-18
+
+  - GradVI. Discuss figure with Peter on slack.
+
+## 2023-04-17
+  
+  - GradVI. Simulation complete for linear regression with correlated variables, $r^2 = 0.99$. 
+  Run `dscquery` for collecting results. Compare niter between GradVI (compound) and GradVI (direct) and mr.ash.
+  Share figure on slack.
+  - General Safety and Compliance Orientation
+
 ## 2023-04-13
 
   - Setup navigation in Quarto journal.
