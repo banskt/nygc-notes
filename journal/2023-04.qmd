@@ -4,7 +4,8 @@ title: 2023, April
 
 ## 2023-04-18
 
-  - GradVI. Discuss figure with Peter on slack.
+  - GradVI. Discuss figure with Peter.
+  - Setup cluster access at NYGC.
 
 ## 2023-04-17
   

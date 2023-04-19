@@ -1,0 +1,41 @@
+---
+title: 2023-04-19
+---
+
+## Presentation by Tatsuhiko Naito
+
+Tatsuhiko works on decoding splicing regulatory mechanisms of Alzheimer's disease microglia
+using deep learning.
+The aim is to construct prediction models from brain (microglia) RNA-Seq,
+train splicing DL model, score to predict variant effect
+and apply models to ADSP WGS data (n~36k) for rare variant analysis, fine mapping, etc.
+
+#### Excerpts from the talk.
+
+Microglia are a type of specialized immune cells and plays a key role in A$\beta$ aggregation.
+Katia et al. Nat Genet 2022 showed that there is colocalization between AP/PD risk and microglia QTL effects.
+
+Rare variant test using annotations. Deep learning outperforms conventional methods.
+
+*Pangolin*
+
+Similar architecture as SpliceAI, but improved the prediction accuracy by making predictions for multiple tissues simultaneously.
+Pangolin NN consist of 16 stacked residal blocks (dilated convolutional layer with skip connections).
+Takes an input block of 15,000 base pairs and outputs predictions for middle 5000 sites (nucleotides) simultaneously.
+
+SSE (Splice-Site Strength Estimate)
+
+$$
+SSE = \frac{\alpha}{(\alpha + \beta_1 + \beta_2)}
+$$
+
+Pangolin used 4 tissues from 4 different species to improve prediction.
+He is using microglia data (both in-house and other data) to further improve the learning.
+He is trying to benchmark his new model against the original Pangolin model.
+
+   - our data vs original model vs original model + our data
+   - accuracy improvement by increading sample size
+   - including other species
+
+Expression Modifier Score (EMS): predicting gene expression altering effects of variants trained with
+fine-mapped eQTL variants ($y$) and thousands of genomic features ($x$), $y \sim f(x)$.
