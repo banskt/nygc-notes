@@ -2,6 +2,15 @@
 title: 2023, April
 ---
 
+## 2023-04-19
+
+  - Group meeting, [presentation by Tatsuhiko Naito](../listen/group-meeting/2023-04-19-tatsuhiko-naito.qmd)
+  - ADSP meeting. Anjali discussed the p-value distributions from FST.
+  - Setup RStudio at NYGC cluster.
+  - NPD. David shared the [pilot project for NPD](https://github.com/daklab/npd_sumstats).
+  I looked at the data cleaning of the summary statistics.
+  - Setup the NPD website.
+
 ## 2023-04-18
 
   - GradVI. Discuss figure with Peter.
