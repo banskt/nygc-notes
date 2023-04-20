@@ -74,7 +74,7 @@
     "href": "journal/2023-04.html",
     "title": "2023, April",
     "section": "",
-    "text": "Journal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data"
+    "text": "Journal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data\nNPD. Tidy the selection of variants from GTEx and PGC summary statistics, extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx."
   },
   {
     "objectID": "journal/2023-04.html#section-1",
