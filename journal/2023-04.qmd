@@ -14,6 +14,8 @@ title: 2023, April
   The authors constructed PGS for each trait based on two different methods: (1) lead-SNP,
   and (2) [PRS-CS](https://doi.org/10.1038/s41467-019-09718-5), which applies a Bayesian regression framework to identify posterior variant effect sizes 
   based on a continuous shrinkage prior, which is directly learnt from the data
+  - NPD. Tidy the selection of variants from GTEx and PGC summary statistics, 
+  extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx.
 
 ## 2023-04-19
 
