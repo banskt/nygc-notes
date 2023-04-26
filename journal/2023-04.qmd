@@ -2,6 +2,33 @@
 title: 2023, April
 ---
 
+## 2023-04-26
+
+  - Group meeting, [presentation by Scott Adamson](../listen/group-meeting/2023-04-26-scott-adamson.qmd)
+  - Setup Python workbench for NYGC cluster. [See workflow](../code/2023-04-25-cluster-setup.qmd)
+
+## 2023-04-25
+
+  - GradVI. Scatterplot comparing number of iterations, total runtime and ELBO between 
+  (a) GradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated ($r^2 = 0.99$) covariates
+  in case of multiple linear regression. Create new DSC simulation to calculate runtime
+  of trendfiltering in higher dimension.
+  - Meeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. 
+  Discuss list of things to be done before the manuscript can be reviewed by Matthew.
+
+## 2023-04-24
+
+  - Fix RStudio server.
+  - Submit jobs for trend filtering (RCC at UChicago).
+
+## 2023-04-21
+
+  - Meeting with Ekene and Gilead. They are working on improving SparsePro 
+  using gradient descent optimization for estimating the coefficients $w$ for functional annotations.
+  - NPD. Fix errors in extraction of summary statistics of selected variants from PGC. 
+  Clean the R code for reading all the data. 
+  - RStudio server is not showing plots
+
 ## 2023-04-20
 
   - Journal Club. Anjali discussed the article, 

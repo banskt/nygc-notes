@@ -1,0 +1,103 @@
+---
+title: Setup Python workbench
+---
+
+Here is a short documentation for the setup of my *home* at the NYGC cluster.
+I started by cloning my dotfiles from GitHub. 
+
+## Directory structure
+ - `opt` for installing software
+ - `software` for downloading and/or developing software
+ - `work` for experiments / simulations / analysis
+
+## Setup modules
+
+ - Add `export MODULEPATH="${MODULEPATH}:${HOME}/modulefiles"` to include personal modulefiles.
+
+## Setup Miniconda
+
+ - Download and install latest version of Miniconda (23.3.1).
+ - Copy conda init script from `.bashrc` to `opt/miniconda3/conda_bash_init.sh`.
+ - Create a modulefile to initialize conda on demand. [Similar issue for LMOD modulefiles](https://github.com/conda/conda/issues/11087).
+```tcl
+#%Module2.1.10#####################################################################
+##
+## modulefiles conda/23.3.1
+##
+
+set version 23.3.1
+set modroot /gpfs/commons/home/sbanerjee/opt/miniconda3
+
+proc ModulesHelp { } {
+        global version modroot
+        puts stderr "conda/$version - adds Miniconda to PATH"
+}
+
+module-whatis   "Sets the environment for using Miniconda"
+
+# Only one version at a time
+conflict conda
+
+if [module-info mode load] {
+    puts stdout "source $modroot/conda_bash_init.sh ;"
+}
+
+if [module-info mode remove] {
+    puts stdout "conda deactivate ;"
+    remove-path PATH $modroot/bin
+    remove-path PATH $modroot/condabin
+
+    ## unset variable names.
+    ## env | grep "CONDA"
+    unsetenv CONDA_SHLVL
+    unsetenv CONDA_EXE
+    unsetenv _CE_CONDA
+    unsetenv CONDA_PYTHON_EXE
+
+    ## unset function names
+    ## declare -F
+    unsetenv __conda_activate
+    unsetenv __conda_exe
+    unsetenv __conda_hashr
+    unsetenv __conda_reactivate
+    unsetenv conda
+}
+```
+ - Setup `.condarc` (see [dotfiles](https://github.com/banskt/dotfiles))
+
+## Install Python
+
+```
+module load gcc/11.2.0 lapack/3.10 openmpi/4.1.4
+conda create --name py311 python=3.11 -c conda-forge
+conda activate py311
+conda config --env --add channels conda-forge
+conda install numpy scipy pandas scikit-learn matplotlib
+conda install jupyterlab
+```
+
+## Connect to JupyterLab
+
+```
+mkdir ~/.jupyter
+cp /nfs/sw/jupyter3/jupyter3-4.1/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
+jupyter lab
+```
+There is no need for local port forwarding. (I want to know how it is set up, ask NYGC Cluster Linux help).
+
+## Load R libraries with Python
+
+  - Load R/4.2.3 and set paths
+```
+    module load R/4.2.3
+    export R_ROOT=$( echo $rhome )
+    export R_HOME="${R_ROOT}/lib64/R"
+    export CPATH="${CPATH}:${R_ROOT}/lib64/R/include"
+    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH}:${R_ROOT}/"
+    export LIBRARY_PATH="${LIBRARY_PATH}:${R_ROOT}/lib64/R/lib"
+```
+
+  - Set CXX17 path for compiling R packages
+```
+echo 'CXX17 = g++ -std=gnu++17 -fPIC' > ~/.R/Makevars
+```

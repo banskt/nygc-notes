@@ -1,0 +1,68 @@
+---
+title: 2023-04-26
+---
+
+## Presentation by Scott Adamson
+
+Title: Experimental parameters and their impact on sQTL detection.
+
+#### Excerpts from the talk.
+
+Functional interpretation of GWAS:
+
+  - Colocalization between datasets
+  - Integration of functional data (Epigenetic, splicing)
+  - Machine learning predictions
+  - Experimental follow-up
+
+How does a variant impact splicing? Splicing (dys)regulation is important 
+for Mendelian and polygenic phenotypes.
+
+  - 10% of human disease associated exonic alleles cause aberrant splicing (Soemedi R, Nat Genet 2017)
+  - Changes in splicing are likely causes of 35% of Mendelian diseases without a diagnosis 
+  from exome or genome sequencing (Cummings BB, Sci Transl Med 2017)
+  - sQTLs can contribute to GWAS signal more than eQTLs (asthma, breast cancer, heart rate, height, etc.).
+  (Garrido-Martin D, Nat Commun 2021)
+
+Scott is trying to develop a new assay, engineering variants on high throughput and see their effect on splicing.
+There are several parameters that impact sQTL detection.
+
+- Read parameters
+  - Read length
+  - Paired-end vs single-end
+
+- Single cell specific prameters
+  - Editing efficiency
+  - Number of cells
+  - Number of cells with sQTL variant
+  - sQTL effect size
+  - Junction parameters
+  - Number of reads per cell
+
+Downsample or trim reads and measure the no of junctions. Dataset has 150nt paired end reads sequenced to ~150m. 
+
+Number of junction spanning reads or junctions detected -- Scott is looking at this parameters.
+Yield per base parie - 0.0015 junctions / bp, Paired-end rate is almost twice that of single-end rate.
+
+Population scale scRNA-seq enables discovery of cell type specific eQTLs.
+They are shared (and not) with bulk eQTLs. See Yazar et al, Science, 2022.
+[OneK1K.org](https://onek1k.org): Data of 1.27 million peripheral blood mononuclear cells (PMBCs) collected from 982 donors. 
+I think cis-eQTLs will be shared over cell types. 
+
+**scRNA-seq sQTL simulator**
+
+  - Input parameters config files fed
+  - Editing and sQTL workflows
+  - Implemented in python with pytorch, pyro, tensorQTL
+  - Optional cell type specific expression and proportions
+  - Test for sQTL with guide only or with genotype
+
+Identifying and implementing reasonable default parameters is not simple. 
+
+  - Read count parameters: targeted vs whole transcriptome, implemented as technology specific expression quantiles.
+  - Transcript-end read bias: Unsure how to implement. 
+
+Scott is using targeted gene expression (10x ECCITE data, Julia Domingo) for estimating read count parameters.
+For normal scRNA-seq, he is using a Snakemake pipeline to proces large number of scRNA-seq data.
+
+How to estimate adequate base editing efficiency?
