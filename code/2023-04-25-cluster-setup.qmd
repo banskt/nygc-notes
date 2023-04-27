@@ -87,21 +87,13 @@ There is no need for local port forwarding. (I want to know how it is set up, as
 
 ## Load R libraries with Python
 
-  - Load R/4.2.3 and set paths
-```bash
-module load R/4.2.3
-export R_ROOT=$( echo $rhome )
-export R_HOME="${R_ROOT}/lib64/R"
-export CPATH="${CPATH}:${R_ROOT}/lib64/R/include"
-export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH}:${R_ROOT}/"
-export LIBRARY_PATH="${LIBRARY_PATH}:${R_ROOT}/lib64/R/lib"
-```
-
   - Set CXX17 path for compiling R packages
 ```bash
 echo 'CXX17 = g++ -std=gnu++17 -fPIC' > ~/.R/Makevars
 ```
-  - Create modulefile for loading R environment variables which are not set by NYGC
+
+  - Create modulefile for loading environment variables (required for loading R from Python) which are not set by NYGC.
+
 ```tcl
 #%Module2.1.10#####################################################################
 ##
@@ -130,7 +122,7 @@ setenv          R_ROOT                  $rhome
 setenv          R_HOME                  $rhome/lib64/R
 ```
 
-  - Load the environments
+  - Load the R module and the environment variables
 ```
 module load R/4.2.3
 module load Renv/4.2.3
