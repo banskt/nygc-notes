@@ -1,0 +1,35 @@
+---
+title: Setup GradVI workbench
+---
+
+Here is a short documentation to setup the environment for running GradVI experiments at the NYGC cluster.
+
+## Install R packages
+
+  - [mr.ash.alpha](https://github.com/stephenslab/mr.ash.alpha)
+```R
+devtools::install_github("stephenslab/mr.ash.alpha")
+```
+
+  - [genlasso](https://github.com/ryantibs/genlasso)
+```R
+install.packages("genlasso")
+```
+
+## Install Python packages
+
+  - [GradVI](https://github.com/stephenslab/gradvi)
+```bash
+cd ~/software
+git clone git@github.com:stephenslab/gradvi.git
+cd gradvi
+pip install -e .
+```
+
+  - [mr.ash.pen](https://github.com/banskt/mr-ash-pen)
+```bash
+cd ~/software
+git clone git@github.com:banskt/mr-ash-pen.git
+cd mr-ash-pen
+pip install -e .
+```

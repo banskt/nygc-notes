@@ -2,15 +2,20 @@
 title: 2023, April
 ---
 
+## 2023-04-27
+
+  - Probgen Reading Club, [presented by Ashvin Ravi and Ariana Chriss](../listen/journal-club/2023-04-27-coop-book-chapter-7.qmd)
+  - Setup GradVI workbench for NYGC cluster. [See workflow](../code/2023-04-27-gradvi-setup.qmd).
+
 ## 2023-04-26
 
   - Group meeting, [presentation by Scott Adamson](../listen/group-meeting/2023-04-26-scott-adamson.qmd)
-  - Setup Python workbench for NYGC cluster. [See workflow](../code/2023-04-25-cluster-setup.qmd)
+  - Setup Python workbench for NYGC cluster. [See workflow](../code/2023-04-25-cluster-setup.qmd).
 
 ## 2023-04-25
 
-  - GradVI. Scatterplot comparing number of iterations, total runtime and ELBO between 
-  (a) GradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated ($r^2 = 0.99$) covariates
+  - GradVI. Scatterplot comparing number of iterations, total runtime and ELBO between (a) GradVI compound and CAVI,
+  and (b) GradVI direct and CAVI) for strongly correlated ($r^2 = 0.99$) covariates
   in case of multiple linear regression. Create new DSC simulation to calculate runtime
   of trendfiltering in higher dimension.
   - Meeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. 

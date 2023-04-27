@@ -1,0 +1,28 @@
+---
+title: Chapter 7, Population Genetics by Graham Coop
+---
+
+## Phenotypic Variation and the Resemblance Between Relatives.
+
+### Presented by Ashvin Ravi and Ariana Chriss
+
+The chapter starts with discussion of additive genetic variance
+and how it contributes to heritability.
+Rare variants with high effects on phenotype contribute to smaller
+proportion of heritability compared to common variants (higher MAF)
+with smaller effects on phenotype.
+
+Narrow sense heritability: Proportion of the variance that is
+explained by the additive genetic effect.
+
+The main concept is that we can estimate the additive genetic variance
+and the heritability by using the resemblance of relatives,
+if we can experimentally remove or statistically partition out the effect
+of the shared environment among relatives.
+
+Note: [This paper](https://doi.org/10.1371/journal.pgen.1006421) discusses
+how the estimated genetic variance of the quantitative traits
+does not measure the "underlying genetic architecture" but the
+assumed genetic architecture and its corresponding parametrization.
+When the assumption and parameterization change,
+the partitioning of variance components also changes.
