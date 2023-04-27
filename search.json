@@ -11,84 +11,112 @@
     "href": "journal/2023-04.html",
     "title": "2023, April",
     "section": "",
-    "text": "Group meeting, presentation by Scott Adamson\nSetup Python workbench for NYGC cluster. See workflow"
+    "text": "Probgen Reading Club, presented by Ashvin Ravi and Ariana Chriss\nSetup GradVI workbench for NYGC cluster. See workflow."
   },
   {
     "objectID": "journal/2023-04.html#section",
     "href": "journal/2023-04.html#section",
     "title": "2023, April",
     "section": "",
-    "text": "Group meeting, presentation by Scott Adamson\nSetup Python workbench for NYGC cluster. See workflow"
+    "text": "Probgen Reading Club, presented by Ashvin Ravi and Ariana Chriss\nSetup GradVI workbench for NYGC cluster. See workflow."
   },
   {
     "objectID": "journal/2023-04.html#section-1",
     "href": "journal/2023-04.html#section-1",
     "title": "2023, April",
-    "section": "2023-04-25",
-    "text": "2023-04-25\n\nGradVI. Scatterplot comparing number of iterations, total runtime and ELBO between\n\n\nGradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated (\\(r^2 = 0.99\\)) covariates in case of multiple linear regression. Create new DSC simulation to calculate runtime of trendfiltering in higher dimension.\n\n\nMeeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. Discuss list of things to be done before the manuscript can be reviewed by Matthew."
+    "section": "2023-04-26",
+    "text": "2023-04-26\n\nGroup meeting, presentation by Scott Adamson\nSetup Python workbench for NYGC cluster. See workflow."
   },
   {
     "objectID": "journal/2023-04.html#section-2",
     "href": "journal/2023-04.html#section-2",
     "title": "2023, April",
-    "section": "2023-04-24",
-    "text": "2023-04-24\n\nFix RStudio server.\nSubmit jobs for trend filtering (RCC at UChicago)."
+    "section": "2023-04-25",
+    "text": "2023-04-25\n\nGradVI. Scatterplot comparing number of iterations, total runtime and ELBO between (a) GradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated (\\(r^2 = 0.99\\)) covariates in case of multiple linear regression. Create new DSC simulation to calculate runtime of trendfiltering in higher dimension.\nMeeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. Discuss list of things to be done before the manuscript can be reviewed by Matthew."
   },
   {
     "objectID": "journal/2023-04.html#section-3",
     "href": "journal/2023-04.html#section-3",
     "title": "2023, April",
-    "section": "2023-04-21",
-    "text": "2023-04-21\n\nMeeting with Ekene and Gilead. They are working on improving SparsePro using gradient descent optimization for estimating the coefficients \\(w\\) for functional annotations.\nNPD. Fix errors in extraction of summary statistics of selected variants from PGC. Clean the R code for reading all the data.\nRStudio server is not showing plots"
+    "section": "2023-04-24",
+    "text": "2023-04-24\n\nFix RStudio server.\nSubmit jobs for trend filtering (RCC at UChicago)."
   },
   {
     "objectID": "journal/2023-04.html#section-4",
     "href": "journal/2023-04.html#section-4",
     "title": "2023, April",
-    "section": "2023-04-20",
-    "text": "2023-04-20\n\nJournal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data\nNPD. Tidy the selection of variants from GTEx and PGC summary statistics, extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx."
+    "section": "2023-04-21",
+    "text": "2023-04-21\n\nMeeting with Ekene and Gilead. They are working on improving SparsePro using gradient descent optimization for estimating the coefficients \\(w\\) for functional annotations.\nNPD. Fix errors in extraction of summary statistics of selected variants from PGC. Clean the R code for reading all the data.\nRStudio server is not showing plots"
   },
   {
     "objectID": "journal/2023-04.html#section-5",
     "href": "journal/2023-04.html#section-5",
     "title": "2023, April",
-    "section": "2023-04-19",
-    "text": "2023-04-19\n\nGroup meeting, presentation by Tatsuhiko Naito\nADSP meeting. Anjali discussed the p-value distributions from FST.\nSetup RStudio at NYGC cluster.\nNPD. David shared the pilot project for NPD. I looked at the data cleaning of the summary statistics.\nSetup the NPD website."
+    "section": "2023-04-20",
+    "text": "2023-04-20\n\nJournal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data\nNPD. Tidy the selection of variants from GTEx and PGC summary statistics, extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx."
   },
   {
     "objectID": "journal/2023-04.html#section-6",
     "href": "journal/2023-04.html#section-6",
     "title": "2023, April",
-    "section": "2023-04-18",
-    "text": "2023-04-18\n\nGradVI. Discuss figure with Peter.\nSetup cluster access at NYGC."
+    "section": "2023-04-19",
+    "text": "2023-04-19\n\nGroup meeting, presentation by Tatsuhiko Naito\nADSP meeting. Anjali discussed the p-value distributions from FST.\nSetup RStudio at NYGC cluster.\nNPD. David shared the pilot project for NPD. I looked at the data cleaning of the summary statistics.\nSetup the NPD website."
   },
   {
     "objectID": "journal/2023-04.html#section-7",
     "href": "journal/2023-04.html#section-7",
     "title": "2023, April",
-    "section": "2023-04-17",
-    "text": "2023-04-17\n\nGradVI. Simulation complete for linear regression with correlated variables, \\(r^2 = 0.99\\). Run dscquery for collecting results. Compare niter between GradVI (compound) and GradVI (direct) and mr.ash. Share figure on slack.\nGeneral Safety and Compliance Orientation"
+    "section": "2023-04-18",
+    "text": "2023-04-18\n\nGradVI. Discuss figure with Peter.\nSetup cluster access at NYGC."
   },
   {
     "objectID": "journal/2023-04.html#section-8",
     "href": "journal/2023-04.html#section-8",
     "title": "2023, April",
-    "section": "2023-04-14",
-    "text": "2023-04-14\n\nRaj/Knowles joint group meeting at ISMMS.\nKick-off meeting with Niamh."
+    "section": "2023-04-17",
+    "text": "2023-04-17\n\nGradVI. Simulation complete for linear regression with correlated variables, \\(r^2 = 0.99\\). Run dscquery for collecting results. Compare niter between GradVI (compound) and GradVI (direct) and mr.ash. Share figure on slack.\nGeneral Safety and Compliance Orientation"
   },
   {
     "objectID": "journal/2023-04.html#section-9",
     "href": "journal/2023-04.html#section-9",
     "title": "2023, April",
-    "section": "2023-04-13",
-    "text": "2023-04-13\n\nSetup navigation in Quarto journal.\nProbgen Reading Club, presentation by Sei Chang\nGradVI. Create new notebook for linear regression with correlated variables, find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples, submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization)."
+    "section": "2023-04-14",
+    "text": "2023-04-14\n\nRaj/Knowles joint group meeting at ISMMS.\nKick-off meeting with Niamh."
   },
   {
     "objectID": "journal/2023-04.html#section-10",
     "href": "journal/2023-04.html#section-10",
     "title": "2023, April",
+    "section": "2023-04-13",
+    "text": "2023-04-13\n\nSetup navigation in Quarto journal.\nProbgen Reading Club, presentation by Sei Chang\nGradVI. Create new notebook for linear regression with correlated variables, find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples, submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization)."
+  },
+  {
+    "objectID": "journal/2023-04.html#section-11",
+    "href": "journal/2023-04.html#section-11",
+    "title": "2023, April",
     "section": "2023-04-12",
     "text": "2023-04-12\nThis is the beginning of my NYGC journal, on my third day here.\n\nAttend general group meeting, presentation by Anjali.\nAttend ADSP group meeting.\nSetup Quarto journal.\nWork on GradVI manuscript."
+  },
+  {
+    "objectID": "code/2023-04-27-gradvi-setup.html",
+    "href": "code/2023-04-27-gradvi-setup.html",
+    "title": "Setup GradVI workbench",
+    "section": "",
+    "text": "Here is a short documentation to setup the environment for running GradVI experiments at the NYGC cluster."
+  },
+  {
+    "objectID": "code/2023-04-27-gradvi-setup.html#install-r-packages",
+    "href": "code/2023-04-27-gradvi-setup.html#install-r-packages",
+    "title": "Setup GradVI workbench",
+    "section": "Install R packages",
+    "text": "Install R packages\n\nmr.ash.alpha\n\ndevtools::install_github(\"stephenslab/mr.ash.alpha\")\n\ngenlasso\n\ninstall.packages(\"genlasso\")"
+  },
+  {
+    "objectID": "code/2023-04-27-gradvi-setup.html#install-python-packages",
+    "href": "code/2023-04-27-gradvi-setup.html#install-python-packages",
+    "title": "Setup GradVI workbench",
+    "section": "Install Python packages",
+    "text": "Install Python packages\n\nGradVI\n\ncd ~/software\ngit clone git@github.com:stephenslab/gradvi.git\ncd gradvi\npip install -e .\n\nmr.ash.pen\n\ncd ~/software\ngit clone git@github.com:banskt/mr-ash-pen.git\ncd mr-ash-pen\npip install -e ."
   },
   {
     "objectID": "code/2023-04-25-cluster-setup.html",
@@ -208,6 +236,20 @@
     "title": "2023-04-12",
     "section": "",
     "text": "She is using functional annotation to improve finding rare variants which are associated with Alzheimer’s disease.\n\n\nTwo types of test:\n\nGene based RV association test.\nDeep learning burden test\n\nTypes of rare variant association tests:\n\nburden tests collase rare variants into gene scores. e.g. ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants.\nadaptive burden tests, use weights and thresholds. e.g. ADA, aSum, VT\ndispersion tests, test variance of genetic effect, e.g. SKAT, C-alpha, SSU\ncombined tests, burden + dispersion tests combined, e.g. SKAT-O, Fisher, MIST\nannotation-based tests, add annotations to existing methods, e.g. STAAR, RAVA-FIRST, FST\n\nFuntional score test (FST) workflow:\n\nCoding variants, within start/end of genes defined by ensemble\nNC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.\nRare variants only – gnomAD AF &lt; 0.05\nMap to annotations\nMap to ADSP individuals\n\nThings I did not understand:\n\nWhy is the Mahattan plot skewed?\nHow does the p-value distribution looks in null data?\n\nInteresting comments:\n\nJiayu mentioned about the ESM annotation from this paper: Language models enable zero-shot prediction of the effects of mutations on protein function by Meier, Rao, Verkuil, Liu, Sercu and Rives."
+  },
+  {
+    "objectID": "listen/journal-club/2023-04-27-coop-book-chapter-7.html",
+    "href": "listen/journal-club/2023-04-27-coop-book-chapter-7.html",
+    "title": "Chapter 7, Population Genetics by Graham Coop",
+    "section": "",
+    "text": "The chapter starts with discussion of additive genetic variance and how it contributes to heritability. Rare variants with high effects on phenotype contribute to smaller proportion of heritability compared to common variants (higher MAF) with smaller effects on phenotype.\nNarrow sense heritability: Proportion of the variance that is explained by the additive genetic effect.\nThe main concept is that we can estimate the additive genetic variance and the heritability by using the resemblance of relatives, if we can experimentally remove or statistically partition out the effect of the shared environment among relatives.\nNote: This paper discusses how the estimated genetic variance of the quantitative traits does not measure the “underlying genetic architecture” but the assumed genetic architecture and its corresponding parametrization. When the assumption and parameterization change, the partitioning of variance components also changes."
+  },
+  {
+    "objectID": "listen/journal-club/2023-04-27-coop-book-chapter-7.html#phenotypic-variation-and-the-resemblance-between-relatives.",
+    "href": "listen/journal-club/2023-04-27-coop-book-chapter-7.html#phenotypic-variation-and-the-resemblance-between-relatives.",
+    "title": "Chapter 7, Population Genetics by Graham Coop",
+    "section": "",
+    "text": "The chapter starts with discussion of additive genetic variance and how it contributes to heritability. Rare variants with high effects on phenotype contribute to smaller proportion of heritability compared to common variants (higher MAF) with smaller effects on phenotype.\nNarrow sense heritability: Proportion of the variance that is explained by the additive genetic effect.\nThe main concept is that we can estimate the additive genetic variance and the heritability by using the resemblance of relatives, if we can experimentally remove or statistically partition out the effect of the shared environment among relatives.\nNote: This paper discusses how the estimated genetic variance of the quantitative traits does not measure the “underlying genetic architecture” but the assumed genetic architecture and its corresponding parametrization. When the assumption and parameterization change, the partitioning of variance components also changes."
   },
   {
     "objectID": "listen/journal-club/2023-04-13-coop-book-chapter-6.html",
