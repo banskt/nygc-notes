@@ -287,18 +287,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-python" class="level2">
 <h2 class="anchored" data-anchor-id="install-python">Install Python</h2>
-<pre><code>module load gcc/11.2.0 lapack/3.10 openmpi/4.1.4
-conda create --name py311 python=3.11 -c conda-forge
-conda activate py311
-conda config --env --add channels conda-forge
-conda install numpy scipy pandas scikit-learn matplotlib
-conda install jupyterlab</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/11.2.0 lapack/3.10 openmpi/4.1.4</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> py311 python=3.11 <span class="at">-c</span> conda-forge</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate py311</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--env</span> <span class="at">--add</span> channels conda-forge</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install numpy scipy pandas scikit-learn matplotlib</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="connect-to-jupyterlab" class="level2">
 <h2 class="anchored" data-anchor-id="connect-to-jupyterlab">Connect to JupyterLab</h2>
-<pre><code>mkdir ~/.jupyter
-cp /nfs/sw/jupyter3/jupyter3-4.1/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
-jupyter lab</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/.jupyter</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /nfs/sw/jupyter3/jupyter3-4.1/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There is no need for local port forwarding. (I want to know how it is set up, ask NYGC Cluster Linux help).</p>
 </section>
 <section id="load-r-libraries-with-python" class="level2">
@@ -306,16 +306,63 @@ jupyter lab</code></pre>
 <ul>
 <li>Load R/4.2.3 and set paths</li>
 </ul>
-<pre><code>    module load R/4.2.3
-    export R_ROOT=$( echo $rhome )
-    export R_HOME="${R_ROOT}/lib64/R"
-    export CPATH="${CPATH}:${R_ROOT}/lib64/R/include"
-    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH}:${R_ROOT}/"
-    export LIBRARY_PATH="${LIBRARY_PATH}:${R_ROOT}/lib64/R/lib"</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/4.2.3</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">R_ROOT</span><span class="op">=</span><span class="va">$(</span> <span class="bu">echo</span> <span class="va">$rhome</span> <span class="va">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">R_HOME</span><span class="op">=</span><span class="st">"</span><span class="va">${R_ROOT}</span><span class="st">/lib64/R"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CPATH</span><span class="op">=</span><span class="st">"</span><span class="va">${CPATH}</span><span class="st">:</span><span class="va">${R_ROOT}</span><span class="st">/lib64/R/include"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CMAKE_PREFIX_PATH</span><span class="op">=</span><span class="st">"</span><span class="va">${CMAKE_PREFIX_PATH}</span><span class="st">:</span><span class="va">${R_ROOT}</span><span class="st">/"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LIBRARY_PATH</span><span class="op">=</span><span class="st">"</span><span class="va">${LIBRARY_PATH}</span><span class="st">:</span><span class="va">${R_ROOT}</span><span class="st">/lib64/R/lib"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Set CXX17 path for compiling R packages</li>
 </ul>
-<pre><code>echo 'CXX17 = g++ -std=gnu++17 -fPIC' &gt; ~/.R/Makevars</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'CXX17 = g++ -std=gnu++17 -fPIC'</span> <span class="op">&gt;</span> ~/.R/Makevars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Create modulefile for loading R environment variables which are not set by NYGC</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%Module2.1.10#####################################################################</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">## modulefiles Renv/4.2.3</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>prereq R/<span class="dv">4</span>.<span class="fl">2.3</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> version <span class="dv">4</span>.<span class="fl">2.3</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> rhome <span class="dt">$::env</span>(rhome)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">proc</span> ModulesHelp <span class="kw">{</span> <span class="kw">}</span> <span class="kw">{</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> version</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">puts</span> stderr <span class="st">"Renv/</span><span class="dt">$</span><span class="st">version - adds extra environment variables not provided by NYGC"</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>module-whatis <span class="st">"Sets the environment for using R/</span><span class="dt">$</span><span class="st">version"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Only one version at a time</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>conflict Renv</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>prepend-path    LIBRARY_PATH            <span class="dt">$rhome</span>/lib64/R/lib</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>prepend-path    CPATH                   <span class="dt">$rhome</span>/lib64/R/include</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>prepend-path    CMAKE_PREFIX_PATH       <span class="dt">$rhome</span>/</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>setenv          R_ROOT                  <span class="dt">$rhome</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>setenv          R_HOME                  <span class="dt">$rhome</span>/lib64/R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Load the environments</li>
+</ul>
+<pre><code>module load R/4.2.3
+module load Renv/4.2.3</code></pre>
+<ul>
+<li>Install some R packages (also checks that gcc is working)</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">Ncpus =</span> <span class="dv">48</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"ggplot2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Install and verify rpy2</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install tzlocal <span class="co"># other dependencies are already installed while installing the previous packages</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rpy2</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rpy2.situation</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> import <span class="ex">rpy2.robjects</span> as robj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
