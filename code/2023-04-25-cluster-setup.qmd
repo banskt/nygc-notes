@@ -67,7 +67,7 @@ if [module-info mode remove] {
 
 ## Install Python
 
-```
+```bash
 module load gcc/11.2.0 lapack/3.10 openmpi/4.1.4
 conda create --name py311 python=3.11 -c conda-forge
 conda activate py311
@@ -78,7 +78,7 @@ conda install jupyterlab
 
 ## Connect to JupyterLab
 
-```
+```bash
 mkdir ~/.jupyter
 cp /nfs/sw/jupyter3/jupyter3-4.1/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 jupyter lab
@@ -88,16 +88,66 @@ There is no need for local port forwarding. (I want to know how it is set up, as
 ## Load R libraries with Python
 
   - Load R/4.2.3 and set paths
-```
-    module load R/4.2.3
-    export R_ROOT=$( echo $rhome )
-    export R_HOME="${R_ROOT}/lib64/R"
-    export CPATH="${CPATH}:${R_ROOT}/lib64/R/include"
-    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH}:${R_ROOT}/"
-    export LIBRARY_PATH="${LIBRARY_PATH}:${R_ROOT}/lib64/R/lib"
+```bash
+module load R/4.2.3
+export R_ROOT=$( echo $rhome )
+export R_HOME="${R_ROOT}/lib64/R"
+export CPATH="${CPATH}:${R_ROOT}/lib64/R/include"
+export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH}:${R_ROOT}/"
+export LIBRARY_PATH="${LIBRARY_PATH}:${R_ROOT}/lib64/R/lib"
 ```
 
   - Set CXX17 path for compiling R packages
-```
+```bash
 echo 'CXX17 = g++ -std=gnu++17 -fPIC' > ~/.R/Makevars
+```
+  - Create modulefile for loading R environment variables which are not set by NYGC
+```tcl
+#%Module2.1.10#####################################################################
+##
+## modulefiles Renv/4.2.3
+##
+
+prereq R/4.2.3
+
+set version 4.2.3
+set rhome $::env(rhome)
+
+proc ModulesHelp { } {
+    global version
+    puts stderr "Renv/$version - adds extra environment variables not provided by NYGC"
+}
+
+module-whatis "Sets the environment for using R/$version"
+
+# Only one version at a time
+conflict Renv
+
+prepend-path    LIBRARY_PATH            $rhome/lib64/R/lib
+prepend-path    CPATH                   $rhome/lib64/R/include
+prepend-path    CMAKE_PREFIX_PATH       $rhome/
+setenv          R_ROOT                  $rhome
+setenv          R_HOME                  $rhome/lib64/R
+```
+
+  - Load the environments
+```
+module load R/4.2.3
+module load Renv/4.2.3
+```
+
+  - Install some R packages (also checks that gcc is working)
+```R
+parallel::detectCores()
+options(Ncpus = 48)
+install.packages(c("devtools", "ggplot2"))
+```
+
+  - Install and verify rpy2
+```bash
+conda install tzlocal # other dependencies are already installed while installing the previous packages
+pip install rpy2
+python -m rpy2.situation
+python
+>> import rpy2.robjects as robj
 ```
