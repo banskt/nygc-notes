@@ -18,6 +18,10 @@ install.packages("genlasso")
 
 ## Install Python packages
 
+```bash
+conda install patsy
+```
+
   - [GradVI](https://github.com/stephenslab/gradvi)
 ```bash
 cd ~/software
@@ -31,5 +35,43 @@ pip install -e .
 cd ~/software
 git clone git@github.com:banskt/mr-ash-pen.git
 cd mr-ash-pen
-pip install -e .
+pip install .
+```
+I could not install the editable version of the package. I also could not install `fpydemo` using the `-e` flag.
+The normal installation was smooth, but the editable version failed while trying to link the same file multiple times.
+I ran out of time for debugging, but this needs to be solved later.
+
+## Install DSC
+
+  - Prerequisites that can be installed with conda
+```bash
+conda install networkx sympy pyarrow sqlalchemy
+conda install h5py sos sos-pbs
+```
+
+  - Install DSC
+```bash
+git clone git@github.com:stephenslab/dsc.git
+cd dsc
+pip install .
+```
+Output:
+```
+Successfully built dsc msgpack-python PTable
+Installing collected packages: PTable, msgpack-python, numexpr, dsc
+Successfully installed PTable-0.9.2 dsc-0.4.3.5 msgpack-python-0.5.6 numexpr-2.8.4
+```
+  
+  - Check installation
+```bash
+dsc --version
+dsc-query --version
+```
+
+  - Install R utilities for DSC
+```R
+setwd("/gpfs/commons/home/sbanerjee/software/dsc/dscrutils")
+getwd()
+devtools::install_local('.')
+system("dsc-query --version")
 ```

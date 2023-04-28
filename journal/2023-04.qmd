@@ -2,6 +2,14 @@
 title: 2023, April
 ---
 
+## 2023-04-28
+
+  - Tried and failed to install editable version (`pip install -e .`) of Python packages with Fortran dependencies.
+  - After installing all packages using `conda`, I ran `pip install --upgrade --force-reinstall`
+  which erased everything from the conda environment and reinstalled random packages with `pip`.
+  I have to reinstall the environment. 
+  For the future, I have to find how to get an interactive mode for `pip install`.
+
 ## 2023-04-27
 
   - Probgen Reading Club, [presented by Ashvin Ravi and Ariana Chriss](../listen/journal-club/2023-04-27-coop-book-chapter-7.qmd)
