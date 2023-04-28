@@ -11,88 +11,95 @@
     "href": "journal/2023-04.html",
     "title": "2023, April",
     "section": "",
-    "text": "Probgen Reading Club, presented by Ashvin Ravi and Ariana Chriss\nSetup GradVI workbench for NYGC cluster. See workflow."
+    "text": "Tried and failed to install editable version (pip install -e .) of Python packages with Fortran dependencies.\nAfter installing all packages using conda, I ran pip install --upgrade --force-reinstall which erased everything from the conda environment and reinstalled random packages with pip. I have to reinstall the environment. For the future, I have to find how to get an interactive mode for pip install."
   },
   {
     "objectID": "journal/2023-04.html#section",
     "href": "journal/2023-04.html#section",
     "title": "2023, April",
     "section": "",
-    "text": "Probgen Reading Club, presented by Ashvin Ravi and Ariana Chriss\nSetup GradVI workbench for NYGC cluster. See workflow."
+    "text": "Tried and failed to install editable version (pip install -e .) of Python packages with Fortran dependencies.\nAfter installing all packages using conda, I ran pip install --upgrade --force-reinstall which erased everything from the conda environment and reinstalled random packages with pip. I have to reinstall the environment. For the future, I have to find how to get an interactive mode for pip install."
   },
   {
     "objectID": "journal/2023-04.html#section-1",
     "href": "journal/2023-04.html#section-1",
     "title": "2023, April",
-    "section": "2023-04-26",
-    "text": "2023-04-26\n\nGroup meeting, presentation by Scott Adamson\nSetup Python workbench for NYGC cluster. See workflow."
+    "section": "2023-04-27",
+    "text": "2023-04-27\n\nProbgen Reading Club, presented by Ashvin Ravi and Ariana Chriss\nSetup GradVI workbench for NYGC cluster. See workflow."
   },
   {
     "objectID": "journal/2023-04.html#section-2",
     "href": "journal/2023-04.html#section-2",
     "title": "2023, April",
-    "section": "2023-04-25",
-    "text": "2023-04-25\n\nGradVI. Scatterplot comparing number of iterations, total runtime and ELBO between (a) GradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated (\\(r^2 = 0.99\\)) covariates in case of multiple linear regression. Create new DSC simulation to calculate runtime of trendfiltering in higher dimension.\nMeeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. Discuss list of things to be done before the manuscript can be reviewed by Matthew."
+    "section": "2023-04-26",
+    "text": "2023-04-26\n\nGroup meeting, presentation by Scott Adamson\nSetup Python workbench for NYGC cluster. See workflow."
   },
   {
     "objectID": "journal/2023-04.html#section-3",
     "href": "journal/2023-04.html#section-3",
     "title": "2023, April",
-    "section": "2023-04-24",
-    "text": "2023-04-24\n\nFix RStudio server.\nSubmit jobs for trend filtering (RCC at UChicago)."
+    "section": "2023-04-25",
+    "text": "2023-04-25\n\nGradVI. Scatterplot comparing number of iterations, total runtime and ELBO between (a) GradVI compound and CAVI, and (b) GradVI direct and CAVI) for strongly correlated (\\(r^2 = 0.99\\)) covariates in case of multiple linear regression. Create new DSC simulation to calculate runtime of trendfiltering in higher dimension.\nMeeting with Matthew. Discuss Stochastic Gradient Descent (SGD) and natural gradients. Discuss list of things to be done before the manuscript can be reviewed by Matthew."
   },
   {
     "objectID": "journal/2023-04.html#section-4",
     "href": "journal/2023-04.html#section-4",
     "title": "2023, April",
-    "section": "2023-04-21",
-    "text": "2023-04-21\n\nMeeting with Ekene and Gilead. They are working on improving SparsePro using gradient descent optimization for estimating the coefficients \\(w\\) for functional annotations.\nNPD. Fix errors in extraction of summary statistics of selected variants from PGC. Clean the R code for reading all the data.\nRStudio server is not showing plots"
+    "section": "2023-04-24",
+    "text": "2023-04-24\n\nFix RStudio server.\nSubmit jobs for trend filtering (RCC at UChicago)."
   },
   {
     "objectID": "journal/2023-04.html#section-5",
     "href": "journal/2023-04.html#section-5",
     "title": "2023, April",
-    "section": "2023-04-20",
-    "text": "2023-04-20\n\nJournal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data\nNPD. Tidy the selection of variants from GTEx and PGC summary statistics, extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx."
+    "section": "2023-04-21",
+    "text": "2023-04-21\n\nMeeting with Ekene and Gilead. They are working on improving SparsePro using gradient descent optimization for estimating the coefficients \\(w\\) for functional annotations.\nNPD. Fix errors in extraction of summary statistics of selected variants from PGC. Clean the R code for reading all the data.\nRStudio server is not showing plots"
   },
   {
     "objectID": "journal/2023-04.html#section-6",
     "href": "journal/2023-04.html#section-6",
     "title": "2023, April",
-    "section": "2023-04-19",
-    "text": "2023-04-19\n\nGroup meeting, presentation by Tatsuhiko Naito\nADSP meeting. Anjali discussed the p-value distributions from FST.\nSetup RStudio at NYGC cluster.\nNPD. David shared the pilot project for NPD. I looked at the data cleaning of the summary statistics.\nSetup the NPD website."
+    "section": "2023-04-20",
+    "text": "2023-04-20\n\nJournal Club. Anjali discussed the article, “Adjusting for common variant polygenic scores improves yield in rare variant association analyses”, Jurgens et al, Nature Genetics 55, 544–548 (2023). Link. Using 65 traits from the UK Biobank data, the authors showed that including PGS as a fixed-effect covariate in linear mixed model analysis (using GENESIS) improved the yield and discovery power for rare variant association signal. The authors constructed PGS for each trait based on two different methods: (1) lead-SNP, and (2) PRS-CS, which applies a Bayesian regression framework to identify posterior variant effect sizes based on a continuous shrinkage prior, which is directly learnt from the data\nNPD. Tidy the selection of variants from GTEx and PGC summary statistics, extract the summary statistics of selected variants from PGC, OpenGWAS and GTEx."
   },
   {
     "objectID": "journal/2023-04.html#section-7",
     "href": "journal/2023-04.html#section-7",
     "title": "2023, April",
-    "section": "2023-04-18",
-    "text": "2023-04-18\n\nGradVI. Discuss figure with Peter.\nSetup cluster access at NYGC."
+    "section": "2023-04-19",
+    "text": "2023-04-19\n\nGroup meeting, presentation by Tatsuhiko Naito\nADSP meeting. Anjali discussed the p-value distributions from FST.\nSetup RStudio at NYGC cluster.\nNPD. David shared the pilot project for NPD. I looked at the data cleaning of the summary statistics.\nSetup the NPD website."
   },
   {
     "objectID": "journal/2023-04.html#section-8",
     "href": "journal/2023-04.html#section-8",
     "title": "2023, April",
-    "section": "2023-04-17",
-    "text": "2023-04-17\n\nGradVI. Simulation complete for linear regression with correlated variables, \\(r^2 = 0.99\\). Run dscquery for collecting results. Compare niter between GradVI (compound) and GradVI (direct) and mr.ash. Share figure on slack.\nGeneral Safety and Compliance Orientation"
+    "section": "2023-04-18",
+    "text": "2023-04-18\n\nGradVI. Discuss figure with Peter.\nSetup cluster access at NYGC."
   },
   {
     "objectID": "journal/2023-04.html#section-9",
     "href": "journal/2023-04.html#section-9",
     "title": "2023, April",
-    "section": "2023-04-14",
-    "text": "2023-04-14\n\nRaj/Knowles joint group meeting at ISMMS.\nKick-off meeting with Niamh."
+    "section": "2023-04-17",
+    "text": "2023-04-17\n\nGradVI. Simulation complete for linear regression with correlated variables, \\(r^2 = 0.99\\). Run dscquery for collecting results. Compare niter between GradVI (compound) and GradVI (direct) and mr.ash. Share figure on slack.\nGeneral Safety and Compliance Orientation"
   },
   {
     "objectID": "journal/2023-04.html#section-10",
     "href": "journal/2023-04.html#section-10",
     "title": "2023, April",
-    "section": "2023-04-13",
-    "text": "2023-04-13\n\nSetup navigation in Quarto journal.\nProbgen Reading Club, presentation by Sei Chang\nGradVI. Create new notebook for linear regression with correlated variables, find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples, submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization)."
+    "section": "2023-04-14",
+    "text": "2023-04-14\n\nRaj/Knowles joint group meeting at ISMMS.\nKick-off meeting with Niamh."
   },
   {
     "objectID": "journal/2023-04.html#section-11",
     "href": "journal/2023-04.html#section-11",
+    "title": "2023, April",
+    "section": "2023-04-13",
+    "text": "2023-04-13\n\nSetup navigation in Quarto journal.\nProbgen Reading Club, presentation by Sei Chang\nGradVI. Create new notebook for linear regression with correlated variables, find examples where GradVI converge faster than CAVI, set up DSC simulation pipeline for those examples, submit DSC job on interactive node at RCC, check jobs are running properly (no error in data generation, lasso initialization)."
+  },
+  {
+    "objectID": "journal/2023-04.html#section-12",
+    "href": "journal/2023-04.html#section-12",
     "title": "2023, April",
     "section": "2023-04-12",
     "text": "2023-04-12\nThis is the beginning of my NYGC journal, on my third day here.\n\nAttend general group meeting, presentation by Anjali.\nAttend ADSP group meeting.\nSetup Quarto journal.\nWork on GradVI manuscript."
@@ -116,7 +123,14 @@
     "href": "code/2023-04-27-gradvi-setup.html#install-python-packages",
     "title": "Setup GradVI workbench",
     "section": "Install Python packages",
-    "text": "Install Python packages\n\nGradVI\n\ncd ~/software\ngit clone git@github.com:stephenslab/gradvi.git\ncd gradvi\npip install -e .\n\nmr.ash.pen\n\ncd ~/software\ngit clone git@github.com:banskt/mr-ash-pen.git\ncd mr-ash-pen\npip install -e ."
+    "text": "Install Python packages\nconda install patsy\n\nGradVI\n\ncd ~/software\ngit clone git@github.com:stephenslab/gradvi.git\ncd gradvi\npip install -e .\n\nmr.ash.pen\n\ncd ~/software\ngit clone git@github.com:banskt/mr-ash-pen.git\ncd mr-ash-pen\npip install .\nI could not install the editable version of the package. I also could not install fpydemo using the -e flag. The normal installation was smooth, but the editable version failed while trying to link the same file multiple times. I ran out of time for debugging, but this needs to be solved later."
+  },
+  {
+    "objectID": "code/2023-04-27-gradvi-setup.html#install-dsc",
+    "href": "code/2023-04-27-gradvi-setup.html#install-dsc",
+    "title": "Setup GradVI workbench",
+    "section": "Install DSC",
+    "text": "Install DSC\n\nPrerequisites that can be installed with conda\n\nconda install networkx sympy pyarrow sqlalchemy\nconda install h5py sos sos-pbs\n\nInstall DSC\n\ngit clone git@github.com:stephenslab/dsc.git\ncd dsc\npip install .\nOutput:\nSuccessfully built dsc msgpack-python PTable\nInstalling collected packages: PTable, msgpack-python, numexpr, dsc\nSuccessfully installed PTable-0.9.2 dsc-0.4.3.5 msgpack-python-0.5.6 numexpr-2.8.4\n\nCheck installation\n\ndsc --version\ndsc-query --version\n\nInstall R utilities for DSC\n\nsetwd(\"/gpfs/commons/home/sbanerjee/software/dsc/dscrutils\")\ngetwd()\ndevtools::install_local('.')\nsystem(\"dsc-query --version\")"
   },
   {
     "objectID": "code/2023-04-25-cluster-setup.html",
