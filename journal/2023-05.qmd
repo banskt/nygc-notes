@@ -1,0 +1,16 @@
+---
+title: 2023, May
+---
+
+## 2023-04-01
+
+  - The GradVI trendfiltering runtime experiments have failed. 
+  Troubleshoot: 40G memory is not enough for the jobs. 
+  I removed jobs with $n = (10^5, 10^6)$ and submitted new jobs with 100G 
+  of memory in interactive node. 
+  The idea is to run the large jobs separately for GradVI.
+  - Simulate first order trend filtering data with less memory.
+  - How to run GradVI without generating $\mathbf{H}$ matrix?
+  I derived equations for obtaining $d_j$ without generating the $\mathbf{H}$ matrix
+  and made the required changes in the GradVI software to run without generating
+  the matrix. This introduced a bug which prevents running trend filtering for higher orders.
