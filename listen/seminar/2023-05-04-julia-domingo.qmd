@@ -1,0 +1,57 @@
+---
+title: 2023-04-26
+---
+
+## Presentation by Julia Domingo
+
+Title: Precise modulation of transcription factor levels reveals non-linear dosage responses within transcriptional networks
+
+She started talking about the genotype-to-phenotype problem.
+Molecular phenotype vs cellular phenotype.
+Molecular phenotype -- changes in expression of downstream genes.
+How cis-gene dosage modifies the trans-gene dosage?
+--> Modulate the expression of few genes and look at the modulation of many targeted gene expressions.
+
+[Morris et al, Science, 2023](https://www.science.org/doi/10.1126/science.adh7699) discovered target genes and pathways at GWAS loci 
+by pooled single-cell CRISPR screens.
+Some cis-genes are GF1B, NFE2, MYB, TET2.
+
+#### Excerpts from the talk.
+
+**ECCITE-seq framework**
+
+HTOs, targeted cDNA, sgRNAs
+
+CRISPRi and CRISPRa
+
+QC and demultiplexing pipeline:
+
+  - cDNA
+  - GDOs (sgRNAs)
+  - HTOs
+
+Questions and Answers:
+
+  **1. What is the best unbiased approach to modulate gene expression?**
+
+  - Wide range of fold changes spanned using different types of sgRNAs. 
+  Number of single cells, ON-/OFF- guide target activity don't affect gene expression.
+
+  **2. What are the key determinants of dosage effects in cis?**
+  
+  - Distance to TSS, Local chromatin environment
+
+  **3. How do trans effects relate to dosage changes of the cis gene?**
+
+  - Cis gene fold change.
+  - Sigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).
+
+
+  **4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?**
+
+  - Correlation fold changes with mean gene expression. Cell differentiation "pseudophenotype".
+  - Disease and GWAS genes are enriched in non-linear responses.
+
+  **5. Are dosage response of trans genes correlated to gene or network properties?**
+
+  - Relationship with transcriptional network properties, Mariia Minaeva

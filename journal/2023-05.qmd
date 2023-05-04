@@ -2,6 +2,27 @@
 title: 2023, May
 ---
 
+## 2023-04-04
+
+  - Make changes and create pull request on DSC for supporting `collections.abc` and rpy2 v3.5.11.
+  - Numerical experiments for dense linear regression for correlated variables.
+  - Plot results (ELBO, RMSE, runtime) for dense linear regression for correlated variables.
+  - Run more replicates for the above simulation.
+  - [Seminar by Julia Domingo](../listen/seminar/2023-05-04-julia-domingo.qmd)
+
+## 2023-04-03
+
+  - GradVI plots without colors in scatterplot.
+  - GradVI runtime-per-iteration plot with $\log_{10}$ scale.
+  - Meeting with Matthew. 
+
+## 2023-04-02
+
+  - Run genlasso with large $n$ for one simulation at the NYGC cluster.
+  - Onboarding - Health insurance.
+  - Genlasso running into out-of-memory error.
+  - Make changes in GradVI to run without creating the $\mathbb{H}$ matrix.
+
 ## 2023-04-01
 
   - The GradVI trendfiltering runtime experiments have failed. 

@@ -41,6 +41,9 @@ website:
         - section: "Journal Clubs"
           contents:
           - auto: listen/journal-club/*
+        - section: "Seminars"
+          contents:
+          - auto: listen/seminar/*
 #
     - title: "Think"
       contents:
