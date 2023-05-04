@@ -4,14 +4,35 @@
     "href": "journal/2023-05.html",
     "title": "2023, May",
     "section": "",
-    "text": "The GradVI trendfiltering runtime experiments have failed. Troubleshoot: 40G memory is not enough for the jobs. I removed jobs with \\(n = (10^5, 10^6)\\) and submitted new jobs with 100G of memory in interactive node. The idea is to run the large jobs separately for GradVI.\nSimulate first order trend filtering data with less memory.\nHow to run GradVI without generating \\(\\mathbf{H}\\) matrix? I derived equations for obtaining \\(d_j\\) without generating the \\(\\mathbf{H}\\) matrix and made the required changes in the GradVI software to run without generating the matrix. This introduced a bug which prevents running trend filtering for higher orders."
+    "text": "Make changes and create pull request on DSC for supporting collections.abc and rpy2 v3.5.11.\nNumerical experiments for dense linear regression for correlated variables.\nPlot results (ELBO, RMSE, runtime) for dense linear regression for correlated variables.\nRun more replicates for the above simulation.\nSeminar by Julia Domingo"
   },
   {
     "objectID": "journal/2023-05.html#section",
     "href": "journal/2023-05.html#section",
     "title": "2023, May",
     "section": "",
-    "text": "The GradVI trendfiltering runtime experiments have failed. Troubleshoot: 40G memory is not enough for the jobs. I removed jobs with \\(n = (10^5, 10^6)\\) and submitted new jobs with 100G of memory in interactive node. The idea is to run the large jobs separately for GradVI.\nSimulate first order trend filtering data with less memory.\nHow to run GradVI without generating \\(\\mathbf{H}\\) matrix? I derived equations for obtaining \\(d_j\\) without generating the \\(\\mathbf{H}\\) matrix and made the required changes in the GradVI software to run without generating the matrix. This introduced a bug which prevents running trend filtering for higher orders."
+    "text": "Make changes and create pull request on DSC for supporting collections.abc and rpy2 v3.5.11.\nNumerical experiments for dense linear regression for correlated variables.\nPlot results (ELBO, RMSE, runtime) for dense linear regression for correlated variables.\nRun more replicates for the above simulation.\nSeminar by Julia Domingo"
+  },
+  {
+    "objectID": "journal/2023-05.html#section-1",
+    "href": "journal/2023-05.html#section-1",
+    "title": "2023, May",
+    "section": "2023-04-03",
+    "text": "2023-04-03\n\nGradVI plots without colors in scatterplot.\nGradVI runtime-per-iteration plot with \\(\\log_{10}\\) scale.\nMeeting with Matthew."
+  },
+  {
+    "objectID": "journal/2023-05.html#section-2",
+    "href": "journal/2023-05.html#section-2",
+    "title": "2023, May",
+    "section": "2023-04-02",
+    "text": "2023-04-02\n\nRun genlasso with large \\(n\\) for one simulation at the NYGC cluster.\nOnboarding - Health insurance.\nGenlasso running into out-of-memory error.\nMake changes in GradVI to run without creating the \\(\\mathbb{H}\\) matrix."
+  },
+  {
+    "objectID": "journal/2023-05.html#section-3",
+    "href": "journal/2023-05.html#section-3",
+    "title": "2023, May",
+    "section": "2023-04-01",
+    "text": "2023-04-01\n\nThe GradVI trendfiltering runtime experiments have failed. Troubleshoot: 40G memory is not enough for the jobs. I removed jobs with \\(n = (10^5, 10^6)\\) and submitted new jobs with 100G of memory in interactive node. The idea is to run the large jobs separately for GradVI.\nSimulate first order trend filtering data with less memory.\nHow to run GradVI without generating \\(\\mathbf{H}\\) matrix? I derived equations for obtaining \\(d_j\\) without generating the \\(\\mathbf{H}\\) matrix and made the required changes in the GradVI software to run without generating the matrix. This introduced a bug which prevents running trend filtering for higher orders."
   },
   {
     "objectID": "journal/index.html",
@@ -201,6 +222,20 @@
     "title": "Code",
     "section": "",
     "text": "In this section, I keep code snippets."
+  },
+  {
+    "objectID": "listen/seminar/2023-05-04-julia-domingo.html",
+    "href": "listen/seminar/2023-05-04-julia-domingo.html",
+    "title": "2023-04-26",
+    "section": "",
+    "text": "Title: Precise modulation of transcription factor levels reveals non-linear dosage responses within transcriptional networks\nShe started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva"
+  },
+  {
+    "objectID": "listen/seminar/2023-05-04-julia-domingo.html#presentation-by-julia-domingo",
+    "href": "listen/seminar/2023-05-04-julia-domingo.html#presentation-by-julia-domingo",
+    "title": "2023-04-26",
+    "section": "",
+    "text": "Title: Precise modulation of transcription factor levels reveals non-linear dosage responses within transcriptional networks\nShe started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva"
   },
   {
     "objectID": "listen/index.html",
