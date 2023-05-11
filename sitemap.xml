@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-05.html</loc>
-    <lastmod>2023-05-04T20:01:48.446Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/index.html</loc>
-    <lastmod>2023-05-04T20:01:49.294Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-04.html</loc>
-    <lastmod>2023-05-04T20:01:49.918Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-04-27-gradvi-setup.html</loc>
-    <lastmod>2023-05-04T20:01:50.606Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-04-25-cluster-setup.html</loc>
-    <lastmod>2023-05-04T20:01:51.378Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/code/index.html</loc>
-    <lastmod>2023-05-04T20:01:51.746Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-05-04-julia-domingo.html</loc>
-    <lastmod>2023-05-04T20:01:52.254Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/index.html</loc>
-    <lastmod>2023-05-04T20:01:52.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-26-scott-adamson.html</loc>
-    <lastmod>2023-05-04T20:01:53.194Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-14-adsp-group-meeting.html</loc>
-    <lastmod>2023-05-04T20:01:53.866Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-19-tatsuhiko-naito.html</loc>
-    <lastmod>2023-05-04T20:01:54.298Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-12-adas-group-meeting.html</loc>
-    <lastmod>2023-05-04T20:01:54.782Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-27-coop-book-chapter-7.html</loc>
-    <lastmod>2023-05-04T20:01:55.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-13-coop-book-chapter-6.html</loc>
-    <lastmod>2023-05-04T20:01:55.690Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/think/index.html</loc>
+    <lastmod>2023-05-11T20:24:26.394Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/banskt/nygc-notes/index.html</loc>
-    <lastmod>2023-05-04T20:01:56.078Z</lastmod>
+    <lastmod>2023-05-11T20:24:28.182Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/think/index.html</loc>
-    <lastmod>2023-05-04T20:01:56.470Z</lastmod>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-12-adas-group-meeting.html</loc>
+    <lastmod>2023-05-11T20:24:28.562Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-14-adsp-group-meeting.html</loc>
+    <lastmod>2023-05-11T20:24:29.090Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-26-scott-adamson.html</loc>
+    <lastmod>2023-05-11T20:24:29.482Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-05-10-brielin-brown.html</loc>
+    <lastmod>2023-05-11T20:24:29.818Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-19-tatsuhiko-naito.html</loc>
+    <lastmod>2023-05-11T20:24:30.182Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/index.html</loc>
+    <lastmod>2023-05-11T20:24:30.478Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-05-11-coop-book-chapter-8.html</loc>
+    <lastmod>2023-05-11T20:24:30.858Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-27-coop-book-chapter-7.html</loc>
+    <lastmod>2023-05-11T20:24:31.182Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-13-coop-book-chapter-6.html</loc>
+    <lastmod>2023-05-11T20:24:31.546Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-05-04-julia-domingo.html</loc>
+    <lastmod>2023-05-11T20:24:31.938Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/banskt/nygc-notes/read/index.html</loc>
-    <lastmod>2023-05-04T20:01:56.866Z</lastmod>
+    <lastmod>2023-05-11T20:24:32.222Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/journal/2023-04.html</loc>
+    <lastmod>2023-05-11T20:24:32.698Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/journal/index.html</loc>
+    <lastmod>2023-05-11T20:24:32.974Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/journal/2023-05.html</loc>
+    <lastmod>2023-05-11T20:24:33.318Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/code/2023-04-25-cluster-setup.html</loc>
+    <lastmod>2023-05-11T20:24:33.898Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/code/2023-04-27-gradvi-setup.html</loc>
+    <lastmod>2023-05-11T20:24:34.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/banskt/nygc-notes/code/index.html</loc>
+    <lastmod>2023-05-11T20:24:34.718Z</lastmod>
   </url>
 </urlset>
