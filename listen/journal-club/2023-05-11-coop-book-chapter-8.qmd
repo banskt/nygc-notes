@@ -1,0 +1,57 @@
+---
+title: Chapter 8, Population Genetics by Graham Coop
+---
+
+## The Response to Phenotypic Selection
+
+### Presented by Scott Adamson
+
+Evolution by natural selection requires:
+  1. Variation in a phenotype.
+  2. That survival and reproduction is non-random with respect to this phenotypic variation.
+  3. That this variation is heritable.
+
+Breeder's equation:
+$$
+R = \mu_{NG} − \mu_{BS} = h^2(\mu_S − \mu_{BS} ) = h^2S
+$$
+
+  - $\mu_{BS}$ : Mean phenotype Before Selection
+  - $\mu_{S}$ : Mean phenotype of individuals who survived to reproduce
+  - $\mu_{NG}$ : Mean phenotype of Next Generation
+  - $S = \mu_S − \mu_{BS}$ : Change in mean phenotype within a generation
+  - $R$ : Response to selection
+
+
+#### Long term response to selection
+
+  - Over continued generations, the response to selection will be linear
+  - Assuming no change in heritability and selection differential,
+  $$
+  \mu_n = n h^2 S
+  $$
+
+## The Darwin
+
+Unit of evolution. Fold relative change in phenotype. 
+The greater the time separating similar initial and final states, 
+the slower the inferred rate of change.
+Although it is counter-intuitive at first, [Gingerich (1983)](https://doi.org/10.1126/science.222.4620.159)
+gives two reasons as to why this could happen:
+
+  - Organisms differing by a factor of much more (or less) than 1.2 
+  are so different (or so similar) that they are rarely compared in calculating rates, 
+  regardless of the time available.
+  (Meaning, high change rate over long time will be systematically ignored.)
+  - Rates are based on net change between initial and final states.
+  A period of rapid change followed by a period of stasis will yield 
+  a rate of intermediate value for the entire interval.
+  Similarly, a period of rapid change in one direction followed by a period of reversal 
+  will yield a low net rate. 
+  The shorter the interval of measurement, 
+  the more likely one is to observe high rates.
+  The longer the interval, the more stasis and evolutionary reversal 
+  are likely to be averaged in the result. 
+  This effect systematically damps the values of rates calculated over longer and longer intervals.
+
+

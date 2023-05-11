@@ -1,0 +1,40 @@
+---
+title: 2023-05-10
+---
+
+## Presentation by Brielin Brown
+
+
+#### Multiset Correlation and Factor Analysis (MCFA)
+
+MESA (Multi-ethnic study of Atherosclerosis) - NHLBI TOPMed - Multi-omic analysis 
+but also multi-phenotype, multi-tissue, multi-ancestry, multi-center.
+NHLBI TOPMed generate multi-omic data for tens of thousands of patients.
+MESA multi-omic pilot. Frozen blood samples - plasma for proteins, metabolites
+- PBMCs (monocytes, T-cells) for gene expression - Whole blood for methylation.
+
+$$X_m \sim N(0, I_{k_m})$$
+$$Z \sim N(0, I_d)$$
+$$Y_m \sim N(X_m L_m^T + ZW_m^T, \Phi_m)$$
+
+hidden private - $X_m$, hidden shared - $Z$, observed multimodal data - $Y_m$
+
+#### ChatGPT for rapid gene function interpretation
+
+ChatGPT could succesfully provide functions of genes,
+but provided wrong answers about the methylation markers.
+
+#### Comparison to other methods
+
+  - Multi-modal auto-encoder. Could not find factors reliably.
+  - MOFA (Multi-omics factor analysis). Problem with unbalanced weight.
+  Puts more weight on dataset with more features (e.g. methylation data
+  contains ~50,000 features compared to expression data with ~20,000 features).
+
+#### bimmer/inspre
+
+Directed graph on 149 UK Biobank phenotypes is highly connected.
+
+#### GSK.ai CausalBench Challenge
+
+
