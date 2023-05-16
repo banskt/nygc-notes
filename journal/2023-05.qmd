@@ -2,6 +2,44 @@
 title: 2023, May
 ---
 
+## 2023-04-16
+
+## 2023-04-15
+
+  - Implement [Delchambre's weighted PCA](https://doi.org/10.1093/mnras/stu2219).
+  - I observed hidden structures for the summary statistics in conventional PCA,
+  but no such structure observed in weighted PCA.
+
+## 2023-04-12
+
+  - Implement preprocessing of $\beta$ and SE matrix in Python. Required for playing with PCA
+  and understanding the structure of the data.
+
+## 2023-04-11
+
+  - Meeting with David. We discussed data cleaning and its effect on weighted PCA. See Slack for details.
+  - Probgen reading club, [presented by Scott Adamson](../listen/journal-club/2023-05-11-coop-book-chapter-8.qmd). 
+  Chapter 8 from Population Genetics book by Graham Coop.
+
+## 2023-04-10
+
+  - Knowles Lab Meeting, [presented by Brielin Brown](../listen/group-meeting/2023-05-10-brielin-brown.qmd).
+  - Meeting with Matthew on GradVI manuscript. Reformat introduction.
+
+## 2023-04-09
+
+  - GradVI manuscript - reorganize methods and introduction
+
+## 2023-04-08
+
+  - NPD Summary Statistics. Look at weighted PCA after data cleaning.
+  It appears that there is not much distinguishable from the principal components.
+
+## 2023-04-05
+
+  - Last date for NYGC onboarding. Finish courses and benefits election.
+  - Set up Macbook Pro for work.
+
 ## 2023-04-04
 
   - Make changes and create pull request on DSC for supporting `collections.abc` and rpy2 v3.5.11.
