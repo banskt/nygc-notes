@@ -4,11 +4,14 @@ title: 2023, May
 
 ## 2023-04-16
 
+  - Clean notebook files, set up workflow for publishing NPD notebooks.
+  - Read more about conventional PCA and weighted PCA.
+
 ## 2023-04-15
 
   - Implement [Delchambre's weighted PCA](https://doi.org/10.1093/mnras/stu2219).
   - I observed hidden structures for the summary statistics in conventional PCA,
-  but no such structure observed in weighted PCA.
+  but I did not observe structures in weighted PCA. Why?
 
 ## 2023-04-12
 
@@ -28,7 +31,7 @@ title: 2023, May
 
 ## 2023-04-09
 
-  - GradVI manuscript - reorganize methods and introduction
+  - GradVI manuscript - reorganize methods and introduction.
 
 ## 2023-04-08
 

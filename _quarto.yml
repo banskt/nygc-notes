@@ -21,6 +21,7 @@ website:
   sidebar:
     - title: "Journal"
       style: "docked"
+      collapse-level: 1
       search: true
       background: light
       contents: 
