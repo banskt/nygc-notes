@@ -266,11 +266,25 @@
     "text": "In this section, I keep a daily log of my activities and accomplishments. This serves as both a personal record of my progress and a way to keep myself accountable and motivated."
   },
   {
+    "objectID": "journal/2023-05.html",
+    "href": "journal/2023-05.html",
+    "title": "2023, May",
+    "section": "",
+    "text": "Clean notebook files, set up workflow for publishing NPD notebooks.\nRead more about conventional PCA and weighted PCA."
+  },
+  {
+    "objectID": "journal/2023-05.html#section",
+    "href": "journal/2023-05.html#section",
+    "title": "2023, May",
+    "section": "",
+    "text": "Clean notebook files, set up workflow for publishing NPD notebooks.\nRead more about conventional PCA and weighted PCA."
+  },
+  {
     "objectID": "journal/2023-05.html#section-1",
     "href": "journal/2023-05.html#section-1",
     "title": "2023, May",
     "section": "2023-04-15",
-    "text": "2023-04-15\n\nImplement Delchambre’s weighted PCA.\nI observed hidden structures for the summary statistics in conventional PCA, but no such structure observed in weighted PCA."
+    "text": "2023-04-15\n\nImplement Delchambre’s weighted PCA.\nI observed hidden structures for the summary statistics in conventional PCA, but I did not observe structures in weighted PCA. Why?"
   },
   {
     "objectID": "journal/2023-05.html#section-2",
@@ -298,7 +312,7 @@
     "href": "journal/2023-05.html#section-5",
     "title": "2023, May",
     "section": "2023-04-09",
-    "text": "2023-04-09\n\nGradVI manuscript - reorganize methods and introduction"
+    "text": "2023-04-09\n\nGradVI manuscript - reorganize methods and introduction."
   },
   {
     "objectID": "journal/2023-05.html#section-6",
