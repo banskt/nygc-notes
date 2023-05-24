@@ -270,91 +270,175 @@
     "href": "journal/2023-05.html",
     "title": "2023, May",
     "section": "",
-    "text": "Clean notebook files, set up workflow for publishing NPD notebooks.\nRead more about conventional PCA and weighted PCA."
+    "text": "Group meeting, listen to talks from “The Biology of Genomes”, a conference at CSHL from May9 - May13, 2023. We listened to two talks:\n\n\n“Discovering stimulatory state specific T2D GWAS mechanisms with single cell multi-omics on iPSC-derived FAP villages” by Christa Ventresca from the Stephen Parker lab,\n“DragoNNFruit—Learning cis- and trans-regulation of chromatin accessibility at single base and single cell resolution” by Jacob Schreiber from the Kundaje lab.\n\n\nStart a Latex document to write the Frank-Wolfe algorithm for nuclear norm matrix factorization."
   },
   {
     "objectID": "journal/2023-05.html#section",
     "href": "journal/2023-05.html#section",
     "title": "2023, May",
     "section": "",
-    "text": "Clean notebook files, set up workflow for publishing NPD notebooks.\nRead more about conventional PCA and weighted PCA."
+    "text": "Group meeting, listen to talks from “The Biology of Genomes”, a conference at CSHL from May9 - May13, 2023. We listened to two talks:\n\n\n“Discovering stimulatory state specific T2D GWAS mechanisms with single cell multi-omics on iPSC-derived FAP villages” by Christa Ventresca from the Stephen Parker lab,\n“DragoNNFruit—Learning cis- and trans-regulation of chromatin accessibility at single base and single cell resolution” by Jacob Schreiber from the Kundaje lab.\n\n\nStart a Latex document to write the Frank-Wolfe algorithm for nuclear norm matrix factorization."
   },
   {
     "objectID": "journal/2023-05.html#section-1",
     "href": "journal/2023-05.html#section-1",
     "title": "2023, May",
-    "section": "2023-04-15",
-    "text": "2023-04-15\n\nImplement Delchambre’s weighted PCA.\nI observed hidden structures for the summary statistics in conventional PCA, but I did not observe structures in weighted PCA. Why?"
+    "section": "2023-05-23",
+    "text": "2023-05-23\n\nPython implementation for convex optimization using Frank-Wolfe algorithm.\nI observed that the linear optimization problem using \\(K = 40\\) principal components in the first step of the FW algorithm retains the structure of the matrix, but this is wrong!"
   },
   {
     "objectID": "journal/2023-05.html#section-2",
     "href": "journal/2023-05.html#section-2",
     "title": "2023, May",
-    "section": "2023-04-12",
-    "text": "2023-04-12\n\nImplement preprocessing of \\(\\beta\\) and SE matrix in Python. Required for playing with PCA and understanding the structure of the data."
+    "section": "2023-05-22",
+    "text": "2023-05-22\n\nImplement robust PCA using ADMM (Candes’ algorithm) described here. I followed (copied) the implementation by N. Dorukhan Sergin."
   },
   {
     "objectID": "journal/2023-05.html#section-3",
     "href": "journal/2023-05.html#section-3",
     "title": "2023, May",
-    "section": "2023-04-11",
-    "text": "2023-04-11\n\nMeeting with David. We discussed data cleaning and its effect on weighted PCA. See Slack for details.\nProbgen reading club, presented by Scott Adamson. Chapter 8 from Population Genetics book by Graham Coop."
+    "section": "2023-04-16",
+    "text": "2023-04-16\n\nClean notebook files, set up workflow for publishing NPD notebooks.\nRead more about conventional PCA and weighted PCA."
   },
   {
     "objectID": "journal/2023-05.html#section-4",
     "href": "journal/2023-05.html#section-4",
     "title": "2023, May",
-    "section": "2023-04-10",
-    "text": "2023-04-10\n\nKnowles Lab Meeting, presented by Brielin Brown.\nMeeting with Matthew on GradVI manuscript. Reformat introduction."
+    "section": "2023-04-15",
+    "text": "2023-04-15\n\nImplement Delchambre’s weighted PCA.\nI observed hidden structures for the summary statistics in conventional PCA, but I did not observe structures in weighted PCA. Why?"
   },
   {
     "objectID": "journal/2023-05.html#section-5",
     "href": "journal/2023-05.html#section-5",
     "title": "2023, May",
-    "section": "2023-04-09",
-    "text": "2023-04-09\n\nGradVI manuscript - reorganize methods and introduction."
+    "section": "2023-04-12",
+    "text": "2023-04-12\n\nImplement preprocessing of \\(\\beta\\) and SE matrix in Python. Required for playing with PCA and understanding the structure of the data."
   },
   {
     "objectID": "journal/2023-05.html#section-6",
     "href": "journal/2023-05.html#section-6",
     "title": "2023, May",
-    "section": "2023-04-08",
-    "text": "2023-04-08\n\nNPD Summary Statistics. Look at weighted PCA after data cleaning. It appears that there is not much distinguishable from the principal components."
+    "section": "2023-04-11",
+    "text": "2023-04-11\n\nMeeting with David. We discussed data cleaning and its effect on weighted PCA. See Slack for details.\nProbgen reading club, presented by Scott Adamson. Chapter 8 from Population Genetics book by Graham Coop."
   },
   {
     "objectID": "journal/2023-05.html#section-7",
     "href": "journal/2023-05.html#section-7",
     "title": "2023, May",
-    "section": "2023-04-05",
-    "text": "2023-04-05\n\nLast date for NYGC onboarding. Finish courses and benefits election.\nSet up Macbook Pro for work."
+    "section": "2023-04-10",
+    "text": "2023-04-10\n\nKnowles Lab Meeting, presented by Brielin Brown.\nMeeting with Matthew on GradVI manuscript. Reformat introduction."
   },
   {
     "objectID": "journal/2023-05.html#section-8",
     "href": "journal/2023-05.html#section-8",
     "title": "2023, May",
-    "section": "2023-04-04",
-    "text": "2023-04-04\n\nMake changes and create pull request on DSC for supporting collections.abc and rpy2 v3.5.11.\nNumerical experiments for dense linear regression for correlated variables.\nPlot results (ELBO, RMSE, runtime) for dense linear regression for correlated variables.\nRun more replicates for the above simulation.\nSeminar by Julia Domingo"
+    "section": "2023-04-09",
+    "text": "2023-04-09\n\nGradVI manuscript - reorganize methods and introduction."
   },
   {
     "objectID": "journal/2023-05.html#section-9",
     "href": "journal/2023-05.html#section-9",
     "title": "2023, May",
-    "section": "2023-04-03",
-    "text": "2023-04-03\n\nGradVI plots without colors in scatterplot.\nGradVI runtime-per-iteration plot with \\(\\log_{10}\\) scale.\nMeeting with Matthew."
+    "section": "2023-04-08",
+    "text": "2023-04-08\n\nNPD Summary Statistics. Look at weighted PCA after data cleaning. It appears that there is not much distinguishable from the principal components."
   },
   {
     "objectID": "journal/2023-05.html#section-10",
     "href": "journal/2023-05.html#section-10",
     "title": "2023, May",
-    "section": "2023-04-02",
-    "text": "2023-04-02\n\nRun genlasso with large \\(n\\) for one simulation at the NYGC cluster.\nOnboarding - Health insurance.\nGenlasso running into out-of-memory error.\nMake changes in GradVI to run without creating the \\(\\mathbb{H}\\) matrix."
+    "section": "2023-04-05",
+    "text": "2023-04-05\n\nLast date for NYGC onboarding. Finish courses and benefits election.\nSet up Macbook Pro for work."
   },
   {
     "objectID": "journal/2023-05.html#section-11",
     "href": "journal/2023-05.html#section-11",
     "title": "2023, May",
+    "section": "2023-04-04",
+    "text": "2023-04-04\n\nMake changes and create pull request on DSC for supporting collections.abc and rpy2 v3.5.11.\nNumerical experiments for dense linear regression for correlated variables.\nPlot results (ELBO, RMSE, runtime) for dense linear regression for correlated variables.\nRun more replicates for the above simulation.\nSeminar by Julia Domingo"
+  },
+  {
+    "objectID": "journal/2023-05.html#section-12",
+    "href": "journal/2023-05.html#section-12",
+    "title": "2023, May",
+    "section": "2023-04-03",
+    "text": "2023-04-03\n\nGradVI plots without colors in scatterplot.\nGradVI runtime-per-iteration plot with \\(\\log_{10}\\) scale.\nMeeting with Matthew."
+  },
+  {
+    "objectID": "journal/2023-05.html#section-13",
+    "href": "journal/2023-05.html#section-13",
+    "title": "2023, May",
+    "section": "2023-04-02",
+    "text": "2023-04-02\n\nRun genlasso with large \\(n\\) for one simulation at the NYGC cluster.\nOnboarding - Health insurance.\nGenlasso running into out-of-memory error.\nMake changes in GradVI to run without creating the \\(\\mathbb{H}\\) matrix."
+  },
+  {
+    "objectID": "journal/2023-05.html#section-14",
+    "href": "journal/2023-05.html#section-14",
+    "title": "2023, May",
     "section": "2023-04-01",
     "text": "2023-04-01\n\nThe GradVI trendfiltering runtime experiments have failed. Troubleshoot: 40G memory is not enough for the jobs. I removed jobs with \\(n = (10^5, 10^6)\\) and submitted new jobs with 100G of memory in interactive node. The idea is to run the large jobs separately for GradVI.\nSimulate first order trend filtering data with less memory.\nHow to run GradVI without generating \\(\\mathbf{H}\\) matrix? I derived equations for obtaining \\(d_j\\) without generating the \\(\\mathbf{H}\\) matrix and made the required changes in the GradVI software to run without generating the matrix. This introduced a bug which prevents running trend filtering for higher orders."
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html",
+    "href": "code/2023-05-23-macos-setup.html",
+    "title": "Setup MacOS",
+    "section": "",
+    "text": "Running documentation for the MacOS setup in Janaki."
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#bash",
+    "href": "code/2023-05-23-macos-setup.html#bash",
+    "title": "Setup MacOS",
+    "section": "Bash",
+    "text": "Bash\n\nInstall bash version 5.2.15(1) using homebrew following instructions in this blog post. However, I could not create the Symlink by disabling SIP (csrutil disable).\nThe pre-installed old bash still exists in /bin/bash. Therefore, I have to write bash scripts using #!/usr/bin/env bash.\nUpdate my dotfiles for Mac specific utilities."
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#homebrew",
+    "href": "code/2023-05-23-macos-setup.html#homebrew",
+    "title": "Setup MacOS",
+    "section": "Homebrew",
+    "text": "Homebrew\n\nWhy don’t they ship this package manager as default in MacOS?"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#terminal",
+    "href": "code/2023-05-23-macos-setup.html#terminal",
+    "title": "Setup MacOS",
+    "section": "Terminal",
+    "text": "Terminal\n\nThe default terminal in Mac does not support 24 bit color, and many other Unix features which I use regularly (for example, middle click paste).\nInstall iterm2 using homebrew\n\nbrew install --cask iterm2"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#latex",
+    "href": "code/2023-05-23-macos-setup.html#latex",
+    "title": "Setup MacOS",
+    "section": "Latex",
+    "text": "Latex\n\nI do not want the GUI packages of MacTex, but I want full TexLive.\nFor a finer control over TexLive, I decided to clone the TexLive repository and install from there.\n\nbrew install wget\nmkdir -p /opt/texlive-repository\nchown -R sbanerjee:staff /opt/texlive-repository\nupdate-texlive-repository /opt/texlive-repository # this is an alias to clone the repository, takes couple of hours\n\nFinally, install TexLive from the repository"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#gcc-gfortran",
+    "href": "code/2023-05-23-macos-setup.html#gcc-gfortran",
+    "title": "Setup MacOS",
+    "section": "gcc / gfortran",
+    "text": "gcc / gfortran\n\nJust install with Homebrew.\n\nbrew info gcc\nbrew install gcc"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#r",
+    "href": "code/2023-05-23-macos-setup.html#r",
+    "title": "Setup MacOS",
+    "section": "R",
+    "text": "R\n\nRequires gfortran, TeX, tcltk"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#python",
+    "href": "code/2023-05-23-macos-setup.html#python",
+    "title": "Setup MacOS",
+    "section": "Python",
+    "text": "Python"
+  },
+  {
+    "objectID": "code/2023-05-23-macos-setup.html#quarto",
+    "href": "code/2023-05-23-macos-setup.html#quarto",
+    "title": "Setup MacOS",
+    "section": "Quarto",
+    "text": "Quarto"
   },
   {
     "objectID": "code/2023-04-25-cluster-setup.html",
