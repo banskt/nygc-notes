@@ -2,6 +2,28 @@
 title: 2023, May
 ---
 
+## 2023-05-24
+ 
+  - Group meeting, listen to talks from "The Biology of Genomes", a conference at CSHL from May9 - May13, 2023.
+  We listened to two talks: 
+  (1) "Discovering stimulatory state specific T2D GWAS mechanisms with single cell multi-omics on iPSC-derived FAP villages"
+  by Christa Ventresca from the Stephen Parker lab,
+  (2) "DragoNNFruit—Learning cis- and trans-regulation of chromatin accessibility at single base and single cell resolution"
+  by Jacob Schreiber from the Kundaje lab.
+  - Start a Latex document to write the Frank-Wolfe algorithm for nuclear norm matrix factorization.
+
+## 2023-05-23
+
+  - Python implementation for convex optimization using Frank-Wolfe algorithm. 
+  - I observed that the linear optimization problem using $K = 40$ principal components 
+  in the first step of the FW algorithm retains the structure of the matrix,
+  but this is wrong!
+
+## 2023-05-22
+
+  - Implement robust PCA using ADMM (Candes' algorithm) [described here](https://arxiv.org/pdf/0912.3599.pdf).
+  I followed (copied) the implementation by [N. Dorukhan Sergin](https://www.dorukhanserg.in/post/implementing-rpca/).
+
 ## 2023-04-16
 
   - Clean notebook files, set up workflow for publishing NPD notebooks.

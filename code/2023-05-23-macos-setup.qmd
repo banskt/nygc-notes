@@ -1,0 +1,55 @@
+---
+title: Setup MacOS 
+---
+
+Running documentation for the MacOS setup in Janaki.
+
+## Bash
+
+  - Install `bash version 5.2.15(1)` using homebrew following instructions in 
+  [this blog post](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba).
+  However, I could not create the Symlink by disabling SIP (`csrutil disable`).
+  - The pre-installed old bash still exists in `/bin/bash`.
+  Therefore, I have to write bash scripts using `#!/usr/bin/env bash`.
+  - Update my `dotfiles` for Mac specific utilities.
+
+## Homebrew
+
+  - Why don't they ship this package manager as default in MacOS?
+
+## Terminal
+
+  - The default terminal in Mac does not support 24 bit color,
+  and many other Unix features which I use regularly (for example, middle click paste).
+  - Install iterm2 using homebrew
+  ```
+  brew install --cask iterm2
+  ```
+
+## Latex
+
+  - I do not want the GUI packages of MacTex, but I want full TexLive.
+  - For a finer control over TexLive, I decided to clone the TexLive repository and install from there.
+  ```
+  brew install wget
+  mkdir -p /opt/texlive-repository
+  chown -R sbanerjee:staff /opt/texlive-repository
+  update-texlive-repository /opt/texlive-repository # this is an alias to clone the repository, takes couple of hours
+  ```
+  - Finally, install TexLive from the repository
+
+## gcc / gfortran
+
+  - Just install with Homebrew.
+  ```
+  brew info gcc
+  brew install gcc
+  ```
+
+## R
+
+  - Requires gfortran, TeX, tcltk 
+
+## Python
+
+## Quarto
