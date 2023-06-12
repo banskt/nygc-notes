@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tajurba - 2023-04-12</title>
+<title>Tajurba - 2023-06-07</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../listen/group-meeting/2023-04-14-adsp-group-meeting.html" rel="next">
-<link href="../../listen/index.html" rel="prev">
+<link href="../../listen/journal-club/2023-04-13-coop-book-chapter-6.html" rel="next">
+<link href="../../listen/group-meeting/2023-05-10-brielin-brown.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -114,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">Group Meetings</a></li><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">2023-04-12</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">Group Meetings</a></li><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-06-07-sei-chang.html">2023-06-07</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -151,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2023-04-12</span></a>
   </div>
 </li>
@@ -181,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-06-07-sei-chang.html" class="sidebar-item-text sidebar-link">
+  <a href="../../listen/group-meeting/2023-06-07-sei-chang.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">2023-06-07</span></a>
   </div>
 </li>
@@ -261,16 +263,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#presentation-by-anjali-das" id="toc-presentation-by-anjali-das" class="nav-link active" data-scroll-target="#presentation-by-anjali-das">Presentation by Anjali Das</a></li>
+  <li><a href="#multi-intron-splicing-order-prediction-using-deep-learning" id="toc-multi-intron-splicing-order-prediction-using-deep-learning" class="nav-link active" data-scroll-target="#multi-intron-splicing-order-prediction-using-deep-learning">Multi-intron splicing order prediction using deep learning</a>
+  <ul class="collapse">
+  <li><a href="#presentation-by-sei-chang" id="toc-presentation-by-sei-chang" class="nav-link" data-scroll-target="#presentation-by-sei-chang">Presentation by Sei Chang</a></li>
+  </ul></li>
+  <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link" data-scroll-target="#problem-setup">Problem Setup</a>
+  <ul class="collapse">
+  <li><a href="#model-architecture-convolutional-lstm" id="toc-model-architecture-convolutional-lstm" class="nav-link" data-scroll-target="#model-architecture-convolutional-lstm">Model Architecture: Convolutional LSTM</a></li>
+  <li><a href="#insplico-quantify-intron-splicing-order." id="toc-insplico-quantify-intron-splicing-order." class="nav-link" data-scroll-target="#insplico-quantify-intron-splicing-order.">Insplico: quantify intron splicing order.</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/listen/group-meeting/2023-04-12-adas-group-meeting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/listen/group-meeting/2023-06-07-sei-chang.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2023-04-12</h1>
+<h1 class="title">2023-06-07</h1>
 </div>
 
 
@@ -285,40 +295,55 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="presentation-by-anjali-das" class="level2">
-<h2 class="anchored" data-anchor-id="presentation-by-anjali-das">Presentation by Anjali Das</h2>
-<p>She is using functional annotation to improve finding rare variants which are associated with Alzheimer’s disease.</p>
-<section id="excerpts-from-the-talk." class="level4">
-<h4 class="anchored" data-anchor-id="excerpts-from-the-talk.">Excerpts from the talk.</h4>
-<p>Two types of test:</p>
+<section id="multi-intron-splicing-order-prediction-using-deep-learning" class="level1">
+<h1>Multi-intron splicing order prediction using deep learning</h1>
+<section id="presentation-by-sei-chang" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-by-sei-chang">Presentation by Sei Chang</h2>
+<p>Pre-mRNA splicing order is predetermined. Most genes spliced in one or few predominant orders. Preserved across different cell types and stages of neuron differentiation.</p>
 <ul>
-<li>Gene based RV association test.</li>
-<li>Deep learning burden test</li>
+<li>Direct RNA nanopore sequencing of chromatin-associated polyA-selected RNA from human K562 cells.</li>
+<li>Sequencing of differentiated spinal motor neurons at three time points (D4, D9, D14).</li>
+<li>Focus on post-transcriptional splicing, widespread in human cells.</li>
 </ul>
-<p>Types of rare variant association tests:</p>
-<ul>
-<li>burden tests collase rare variants into gene scores. e.g.&nbsp;ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants.</li>
-<li>adaptive burden tests, use weights and thresholds. e.g.&nbsp;ADA, aSum, VT</li>
-<li>dispersion tests, test variance of genetic effect, e.g.&nbsp;SKAT, C-alpha, SSU</li>
-<li>combined tests, burden + dispersion tests combined, e.g.&nbsp;SKAT-O, Fisher, MIST</li>
-<li>annotation-based tests, add annotations to existing methods, e.g.&nbsp;STAAR, RAVA-FIRST, FST</li>
-</ul>
-<p>Funtional score test (FST) workflow:</p>
-<ol type="1">
-<li>Coding variants, within start/end of genes defined by ensemble</li>
-<li>NC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.</li>
-<li>Rare variants only – gnomAD AF &lt; 0.05</li>
-<li>Map to annotations</li>
-<li>Map to ADSP individuals</li>
+<p>Given: counts of partially spliced reads describing splicing status of each intron. Task: Apply deep learning on pre-mRNA sequence to find strongest determinants for predicting likeliest splicing order.</p>
+</section>
+</section>
+<section id="problem-setup" class="level1">
+<h1>Problem Setup</h1>
+<p>Consider an exon flanked by introns A and B, both of which will be removed during the precursor mRNA splicing. It can occur in two ways:</p>
+<ol type="a">
+<li>AB <span class="math inline">\(\rightarrow\)</span> B <span class="math inline">\(\rightarrow\)</span> 0</li>
+<li>AB <span class="math inline">\(\rightarrow\)</span> A <span class="math inline">\(\rightarrow\)</span> 0</li>
 </ol>
-<p>Things I did not understand:</p>
+<p>Assume the counts to be given by <span class="math inline">\(y\)</span> and the rates to be given by <span class="math inline">\(r\)</span>. Then, at equilibrium,</p>
+<p><span class="math display">\[
+y_{\textrm{AB}}\ r_{\textrm{AB}\rightarrow \textrm{B}} - y_{\textrm{B}}\ r_{\textrm{B}\rightarrow 0} = 0
+\]</span> <span class="math display">\[
+\frac{y_\textrm{B}}{y_{\textrm{AB}}} = \frac{r_{\textrm{AB}\rightarrow \textrm{B}}}{r_{\textrm{B}\rightarrow 0}}
+\]</span></p>
+<p>Similarly,</p>
+<p><span class="math display">\[
+y_{\textrm{AB}}\ r_{\textrm{AB}\rightarrow \textrm{A}} - y_{\textrm{A}}\ r_{\textrm{A}\rightarrow 0} = 0
+\]</span> <span class="math display">\[
+\frac{y_\textrm{A}}{y_{\textrm{AB}}} = \frac{r_{\textrm{AB}\rightarrow \textrm{A}}}{r_{\textrm{A}\rightarrow 0}}
+\]</span></p>
 <ul>
-<li>Why is the Mahattan plot skewed?</li>
-<li>How does the p-value distribution looks in null data?</li>
+<li>Input: encoded genomic sequence</li>
+<li>Output: intron counts / pairwise ratios</li>
 </ul>
-<p>Interesting comments:</p>
+<section id="model-architecture-convolutional-lstm" class="level2">
+<h2 class="anchored" data-anchor-id="model-architecture-convolutional-lstm">Model Architecture: Convolutional LSTM</h2>
 <ul>
-<li>Jiayu mentioned about the ESM annotation from this paper: <a href="https://www.biorxiv.org/content/10.1101/2021.07.09.450648v2.full">Language models enable zero-shot prediction of the effects of mutations on protein function</a> by Meier, Rao, Verkuil, Liu, Sercu and Rives.</li>
+<li>Sequence of time distributed convolutional layer + LSTM.</li>
+<li>Stack multiple convLSTM.</li>
+</ul>
+</section>
+<section id="insplico-quantify-intron-splicing-order." class="level2">
+<h2 class="anchored" data-anchor-id="insplico-quantify-intron-splicing-order.">Insplico: quantify intron splicing order.</h2>
+<p>AISO: Adjacent Intron Splicing Order.</p>
+<ul>
+<li>Input: mapped short or long-read RNA-Seq.</li>
+<li>Output: intron read count and other statistics.</li>
 </ul>
 
 
@@ -561,13 +586,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../listen/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Listen</span>
+      <a href="../../listen/group-meeting/2023-05-10-brielin-brown.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2023-05-10</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../listen/group-meeting/2023-04-14-adsp-group-meeting.html" class="pagination-link">
-        <span class="nav-page-text">2023-04-14</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../listen/journal-club/2023-04-13-coop-book-chapter-6.html" class="pagination-link">
+        <span class="nav-page-text">Chapter 6, Population Genetics by Graham Coop</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

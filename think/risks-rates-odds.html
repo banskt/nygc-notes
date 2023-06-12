@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tajurba - 2023-04-12</title>
+<title>Tajurba - The Little Things</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../listen/group-meeting/2023-04-14-adsp-group-meeting.html" rel="next">
-<link href="../../listen/index.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../think/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,8 +80,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -73,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Tajurba</span>
     </a>
   </div>
@@ -84,23 +104,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../journal/index.html" rel="" target="">
+    <a class="nav-link" href="../journal/index.html" rel="" target="">
  <span class="menu-text">Journal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../read/index.html" rel="" target="">
+    <a class="nav-link" href="../read/index.html" rel="" target="">
  <span class="menu-text">Read</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../listen/index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../listen/index.html" rel="" target="">
  <span class="menu-text">Listen</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../think/index.html" rel="" target="">
+    <a class="nav-link active" href="../think/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Think</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../code/index.html" rel="" target="">
+    <a class="nav-link" href="../code/index.html" rel="" target="">
  <span class="menu-text">Code</span></a>
   </li>  
 </ul>
@@ -114,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">Group Meetings</a></li><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">2023-04-12</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../think/risks-rates-odds.html">The Little Things</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -136,121 +156,16 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Listen</span></a>
+  <a href="../think/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Think</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Group Meetings</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2023-04-12</span></a>
+  <a href="../think/risks-rates-odds.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The Little Things</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-04-14-adsp-group-meeting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-04-14</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-04-19-tatsuhiko-naito.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-04-19</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-04-26-scott-adamson.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-04-26</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-05-10-brielin-brown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-05-10</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-06-07-sei-chang.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-06-07</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Journal Clubs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/journal-club/2023-04-13-coop-book-chapter-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 6, Population Genetics by Graham Coop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/journal-club/2023-04-27-coop-book-chapter-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 7, Population Genetics by Graham Coop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/journal-club/2023-05-11-coop-book-chapter-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 8, Population Genetics by Graham Coop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/journal-club/2023-05-25-coop-book-chapter-9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chapter 9, Population Genetics by Graham Coop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/journal-club/2023-06-01-otters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OTTERS: a powerful TWAS framework leveraging summary-level reference data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Seminars</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/seminar/2023-05-04-julia-domingo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-04-26</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../listen/seminar/2023-06-01-william-fairbrother.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2023-04-26</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -261,16 +176,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#presentation-by-anjali-das" id="toc-presentation-by-anjali-das" class="nav-link active" data-scroll-target="#presentation-by-anjali-das">Presentation by Anjali Das</a></li>
+  <li><a href="#risk" id="toc-risk" class="nav-link active" data-scroll-target="#risk">Risk</a></li>
+  <li><a href="#prevalence" id="toc-prevalence" class="nav-link" data-scroll-target="#prevalence">Prevalence</a></li>
+  <li><a href="#exposure-or-risk-factor" id="toc-exposure-or-risk-factor" class="nav-link" data-scroll-target="#exposure-or-risk-factor">Exposure (or risk factor)</a></li>
+  <li><a href="#risk-ratio-or-relative-risk" id="toc-risk-ratio-or-relative-risk" class="nav-link" data-scroll-target="#risk-ratio-or-relative-risk">Risk ratio (or relative risk)</a></li>
+  <li><a href="#susceptibility" id="toc-susceptibility" class="nav-link" data-scroll-target="#susceptibility">Susceptibility</a></li>
+  <li><a href="#phenotypic-variance" id="toc-phenotypic-variance" class="nav-link" data-scroll-target="#phenotypic-variance">Phenotypic variance</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/listen/group-meeting/2023-04-12-adas-group-meeting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/think/risks-rates-odds.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2023-04-12</h1>
+<h1 class="title">The Little Things</h1>
 </div>
 
 
@@ -285,47 +205,59 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="presentation-by-anjali-das" class="level2">
-<h2 class="anchored" data-anchor-id="presentation-by-anjali-das">Presentation by Anjali Das</h2>
-<p>She is using functional annotation to improve finding rare variants which are associated with Alzheimer’s disease.</p>
-<section id="excerpts-from-the-talk." class="level4">
-<h4 class="anchored" data-anchor-id="excerpts-from-the-talk.">Excerpts from the talk.</h4>
-<p>Two types of test:</p>
-<ul>
-<li>Gene based RV association test.</li>
-<li>Deep learning burden test</li>
-</ul>
-<p>Types of rare variant association tests:</p>
-<ul>
-<li>burden tests collase rare variants into gene scores. e.g.&nbsp;ARIEL, CAST, WSS Loses power when variant effects are in opposing directions, or many non-causal variants.</li>
-<li>adaptive burden tests, use weights and thresholds. e.g.&nbsp;ADA, aSum, VT</li>
-<li>dispersion tests, test variance of genetic effect, e.g.&nbsp;SKAT, C-alpha, SSU</li>
-<li>combined tests, burden + dispersion tests combined, e.g.&nbsp;SKAT-O, Fisher, MIST</li>
-<li>annotation-based tests, add annotations to existing methods, e.g.&nbsp;STAAR, RAVA-FIRST, FST</li>
-</ul>
-<p>Funtional score test (FST) workflow:</p>
-<ol type="1">
-<li>Coding variants, within start/end of genes defined by ensemble</li>
-<li>NC variants, Activity-by-contact (ABC) model predicts promoter and enhancer regions of genes.</li>
-<li>Rare variants only – gnomAD AF &lt; 0.05</li>
-<li>Map to annotations</li>
-<li>Map to ADSP individuals</li>
-</ol>
-<p>Things I did not understand:</p>
-<ul>
-<li>Why is the Mahattan plot skewed?</li>
-<li>How does the p-value distribution looks in null data?</li>
-</ul>
-<p>Interesting comments:</p>
-<ul>
-<li>Jiayu mentioned about the ESM annotation from this paper: <a href="https://www.biorxiv.org/content/10.1101/2021.07.09.450648v2.full">Language models enable zero-shot prediction of the effects of mutations on protein function</a> by Meier, Rao, Verkuil, Liu, Sercu and Rives.</li>
-</ul>
+<p>“The little things are infinitely the most important.” – Sherlock Holmes.</p>
+<p>Clinical, epidemiological and genetic studies often seek to understand the “risk factors” for diseases. In this pursuit, we often encounter terms which have important distinctions, but are sometimes used interchangeably by scientists and clinicians, for example, risks, rates and odds. It is important to understand these distinctions and use the terms in their distinctive context. Here, I seek to define some of these terms.</p>
+<section id="risk" class="level1">
+<h1>Risk</h1>
+<p>Risk is defined as the number of new cases that occur during a specified time period in a population. It involves only <em>new</em> cases, and individuals <em>must</em> be free from the condition at the start of the time period. It is either expressed as a proportion (divided by the total population) ranging from 0 to 1, or as a percent ranging from 0 to 100. This is also referred to as <em>absolute risk</em> or <em>incidence</em>.</p>
+</section>
+<section id="prevalence" class="level1">
+<h1>Prevalence</h1>
+<p>Prevalence is defined as the number of cases existing in a population. A prevalence rate is the total number of cases of a disease existing in a population divided by the total population.</p>
+</section>
+<section id="exposure-or-risk-factor" class="level1">
+<h1>Exposure (or risk factor)</h1>
+<p>An exposure is an event (treatment, presence or absence of some factors, environmental or genetic makeup, etc), also called a risk factor, that changes the risk of disease.</p>
+</section>
+<section id="risk-ratio-or-relative-risk" class="level1">
+<h1>Risk ratio (or relative risk)</h1>
+<p>Risk ratio, also called relative risk, often abbreviated as RR, is defined as the ratio of the disease risk <span class="math inline">\(r_e\)</span> among individuals exposed to a certain exposure (or risk factor) to the disease risk <span class="math inline">\(r_0\)</span> among nonexposed individuals.</p>
+<p><span class="math display">\[
+\textrm{RR} = \frac{r_e}{r_0}
+\]</span></p>
+</section>
+<section id="susceptibility" class="level1">
+<h1>Susceptibility</h1>
+<p>Susceptibility (<span class="math inline">\(s\)</span>) is coupled with exposure. In the general context, exposures that lead to excess disease risk are considered to increase disease susceptibility. <em>Susceptibility</em> depends on the underlying model of disease causation and has been defined (or measured) in many different ways depending on the context. Due to lack of an <em>exact</em> definition, I will follow Khoury et. al. <span class="citation" data-cites="khoury_susceptibility_1989">(<a href="#ref-khoury_susceptibility_1989" role="doc-biblioref">Khoury et al. 1989</a>)</span>, who used the simple sufficient cause model to derive the general relation of <span class="math inline">\(s\)</span> to risk. Under this model, we assume some exposure E is part of a <em>sufficient</em> cause for the disease and we denote by <span class="math inline">\(s\)</span> the proportion of individuals who have all other components except E. Thus, <span class="math inline">\(s\)</span> is the proportion of “susceptible” persons who, if exposed, would contract the disease.</p>
+<p>To derive the general relation of <span class="math inline">\(s\)</span> to risk, we consider two events: 1) the event A that the individual is susceptible (via exposure to E), and 2) the event B that a person has a sufficient cause that does not involve exposure E. The probability of events A and B are related as follows:</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
+<p>We note that, by definition <span class="math inline">\(s = P(A)\)</span>, the risk of exposed is <span class="math inline">\(r_e = P(A \cup B)\)</span>, and the risk of unexposed is <span class="math inline">\(r_0 = P(A \cap B)\)</span>. Combining these, we have,</p>
+<p><span class="math display">\[
+s = r_e - r_0 + P(A \cap B)
+\]</span></p>
+<p>Since <span class="math inline">\(P(A \cap B) \ge 0\)</span> and <span class="math inline">\(P(A \cap B) \le r_0\)</span>, we have</p>
+<p><span class="math display">\[
+r_e - r_0 \le s \le r_e
+\]</span></p>
+<p>If A and B were independent, then <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span> and we would have, <span class="math display">\[
+s_{\textrm{ind}} = \frac{r_e - r_0}{1 - r_0}
+\]</span></p>
+<p>It is important to note that the definition (and measure) of susceptibility will change under other disease causation models. The concept of susceptibility helps communicate the risk of developing a disease but <strong>does not provide a rigorous definition</strong>.</p>
+</section>
+<section id="phenotypic-variance" class="level1">
+
+
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Phenotypic variance</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-khoury_susceptibility_1989" class="csl-entry" role="listitem">
+Khoury, Muin J., W. Dana Flanders, Sander Greenland, and Myron J. Adams. 1989. <span>“On the Measurement of Susceptibility in Epidemiological Studies.”</span> <em>American Journal of Epidemiology</em> 129 (1): 183–90. <a href="https://doi.org/10.1093/oxfordjournals.aje.a115107">https://doi.org/10.1093/oxfordjournals.aje.a115107</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -561,14 +493,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../listen/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Listen</span>
+      <a href="../think/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Think</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../listen/group-meeting/2023-04-14-adsp-group-meeting.html" class="pagination-link">
-        <span class="nav-page-text">2023-04-14</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
