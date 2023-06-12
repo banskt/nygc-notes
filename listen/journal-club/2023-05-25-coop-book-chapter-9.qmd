@@ -1,0 +1,23 @@
+---
+title: Chapter 9, Population Genetics by Graham Coop
+---
+
+## Correlated Traits and The Response of Multiple Traits to Selection
+
+### Presented by Aline Real
+
+Genetic variants in one trait influences multiple other traits through complex pathways.
+Pleiotropy. Natural selection acts on multiple phenotypes simultaneously.
+
+Breeder's equation for multiple traits:
+$$
+R_1 = V_{A, 1}\beta_1 + V_{A, 1, 2}\beta_2
+$$
+
+$$
+R_2 = V_{A, 2}\beta_2 + V_{A, 1, 2}\beta_1
+$$
+
+$$
+\mathbf{R} = \mathbf{G} \mathbf{V}_{\mathbf{P}}^{-1} \mathbf{S} = \mathbf{G}\mathbf{\beta}
+$$

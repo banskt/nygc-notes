@@ -1,0 +1,19 @@
+---
+title: "OTTERS: a powerful TWAS framework leveraging summary-level reference data"
+---
+
+### Presented by Teresa Lin
+
+Traditional TWAS works in three steps: (1) learn from eQTL data, 
+(2) predict gene expression on GWAS data, (3) find association between predicted
+gene expression and the trait.
+The main idea of OTTERS is to perform step 1 with eQTL summary statistics.
+They use difference PRS methods.
+
+![OTTERS](../../images/otters_scheme.png){width=80%}
+
+We develop a TWAS framework called OTTERS
+(Omnibus Transcriptome Test using Expression Reference Summary data)
+that adapts multiple polygenic risk score (PRS) methods
+to estimate eQTL weights from summary-level eQTL reference data
+and conducts an omnibus TWAS.

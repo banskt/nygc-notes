@@ -1,0 +1,61 @@
+---
+title: 2023, June
+---
+
+## 2023-06-12
+
+## 2023-06-09
+
+  **Work from Home**
+
+  Read, write and submit review for an article in Scientific Reports.
+
+## 2023-06-08
+
+  **Work from Home**
+
+  I read about using Log Bayes Factor as genetic 
+  distance between populations to transform the genotype data matrix.
+  [Delrieu and Bowman, 2005](https://www1.maths.leeds.ac.uk/statistics/workshop/lasr2005/Proceedings/bowman.pdf) discuss the mathematical principles.
+  [Delrieu and Bowman, 2006](https://doi.org/10.2217/14622416.7.3.311)
+  discuss how it can be applied and visualized.
+  From the Bayes Factor, they use the scene-anchored argument
+  of [Evett and Weir, 1998, "Interpreting DNA Evidence, 
+  Statistical Genetics for Forensic Scientists"](https://si.biostat.washington.edu/sites/default/files/modules/Evett_Weir_InterpretingDNAEvidence.pdf)
+  to arrive at a statistic which resembles the likelihood ratio.
+  For details of derivation, see [Evett and Weir, 1991, "Flawed reasoning in
+  court"](https://doi.org/10.1080/09332480.1991.10542339).
+
+## 2023-06-07
+
+  - Group meeting, [presented by Sei Chang](../listen/group-meeting/2023-06-07-sei-chang.html).
+  - [Think about disease risk, prevalence, exposure, risk ratio 
+  and susceptibility](../think/risks-rates-odds.html).
+
+## 2023-06-06
+
+  **Work from Home**
+
+  - Read about trend filtering.
+  - Update personal website.
+
+## 2023-06-05
+
+  - Compare RobustPCA and nuclear norm matrix factorization using Frank-Wolfe algorithm. 
+  [See Notebook](https://banskt.github.io/npd-notes/explore/compare_pc_score_weights_for_different_methods.html)
+
+## 2023-06-02
+
+  **Work from Home**
+
+  - Meeting with Gilead Turok. He is working on finemapping using annotations.
+  - Attend the Raj-Knowles group meeting. 
+  - Read about PCA.
+  - Update workbench. Install `micromamba` and `Quarto` in MacOS.
+  [See details](../code/2023-05-23-macos-setup.qmd).
+
+## 2023-06-01
+
+  - Journal Club. [Teresa presented OTTERS](../listen/journal-club/2023-06-01-otters.qmd).
+  - GradVI manuscript.
+  - Meeting with Matthew.

@@ -1,0 +1,60 @@
+---
+title: 2023-06-07
+---
+
+# Multi-intron splicing order prediction using deep learning
+
+## Presentation by Sei Chang
+
+Pre-mRNA splicing order is predetermined.
+Most genes spliced in one or few predominant orders.
+Preserved across different cell types and stages of neuron differentiation.
+
+  - Direct RNA nanopore sequencing of chromatin-associated polyA-selected RNA from human K562 cells.
+  - Sequencing of differentiated spinal motor neurons at three time points (D4, D9, D14).
+  - Focus on post-transcriptional splicing, widespread in human cells. 
+
+Given: counts of partially spliced reads describing splicing status of each intron.
+Task: Apply deep learning on pre-mRNA sequence to find strongest determinants for predicting likeliest splicing order.
+
+# Problem Setup
+
+Consider an exon flanked by introns A and B, both of which will be removed during the precursor mRNA splicing.
+It can occur in two ways:
+
+  a. AB $\rightarrow$ B $\rightarrow$ 0
+  b. AB $\rightarrow$ A $\rightarrow$ 0
+
+Assume the counts to be given by $y$ and the rates to be given by $r$. Then, at equilibrium,
+
+$$
+y_{\textrm{AB}}\ r_{\textrm{AB}\rightarrow \textrm{B}} - y_{\textrm{B}}\ r_{\textrm{B}\rightarrow 0} = 0
+$$
+$$
+\frac{y_\textrm{B}}{y_{\textrm{AB}}} = \frac{r_{\textrm{AB}\rightarrow \textrm{B}}}{r_{\textrm{B}\rightarrow 0}}
+$$
+
+Similarly,
+
+$$
+y_{\textrm{AB}}\ r_{\textrm{AB}\rightarrow \textrm{A}} - y_{\textrm{A}}\ r_{\textrm{A}\rightarrow 0} = 0
+$$
+$$
+\frac{y_\textrm{A}}{y_{\textrm{AB}}} = \frac{r_{\textrm{AB}\rightarrow \textrm{A}}}{r_{\textrm{A}\rightarrow 0}}
+$$
+
+- Input: encoded genomic sequence
+- Output: intron counts / pairwise ratios
+
+
+## Model Architecture: Convolutional LSTM
+
+  - Sequence of time distributed convolutional layer + LSTM.
+  - Stack multiple convLSTM.
+
+## Insplico: quantify intron splicing order.
+
+AISO: Adjacent Intron Splicing Order.
+
+  - Input: mapped short or long-read RNA-Seq.
+  - Output: intron read count and other statistics.

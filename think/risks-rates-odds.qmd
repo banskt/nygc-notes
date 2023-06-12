@@ -1,0 +1,94 @@
+---
+title: The Little Things
+bibliography: ../reference.bib
+---
+
+"The little things are infinitely the most important." -- Sherlock Holmes. 
+
+Clinical, epidemiological and genetic studies often seek to understand
+the "risk factors" for diseases. 
+In this pursuit, we often encounter terms which have important distinctions,
+but are sometimes used interchangeably by scientists and clinicians,
+for example, risks, rates and odds.
+It is important to understand these distinctions and use the terms
+in their distinctive context. 
+Here, I seek to define some of these terms. 
+
+# Risk
+
+Risk is defined as the number of new cases that occur 
+during a specified time period in a population. 
+It involves only *new* cases, and individuals *must* be free from the condition
+at the start of the time period. 
+It is either expressed as a proportion (divided by the total population) ranging from 0 to 1,
+or as a percent ranging from 0 to 100.
+This is also referred to as *absolute risk* or *incidence*.
+
+# Prevalence
+
+Prevalence is defined as the number of cases existing in a population.
+A prevalence rate is the total number of cases of a disease existing in a population 
+divided by the total population.
+
+# Exposure (or risk factor)
+An exposure is an event (treatment, presence or absence of some factors,
+environmental or genetic makeup, etc), also called a risk factor,
+that changes the risk of disease.
+
+# Risk ratio (or relative risk)
+
+Risk ratio, also called relative risk, often abbreviated as RR, is defined 
+as the ratio of the disease risk  $r_e$ among individuals exposed to a certain exposure (or risk factor) 
+to the disease risk $r_0$ among nonexposed individuals.
+
+$$
+\textrm{RR} = \frac{r_e}{r_0}
+$$
+
+# Susceptibility
+Susceptibility ($s$) is coupled with exposure.
+In the general context, exposures that lead to excess disease risk are 
+considered to increase disease susceptibility.
+*Susceptibility* depends on the underlying model of disease causation
+and has been defined (or measured) in many different ways depending on the context.
+Due to lack of an *exact* definition, I will follow 
+Khoury et. al. [@khoury_susceptibility_1989], who used the simple sufficient cause model
+to derive the general relation of $s$ to risk.
+Under this model, we assume some exposure E is part of a *sufficient* cause for the disease
+and we denote by $s$ the proportion of individuals who have all other components except E.
+Thus, $s$ is the proportion of "susceptible" persons who, if exposed,
+would contract the disease.
+
+To derive the general relation of $s$ to risk, we consider two events:
+1) the event A that the individual is susceptible (via exposure to E),
+and 2) the event B that a person has a sufficient cause that does not involve exposure E.
+The probability of events A and B are related as follows:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+
+We note that, by definition $s = P(A)$, the risk of exposed is $r_e = P(A \cup B)$,
+and the risk of unexposed is $r_0 = P(A \cap B)$. Combining these, we have,
+
+$$
+s = r_e - r_0 + P(A \cap B)
+$$
+
+Since $P(A \cap B) \ge 0$ and $P(A \cap B) \le r_0$, we have
+
+$$
+r_e - r_0 \le s \le r_e
+$$
+
+If A and B were independent, then $P(A \cap B) = P(A)P(B)$ and we would have,
+$$
+s_{\textrm{ind}} = \frac{r_e - r_0}{1 - r_0}
+$$
+
+It is important to note that the definition (and measure) of susceptibility will change under other 
+disease causation models. 
+The concept of susceptibility helps communicate the risk of developing a disease
+but **does not provide a rigorous definition**.
+
+# Phenotypic variance

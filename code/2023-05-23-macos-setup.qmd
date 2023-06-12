@@ -48,8 +48,47 @@ Running documentation for the MacOS setup in Janaki.
 
 ## R
 
-  - Requires gfortran, TeX, tcltk 
+  - Requires gfortran, TeX, tcltk
+  - Install using pkg file provided by R.
 
 ## Python
 
+```bash
+brew install micromamba
+micromamba shell -s bash -p /opt/micromamba -vvv init
+```
+This will install micromamba and choose `/opt/micromamba` as the root prefix. Sample output:
+```
+Modifying RC file "/Users/sbanerjee/.bash_profile"
+Generating config for root prefix "/opt/micromamba"
+Setting mamba executable to: "/usr/local/bin/micromamba"
+Adding (or replacing) the following in your "/Users/sbanerjee/.bash_profile" file
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="/usr/local/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/opt/micromamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "/opt/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "/opt/micromamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="/opt/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+```
+**Note.** I deleted these initialization scripts from `.bash_profile` and added them to `~/.custom_dotfiles/bashrc` 
+because that is my preferred bash configuration file.
+
+Installed Python environment and changed the repository to conda-forge using `~/.mambarc`
+```
+micromamba create --name py311 python=3.11 -c conda-forge
+```
+
 ## Quarto
+
+  - Use `.dmg` file to install Quarto.
