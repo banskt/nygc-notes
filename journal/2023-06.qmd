@@ -2,6 +2,98 @@
 title: 2023, June
 ---
 
+## 2023-06-30
+
+  - Knowles-Raj meeting, presented by Aline. I did not take meeting notes.
+  - Continue simulation setup. Study about correlated variables,
+  and validation of clustering: internal and external.
+  - How to benchmark different methods using real data? In real data,
+  we know the true labels (broad phenotypes). Each method provides a
+  reduced rank approximation, $Y_{\mathrm{opt}}$. 
+  One idea is to classify based on $Y_{\mathrm{opt}}$ and compare
+  the clusters with the true labels. 
+  We assume that the best methods will give the best clusters.
+
+## 2023-06-29
+
+  - Journal club presentation, Chapter 10 of Graham Coop's book.
+  Presented by Anjali and Karin.
+  - Simulation of correlated feature variables.
+
+## 2023-06-28
+
+  - Simulation setup for z-scores. 
+  Generative model using correlated loadings and orthogonal factors.
+  - Group meeting by Claire. [Meeting notes](../listen/group-meeting/2023-06-28-claire-harbison.qmd).
+  - NYGC photoshoot.
+
+## 2023-06-27
+
+  - Literature review of nuclear norm minimization.
+  - Think how to evaluate the different methods. Write the tasks to evaluate in latex.
+  - Notes:
+
+    - [ ] Why is duality gap negative?
+    - [ ] Why is duality gap not decreasing monotonically?
+    - [ ] What are the possible convergence criteria for the Frank-Wolfe algorithm?
+
+## 2023-06-23
+
+  - GradVI. Rerun simulation for comparing GradVI with CAVI 
+  in three different settings: independent variables,
+  correlated variables with block-diagonal covariance matrix,
+  trendfiltering.
+
+## 2023-06-22
+
+  - Read Jaggi 2013 paper on Frank-Wolfe algorithm.
+  - Write algorithm and theory for weighted nuclear norm matrix dimensionality reduction.
+  - Journal club presentation, Chapter 10 of Graham Coop's book.
+  Presented by Anjali and Karin.
+
+## 2023-06-21
+
+  - Group meeting by Chirag Lakhani. [Meeting notes](../listen/group-meeting/2023-06-21-chirag-lakhani.qmd).
+  - Meeting with David. We discussed about 3 main topics:
+
+    - NPD Sumstats. We discussed about the Frank-Wolfe algorithm.
+    David told that the rank of the optimized matrix was not always at the boundary of the $\ell_1$ ball.
+    He fixed some errors in the R implementation of weighted PCA -- step size was incorrect.
+    Variant 1 of step size ($ \gamma = 2 / (2 + t)$) is slower than Variant 2 optimum $\gamma$ obtained by minimizing
+    the function $f(\mathbf{X} - \gamma \mathbf{D})$, where $\mathbf{D} = \mathbf{X} - \mathbf{S}$.
+    Removing duplicate GWAS from IEU helps delineating the clusters in lower dimension.
+    Can we setup simulations to benchmark the methods?
+    Can we use weights to improve results? 
+    How to harmonize the weights? Will Niamh be able to help us in harmonizing the GWAS summary statistics?
+    - Second project. We discussed whether to work on splicing project in collaboration with Ivan Iossifov
+    or applying Tejaas on the BigBrain project. We decided to do some pilot work on both before deciding on any one of them.
+    - Finemapping using annotations. Gilead is trying to rerun the simulations by increasing PVE. 
+
+## 2023-06-20
+
+  Rerun the exploratory analyses on NPD summary statistics using the newly preprocessed data.
+  I had to include several phenotypes in the meta file, `trait_meta.csv`.
+
+## 2023-06-16
+
+  Clean the NPD summary statistics data. In particular, remove duplicate PGC GWAS from IEU OpenGWAS project,
+  include the GWAS summary statistics imputed on GTEx variants. 
+  Earlier preprocessing ignored many GWAS imputed on GTEx. 
+
+## 2023-06-15
+
+  
+
+## 2023-06-14
+
+  - Group meeting presentation at NYGC.
+  - Look at data preprocessing. I found that many PGC GWAS were included twice 
+  (as they were also included in the IEU OpenGWAS project).
+
+## 2023-06-13
+
+  Mostly preparation for group meeting.
+
 ## 2023-06-12
 
   - Start preparing presentation for group meeting.

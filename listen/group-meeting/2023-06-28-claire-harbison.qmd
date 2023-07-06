@@ -1,0 +1,66 @@
+---
+title: 2023-06-28
+---
+
+# Alternative splicing of RNA
+
+## Presentation by Claire Harbison
+
+Alternative splicing of RNA causes different isoforms of the same gene. 
+
+The idea is to knockdown isoforms and see its effects on phenotypes. 
+How to knowckdown the isoforms?
+
+Cas13 has been shown to target and knockdown exonic regions of RNA.
+See East-Seletsky et al. and Abudayyah et al.
+
+Cheng et al explored Cas13 guide activity, predicting gRNAs with ML algorithms.
+Model provided 8 guides across two junctions with singnifcant knockdown of COP1.
+
+  - *What is Cas13 guide activity?*\
+  Type VI CRISPR enzymes are RNA-targeting proteins with nuclease activity
+  that enable specific and robust target gene knockdown without altering the genome.
+  Cas13 proteins are guided to their target RNAs by a single CRISPR RNA (crRNA)
+  composed of a direct repeat (DR) stem loop and a spacer sequence (gRNA) 
+  that mediates target recognition by RNA–RNA hybridization.
+
+  - *What is splice junction?*\
+  In the splicing of RNA, the site of a former intron in a mature mRNA.
+
+  - *What is the expression level of COP1?*\
+  Around 50tpm in a regular cell.
+
+Predicted guides span the junctions to see if the guide placement impacts knockdown.
+
+They took the 8 guides, prepare the Cas13 guide RNAs, and added it to the media.
+Activate Cas13 with doxycycline, Extract cells, extract RNA and perform RT-qPCR.
+The drug doxycycline activates Cas13 when added, and deactivates when removed from the media.
+- This is reversible, but there is a time delay of days.
+
+There were 4 guides at common junction, and 4 guides at unique junction.
+The knockdown was around 30% to 50% in A-375 cell lines.
+
+What other parameters could impact knockdown?
+
+  - Cell type
+  - Biological replicates
+  - Time of Cas13 activity
+
+Knockdown in stem cells was more promising, where the expression reduced
+to around 5% to 25%. Guides targeting common junctions generally performed
+better than guides targeting unique juctions.
+They all work decently.
+
+In HEKs cells (human embryonic kidney), the knockdown was better than the first experiment 
+and worse than the stem cells.
+
+Cas13 performs similarly across biological replicates in HEKs cells.
+
+For common junction, 24 hours of Cas13 activity is the sweet spot. 
+But for unique junctions, 48 hours of Cas13 activity is the sweet spot. (?)
+The variability is very minimal, could be a technical noise.
+One could maybe pick any time duration.
+
+  - *Does the prediction of guide RNAs also depend on cell type?*\
+  A predicted guide RNA should work across all cell types. 
+  It depends on the secondary structure of the target RNA.

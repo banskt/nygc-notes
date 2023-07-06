@@ -1,0 +1,44 @@
+---
+title: Gunnar Ratsch, Multi-omics Analyses
+---
+
+# Machine Learning in biomedical research
+
+## Gunnar Ratsch, ETH Zurich
+
+### Tumor Profiler Study
+
+240 patients, melanoma. Health records, pathology, NGS, cfDNA, bulk RNA, 
+drug testing, single cell genomics and transcriptomics, cfDNA, etc
+$\rightarrow$ data integration 
+$\rightarrow$ molecular research report
+$\rightarrow$ summary 
+$\rightarrow$ decision 
+$\rightarrow$ treatment
+
+Multi-omics treatment suggestions improved overall treatment outcome 
+(?) No randomized trial.
+
+Challenges:
+
+  1. Predict protein abundance from cell morphology.
+  2. Single-cell integration via deep learning and matching.
+  3. Modeling in-vitro single-cell drug responses.
+  They measure in vitro treatment response on many cells. Can they predict
+  their response in advance for new cells, new patients, new drugs?\
+  Measuring a cell destroys it, cannot measure same cell before and after treatment.
+  Can you predict cells after perturbation? **Primal Optimal transport problem**.
+  Dual formulation. Brenier's Theorem.
+  CellOT. Bunne, Stark et al, Nature Methods, 2023.
+
+### Sequence reading
+
+**Metagraph framework**
+
+  - given raw sequencing data from thousands of experiments
+  - assemble clean graphs for each experiment
+  - integrate into joint graph index
+  - link to informative metadata (experiment, organism, clinical data, etc.)
+
+- Binary relation wavelet trees (BRWT)
+Use $k = 1$ to obtain.

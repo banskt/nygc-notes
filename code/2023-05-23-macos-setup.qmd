@@ -92,3 +92,9 @@ micromamba create --name py311 python=3.11 -c conda-forge
 ## Quarto
 
   - Use `.dmg` file to install Quarto.
+
+## Vim
+ 
+  - Bash syntax highlighting was broken in Vim shipped by Macbook - 
+  [see issue here](https://github.com/vim/vim/issues/11937).
+  I installed latest vim using Homebrew.

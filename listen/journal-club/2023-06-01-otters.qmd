@@ -1,6 +1,8 @@
 ---
-title: "OTTERS: a powerful TWAS framework leveraging summary-level reference data"
+title: "OTTERS TWAS Framework"
 ---
+
+# OTTERS: a powerful TWAS framework leveraging summary-level reference data
 
 ### Presented by Teresa Lin
 

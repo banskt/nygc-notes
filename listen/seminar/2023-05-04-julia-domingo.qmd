@@ -1,10 +1,11 @@
 ---
-title: 2023-04-26
+title: Julia Domingo, Modulation of TF Levels
 ---
 
-## Presentation by Julia Domingo
+# Precise modulation of transcription factor levels reveals non-linear dosage responses within transcriptional networks
 
-Title: Precise modulation of transcription factor levels reveals non-linear dosage responses within transcriptional networks
+## Julia Domingo
+
 
 She started talking about the genotype-to-phenotype problem.
 Molecular phenotype vs cellular phenotype.

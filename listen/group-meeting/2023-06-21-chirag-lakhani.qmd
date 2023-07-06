@@ -1,0 +1,69 @@
+---
+title: 2023-06-21
+---
+
+# ReguloML: Learning the regulatory code of Alzheimer's Disease Genetics
+
+## Presentation by Chirag Lakhani
+
+Apply DL to predict and interpret the functional effects 
+of AD-associated variants on DNA regulation and RNA processing.
+How are they linked to pathways and networks?
+
+  - AD is a polygenic disease.
+  - Latest GWAS: Bellenguez et al, Nature Genetics, 2022
+  - Controversy - drugs focus on particular pathways,
+  but some kind of fails, expensive. 
+
+Categories of pathogenic variants:
+
+  - coding variants
+  - transcriptional variants (need to know causal cell types) -
+  disrupt TF binding (cell-type specific enhancers/promoter) -
+  modify "epigenome" of a cell type 
+  (chromatin accessibility, histone modifications,
+  3D architecture - differential topology - via disrupting CTCF?)
+  - post-transcriptional variants (splicing, other activity)
+
+Functional annotations help in finding molecular features that best
+explain a polygenic trait.
+Cano-Gomez et al, Frontier in Genetics, 2020.
+
+**Idea**: Use DL delta scores to predict the functional effect of *any* variant. 
+Input: nucleotide sequence
++ (DeepSEA: chromatin, SpliceAI: splicing, etc) $\rightarrow$ 
+Delta score: functional importance.
+
+Microglia regulatory regions contain largest percentage of AD GWAS heritability.
+
+Ways to construct DL delta score annotations:
+
+  - Integrate DL-based TF binding disruption scores with cell-type specific
+  regulatory genomic regions. -- Enformer model trained on ENCODE cell types
+  (K562, HepG2, etc) -- use epigenomic data from neuronal cell types.
+  - Train DL models predicting cell-type specific assay read counts as 
+  a function of genomic DNA sequence -- functional genomic assays like
+  ATAC-Seq, H3K27ac and H3K4me3 -- cell types microglia, astrocytes,
+  oligodendrocytes and neuron -- access to microglia ATAC-Seq data
+
+**Enformer**: predicts 1000s of functional genomic assays from long input sequence (~200kb).
+Input: DNA sequence $\rightarrow$ 
+convolution + transformation layes on human + mouse tracks $\rightarrow$
+Output: genomic tracks.
+Avsec et al, Nature Methods, 2021
+
+Overlap regions of predicted TF disruption with promoter/enhancer regions.
+Enformer predicted TF disruption help localize AD GWAS signal.
+
+DL models can help finemapping.
+
+## Training DL models of chromatin accessibility for microglia
+
+  - Multi-task DL model using chromatin accessibility data from 4 individuals.
+  DNA sequence $\rightarrow$ ATAC-Seq read counts.
+  - Pampari et al, ChromBPNet, 2023
+
+Notes:
+
+  - Is there any other mechanism by which a variant can influence outcome
+  except TF regulation?

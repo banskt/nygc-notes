@@ -1,0 +1,18 @@
+---
+title: 2023, July
+---
+
+## 2023-07-06
+
+  - Modify main plot of GradVI manuscript, include ELBO convergence,
+  remove PVE 0.4 and 0.6, remove trendfiltering order 1.
+  - Meeting with Matthew. Notes: check scaling of trendfiltering matrix,
+  implement Newton's method.
+
+## 2023-07-05
+
+  - Simple examples of truncated SVD, nuclear norm minimization and RobustPCA
+  on simulated data.
+  - Group meeting by Megan. [Meeting notes](../listen/group-meeting/2023-07-05-megan-schertzer.md).
+  - Meeting with David. Notes: simulations with $m = 0$,
+  implement weights in RobustPCA, regression coefficients vs z-scores.

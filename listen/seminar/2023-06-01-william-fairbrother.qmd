@@ -1,5 +1,5 @@
 ---
-title: 2023-04-26
+title: William Fairbrother, Hotspot Exons
 ---
 
 # Hotspot exons - a thousand points of vulnerability to miss-splicing events
