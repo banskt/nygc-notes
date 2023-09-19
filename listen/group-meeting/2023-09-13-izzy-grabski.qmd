@@ -1,0 +1,30 @@
+---
+title: 2023-09-13
+---
+
+# Mapping perturbations across contexts
+
+## Presentation by Izzy Grabski
+
+In scRNA-seq, we want to learn differential expression between two biological conditions.
+What are the causal drivers as opposed to secondary correlated genes?
+Genetic perturbation screens can help: knock down using CRISPR
+and understand the effects of knocked down genes:
+deconvolute the differences in terms of perturbations.
+
+$\mathbf{D}_0$: baseline condition.
+$\mathbf{D}_1$: list of perturbations that have taken place.
+
+$$\mathbf{Y}_0 = \Phi f_0 + \mathbf{E}_0$$
+$$\mathbf{Y}_k = \Phi f_k + \Lambda_k \mathbf{I}_k + \mathbf{E}_k$$
+
+CPA-Perturb-seq: perturb the same locations across multiple cells. 
+The target is to find which cells are perturbed.
+This can be done in different cell lines (e.g. HEK and K562).
+The idea is to learn the $\Lambda$ for different cell lines
+and perform regression,
+
+- What is the relation between $\mathbf{D}$ and $\mathbf{Y}$?
+- Is the noise Gaussian in the gene expression model?
+- Instead of constraining $\delta$, what happens if we try learning $\Lambda$
+from $\mathbf{Y}_k - \mathbf{Y}_0$?

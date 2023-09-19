@@ -1,0 +1,11 @@
+
+
+Height is a model trait in human genetics. 
+One of the first studies was in 1886 Galton.
+Resemblance between relatives
+
+RA Fisher (1918) -- foundation of quantitative genetics.
+Also ANOVA, and assortative mating, and dominant effects!
+
+What do we gain by ever-increasing experimental sample sizes,
+in terms of discovery, variance and prediction accuracy?

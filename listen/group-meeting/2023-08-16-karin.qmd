@@ -1,0 +1,61 @@
+---
+title: 2023-08-16
+---
+
+# Modeling alternative splicing in single cells
+
+## Presentation by Karin Isaev
+
+Is splicing bimodal in cells? 
+Cells with more reads often have better range.
+What influences the observed splicing output? 
+Cell size, single cell vs single nuclei,
+transcription rate (?), etc.
+
+~4500 captured RNAs, ~1500-2400 captured genes in PBMC 
+by different sequencing tools.
+
+**Smart-seq2**: improved coverage, high level of mappable reads, higher sensitivity
+disadvantages: no early multiplexing, transcript length bias, lower throughput.
+
+**Split-seq**: Higher throughput, improved coverage, lower cost,
+disadvantages: reduced sensitivity, less comprehensive alternative splicing information 
+than full-length transcript methods.
+
+**Smart-seq3xpress**: scalable single-cell RNA sequencing
+from full trnscripts. 
+Is it possible to get high sensitivity and high throughput?
+
+### How to quantify splicing?
+
+- **Splice junctions** can be used for quantifying splicing.
+In the mouse reference, most junctions are "common" 
+and found in all transcript isoforms for a given gene.
+In human, many more partially and fully unique junctions compared to mouse.
+
+- **Split reads** quantify presence or absence of intron cluster.
+
+Tabula Muris dataset: Smart-seq + 10x sequencing on different cells in mouse.
+In bulk sample, 85,439 SJ before clustering, 9,390 after clustering.
+In pseudo-bulk sample (n = 432 cells), 101,801 SJ before clustering, 14,351 after clustering.
+In single cell, 9,731 before clustering, 481 after clustering.
+
+Splicing events:
+ - Skipping exon
+ - Mutually exclusive exons
+ - Alternative 5' splice site
+ - Alternative 3' splice site
+ - Retained intron
+ - First exon
+ - Last exon
+
+How do you know the splice event from the PSI value? 
+
+### What is Leaflet?
+
+Input: BAM file (pseudobulk if single cells)
+Model: Binomial Mixture Model, Inference with CAVI.
+Output: Optimal K (# cell states), Proportion of each cell state in the data,
+junction usage values for each cell state (PSI), cell state labels for each cell (Z).
+
+Cell states inferred by Leaflet overlaps with FACS classification in the data.

@@ -1,0 +1,11 @@
+---
+title: "Geneformer"
+---
+
+# Transfer learning from gene network
+
+### Presented by Tatsuhiko
+
+Transfer learning $\rightarrow$ knowledge learnt for one task is used for a different but related task.
+
+

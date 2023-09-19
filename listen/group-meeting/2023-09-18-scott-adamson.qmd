@@ -1,0 +1,36 @@
+---
+title: 2023-09-18
+---
+
+# 
+
+## Presentation by Scott Adamson
+
+Pre-mRNA splicing can be important in interpreting functional interpretation of GWAS associations.
+
+### Proposed experiments:
+
+  - Aim 1. Use colocalization / ML predictions to find splicing relevant variants 
+  in GWAS associated variants of hematological phenotype. (sQTLs, SpliceAI high delta score,
+  RNAprot high delta score)
+  - Aim 2. Assay effects on splicing. CRiSPR based editing $\rightarrow$ scRNA-seq library
+  $\rightarrow$ hybrid capture of specific junctions and gRNAs 
+  $\rightarrow$ identify splice-altering variants
+  $\rightarrow$ validation of splice-altering variants on isoforms
+  with ONT and mass spectrometry.
+
+### Experimental considerations:
+
+How many cells? How many guides? How good the editing needs to be done?
+
+Population scale scRNA-seq enables discovery of cell type specific eQTLs. 
+Also see splatPOP -- scRNA-seq simulation.
+How to simulate scRNA-seq sQTL?
+
+Scott used simulations to identify and implement reasonable default parameters,
+e,g. read count parameters, transcript-end read bias, technology specificity.
+
+### Estimating base editing efficiency
+
+Scott also developed a method for measuring editing efficiency.
+

@@ -2,6 +2,36 @@
 title: 2023, July
 ---
 
+## 2023-07-27
+
+  - Read "Efficient Optimization Algorithms for Robust Principal Component Analysis and Its Variants"
+  by [Ma and Serhat Aybat, 2018](https://doi.org/10.1109/JPROC.2018.2846606).
+
+## 2023-07-26
+
+  - What is the difference between Algorithm 1 (PCP by Alternating Directions)
+  of [Candes et. al., 2009](https://arxiv.org/abs/0912.3599)
+  and Algorithm 5 (inexact ALM) of [Lin et. al., 2013](https://people.eecs.berkeley.edu/~yima/psfile/Lin09-MP.pdf)?
+
+
+## 2023-07-25
+
+  - Refactor RPCA class in NNM software.
+  - Listen to Peter Visscher.
+
+## 2023-07-24
+
+  - Setup CV class for NNMFW using Frank-Wolfe algorithm.
+  - Apply CV class to simulations to check implementation.
+
+## 2023-07-21
+
+  - Read about image denoising using different nuclear norm regularization methods.
+
+## 2023-07-20
+
+  - Debug class for NNM with Frank-Wolfe algorithm.
+
 ## 2023-07-06
 
   - Modify main plot of GradVI manuscript, include ELBO convergence,

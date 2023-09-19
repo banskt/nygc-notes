@@ -1,0 +1,76 @@
+---
+title: 2023-08-09
+---
+
+
+# Single-cell RNA-seq Methods
+
+## Presentation by Sophia
+
+scRNA-seq can provide a more nuanced understanding of splicing
+across cell states and types.
+
+### Exon Inclusion vs Junction Usage to measure splicing
+
+Exon inclusion identifies presence or absence of an exon
+in a given splicing event.
+Junction usage split reads used to identify intron/exon boundaries.
+
+- Exon inclusion may have more reads associated but also requires
+splicing annotation.
+- PSI: percent spliced in. Metric used to measure either exon inclusion
+or junction usage.
+
+### Overview of challenges and motivations
+
+**Challenges**
+
+- Limited coverage for full transcript (3' bias) within high throughput sequencing (10x) 
+$\rightarrow$ alternate scRNA-seq approaches, e.g. Smart-seq, SPLiT-seq, long read methods. 
+Smart-seq provides better full transcript coverage (but lower throughput).
+SPLiT-seq has higher throughput (but lower coverage than Smart-seq).
+- Sparsity. Small percentage of junctions and clusters with reads in a given single cell
+(total junctions = 38,802 and clusters = 11,585).
+Less than 4% clusters and less than 1% junctions are observed.
+- Differential splicing across cells. 
+
+**Motivations**
+
+UMAP can capture the same clustering information from splicing data (compared to that from gene expression).
+
+### Data 
+
+- Tabula Muris (Tabula Sapiens)
+- ZooBrain (Satija Lab)
+- PBMC (ParseBio)
+
+### Methods
+
+- BRIE2. Read counts are measured for two distinct isoforms in a given splice event (plus ambiguous counts).
+PSI is learned for splice events across cell types. Bayesian approach allows for some knowledge of relative
+uncertainty of differential splicing. Drawbacks: only considers 2 isoform events, only skipped exon events
+made it through the pipeline, unclear exactly what sort of splicing patterns are being detected.
+- Psix. Foreground model, exon inclusion should be similar to other nearby cells.
+Distance measured within low-dimension projeciton.
+Background model, exon inclusion reflects global average.
+Benefits: does not require pre-defined cell states / types,
+gives a continuous picture of splicing.
+Drawbacks: only considers skipped exon events, may need to consider gene expression bias,
+not the easiest to run due to many involved input files required.
+- SpliZ. Junctions are considered if 3' site has multiple associated 5' sites.
+Junctions are ranked and averaged by distance between 3' site per cell.
+SpliZ scores indicate a cell's deviance from average junction distance.
+Benefits: Can model more than just SE events.
+Only needs to perform one test per gene.
+Drawbacks: Needs at least 2 junctions to consider a splice event.
+Finding a most commonly used junction by length excludes a lot of 
+information about the cell's splicing profile.
+
+### Overall challenges
+
+- Large knowledge gap between scores/information outputted by the models
+and actual splicing profile.
+- Many methods require splicing annotations, limiting discovery of novel splice sites.
+- Many methods require pre-defined cell types / states.
+- Limited splicing event type capture.
+

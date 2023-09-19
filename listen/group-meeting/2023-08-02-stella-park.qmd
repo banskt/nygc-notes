@@ -1,0 +1,59 @@
+---
+title: 2023-08-02
+---
+
+# Long read analysis pipeline predicts RBPs with isoform-specific functions
+
+## Presentation by Stella Park
+
+Alternative splicing produces different mRNAs.
+RBPs bind pre-mRNA and regulate splicing.
+
+- Identify both annotated and unannotated RBP isoforms
+using ENCODE data.
+
+**SQANTI3**: Transcriptome characterization, Isoform classification
+
+60% of the isoforms are NIC (novel isoforms with a new combination
+of known splice sites).
+34% of the isoforms are FSM (matches all splice junctions perfectly).
+Of the NIC isoforms, more than 40% have intron retention,
+and almost 40% are combination of annotated splice sites.
+Remaining are combination of annotated splice junctions.
+
+**CPAT**: ORF prediction, compares ORF to annotated tranlation start site
+and uses logistic model for prediction.
+~97% ORF sequences of annotated isoforms (Stella's) match with GENCODE annotated isoforms.
+
+NMD: Non-sense mediated decay. Frameshifts can give rise to PTCs
+(premature termination codons)
+on these undesired isoforms so that they will be dgraded by NMD
+
+### Domain Prediction: Localization and RRM
+
+Nucimportv2: Localization Prediction.
+Prediction nuclear import: infer P(import = true | e),
+where e is the evidence for query protein,
+including cNLS scores, NLSdb matches, ppi interactions and SVM scores.
+cNLS - classical Nuclear Localization Signals.
+NLS is an amino acid sequence that 'tags' a protein for import
+into the cell nucleus by nuclear transport.
+ppi - protein-protein interaction.
+
+Most TFs are predicted to be imported into nucleus.
+RBPs - Different isoforms of same gene have more variable
+import probability.
+
+### PFAM domain comparison
+
+- Gencode v39 protein coding transcripts
+- tappAS Gencode v39 annotation
+- List of desired domains
+
+More than 75% of RNA binding domains are from the zinc finger family.
+
+### Regions of potential interest
+
+- PTBP1
+- RRM
+- Intrinsically disordered regions (IDRs)

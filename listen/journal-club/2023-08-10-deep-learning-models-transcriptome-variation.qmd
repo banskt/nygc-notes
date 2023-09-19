@@ -1,0 +1,14 @@
+---
+title: "Deep Learning Transcriptome"
+---
+
+# Personal transcriptome variation is poorly explained by current genomic deep learning models
+
+Huang et. al, bioRxiv, [10.1101/2023.06.30.547100](https://doi.org/10.1101/2023.06.30.547100)
+
+### Presented by Chirag
+
+
+
+
+
