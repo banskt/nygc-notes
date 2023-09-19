@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tajurba - Setup MacOS</title>
+<title>Tajurba - Setup Ashwini</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/2023-09-19-ashwini-setup.html" rel="next">
-<link href="../code/2023-04-27-gradvi-setup.html" rel="prev">
+<link href="../code/2023-05-23-macos-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -148,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2023-05-23-macos-setup.html">Setup MacOS</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2023-09-19-ashwini-setup.html">Setup Ashwini</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -188,13 +153,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/2023-05-23-macos-setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../code/2023-05-23-macos-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup MacOS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/2023-09-19-ashwini-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../code/2023-09-19-ashwini-setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setup Ashwini</span></a>
   </div>
 </li>
@@ -208,24 +173,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bash" id="toc-bash" class="nav-link active" data-scroll-target="#bash">Bash</a></li>
-  <li><a href="#homebrew" id="toc-homebrew" class="nav-link" data-scroll-target="#homebrew">Homebrew</a></li>
-  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
-  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">Latex</a></li>
-  <li><a href="#gcc-gfortran" id="toc-gcc-gfortran" class="nav-link" data-scroll-target="#gcc-gfortran">gcc / gfortran</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#vim" id="toc-vim" class="nav-link" data-scroll-target="#vim">Vim</a></li>
+  <li><a href="#update-os" id="toc-update-os" class="nav-link active" data-scroll-target="#update-os">Update OS</a></li>
+  <li><a href="#internet-connection" id="toc-internet-connection" class="nav-link" data-scroll-target="#internet-connection">Internet Connection</a></li>
+  <li><a href="#ssh-security" id="toc-ssh-security" class="nav-link" data-scroll-target="#ssh-security">SSH Security</a></li>
+  <li><a href="#add-swap-memory" id="toc-add-swap-memory" class="nav-link" data-scroll-target="#add-swap-memory">Add Swap Memory</a></li>
+  <li><a href="#mount-hard-disks" id="toc-mount-hard-disks" class="nav-link" data-scroll-target="#mount-hard-disks">Mount Hard Disks</a></li>
+  <li><a href="#bash" id="toc-bash" class="nav-link" data-scroll-target="#bash">Bash</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-05-23-macos-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-09-19-ashwini-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setup MacOS</h1>
+<h1 class="title">Setup Ashwini</h1>
 </div>
 
 
@@ -240,99 +202,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Running documentation for the MacOS setup in Janaki.</p>
+<p>Running documentation for the server setup in Ashwini.</p>
+<section id="update-os" class="level2">
+<h2 class="anchored" data-anchor-id="update-os">Update OS</h2>
+<pre><code>sudo apt update
+sudo apt upgrade
+sudo reboot
+sudo apt install vim build-essential git</code></pre>
+</section>
+<section id="internet-connection" class="level2">
+<h2 class="anchored" data-anchor-id="internet-connection">Internet Connection</h2>
+<ul>
+<li>Check ethernet name:</li>
+</ul>
+<pre><code>ip -d address</code></pre>
+<ul>
+<li>Create configuration in <code>/etc/netplan/01-netcfg.yaml</code>.</li>
+</ul>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens18:
+      dhcp4: false
+      addresses: [109.122.221.228/25]
+      gateway4: 109.122.221.129
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
+      dhcp6: false</code></pre>
+<ul>
+<li>Apply configuration</li>
+</ul>
+<pre><code>sudo netplan --debug apply</code></pre>
+<ul>
+<li>Ping local IP and external IP to check</li>
+</ul>
+<pre><code>ping xxx.xxx.xxx.xxx
+ping google.com</code></pre>
+</section>
+<section id="ssh-security" class="level2">
+<h2 class="anchored" data-anchor-id="ssh-security">SSH Security</h2>
+<ul>
+<li>Select a port to change the default SSH Port. Do not choose a port already in use. Ports from 0 to 1023 are reserved and should not be used. Choose a port greater than 1023 and less than 65535. Check using:</li>
+</ul>
+<pre><code>ss
+ss - tulpn</code></pre>
+<ul>
+<li>Change the following relevant lines in <code>/etc/ssh/sshd_config</code></li>
+</ul>
+<pre><code># Change protocol
+Protocol 2
+# 
+Port xxxxx
+LogLevel VERBOSE
+PermitRootLogin no
+# trusted hosts are still considered a security risk
+HostbasedAuthentication no
+IgnoreRhosts yes
+# do not allow eavesdropping
+PermitEmptyPasswords no
+AllowTcpForwarding no
+X11Forwarding no
+# last login info can provide available users to hackers
+PrintLastLog no</code></pre>
+<p>Save the file and restart SSH service. <code>sudo systemctl restart ssh   sudo systemctl status ssh</code> - Open the port in firewall <code>sudo apt install ufw   sudo ufw app list   sudo ufw status verbose   sudo ufw allow xxxxx/tcp # enter the SSH port here   sudo ufw enable   sudo ufw status verbose</code> - Set up <code>~/.ssh/config</code> and SSH key on the client side. - Check if SSH is working!</p>
+</section>
+<section id="add-swap-memory" class="level2">
+<h2 class="anchored" data-anchor-id="add-swap-memory">Add Swap Memory</h2>
+<pre><code>sudo -i
+dd if=/dev/zero of=/swapfile bs=1024 count=1048576 #1GB: 1024 x 1024 = 1048576
+chmod 0600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile none swap sw 0 0" &gt;&gt; /etc/fstab
+swapon -s
+free -m</code></pre>
+</section>
+<section id="mount-hard-disks" class="level2">
+<h2 class="anchored" data-anchor-id="mount-hard-disks">Mount Hard Disks</h2>
+<ul>
+<li>Check existing partitions and harddisks</li>
+</ul>
+<pre><code>sudo lsblk
+sudo fdisk -l
+sudo lshw -C disk</code></pre>
+<ul>
+<li>Partition using <code>parted</code>.</li>
+<li>Create entry in <code>etc/fstab</code>. You can check all uuid from <code>ls -lh /dev/disk/by-uuid/</code> or individually from <code>sudo blkid /dev/sdb1</code></li>
+</ul>
+<pre><code># /dev/sdb1 --&gt; /opt
+/dev/disk/by-uuid/xxxx /opt ext4 defaults 0 2
+# /dev/sdb2 --&gt; ~/local
+/dev/disk/by-uuid/xxxx /home/banskt/local ext4 rw,suid,dev,exec,auto,user,async 0 2
+# /dev/sdb3 --&gt; ~/data
+/dev/disk/by-uuid/xxxx /home/banskt/data ext4 rw,suid,dev,exec,auto,user,async 0 2</code></pre>
+<ul>
+<li>After mounting you have to change the ownership of the directories, if required.</li>
+<li>Reboot and check if the partitions are mounted automatically.</li>
+</ul>
+</section>
 <section id="bash" class="level2">
 <h2 class="anchored" data-anchor-id="bash">Bash</h2>
-<ul>
-<li>Install <code>bash version 5.2.15(1)</code> using homebrew following instructions in <a href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba">this blog post</a>. However, I could not create the Symlink by disabling SIP (<code>csrutil disable</code>).</li>
-<li>The pre-installed old bash still exists in <code>/bin/bash</code>. Therefore, I have to write bash scripts using <code>#!/usr/bin/env bash</code>.</li>
-<li>Update my <code>dotfiles</code> for Mac specific utilities.</li>
-</ul>
-</section>
-<section id="homebrew" class="level2">
-<h2 class="anchored" data-anchor-id="homebrew">Homebrew</h2>
-<ul>
-<li>Why don’t they ship this package manager as default in MacOS?</li>
-</ul>
-</section>
-<section id="terminal" class="level2">
-<h2 class="anchored" data-anchor-id="terminal">Terminal</h2>
-<ul>
-<li>The default terminal in Mac does not support 24 bit color, and many other Unix features which I use regularly (for example, middle click paste).</li>
-<li>Install iterm2 using homebrew</li>
-</ul>
-<pre><code>brew install --cask iterm2</code></pre>
-</section>
-<section id="latex" class="level2">
-<h2 class="anchored" data-anchor-id="latex">Latex</h2>
-<ul>
-<li>I do not want the GUI packages of MacTex, but I want full TexLive.</li>
-<li>For a finer control over TexLive, I decided to clone the TexLive repository and install from there.</li>
-</ul>
-<pre><code>brew install wget
-mkdir -p /opt/texlive-repository
-chown -R sbanerjee:staff /opt/texlive-repository
-update-texlive-repository /opt/texlive-repository # this is an alias to clone the repository, takes couple of hours</code></pre>
-<ul>
-<li>Finally, install TexLive from the repository</li>
-</ul>
-</section>
-<section id="gcc-gfortran" class="level2">
-<h2 class="anchored" data-anchor-id="gcc-gfortran">gcc / gfortran</h2>
-<ul>
-<li>Just install with Homebrew.</li>
-</ul>
-<pre><code>brew info gcc
-brew install gcc</code></pre>
-</section>
-<section id="r" class="level2">
-<h2 class="anchored" data-anchor-id="r">R</h2>
-<ul>
-<li>Requires gfortran, TeX, tcltk</li>
-<li>Install using pkg file provided by R.</li>
-</ul>
-</section>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">Python</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install micromamba</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> shell <span class="at">-s</span> bash <span class="at">-p</span> /opt/micromamba <span class="at">-vvv</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will install micromamba and choose <code>/opt/micromamba</code> as the root prefix. Sample output:</p>
-<pre><code>Modifying RC file "/Users/sbanerjee/.bash_profile"
-Generating config for root prefix "/opt/micromamba"
-Setting mamba executable to: "/usr/local/bin/micromamba"
-Adding (or replacing) the following in your "/Users/sbanerjee/.bash_profile" file
-
-# &gt;&gt;&gt; mamba initialize &gt;&gt;&gt;
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/usr/local/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/opt/micromamba";
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --prefix "$MAMBA_ROOT_PREFIX" 2&gt; /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    if [ -f "/opt/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "/opt/micromamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="/opt/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
-fi
-unset __mamba_setup
-# &lt;&lt;&lt; mamba initialize &lt;&lt;&lt;</code></pre>
-<p><strong>Note.</strong> I deleted these initialization scripts from <code>.bash_profile</code> and added them to <code>~/.custom_dotfiles/bashrc</code> because that is my preferred bash configuration file.</p>
-<p>Installed Python environment and changed the repository to conda-forge using <code>~/.mambarc</code></p>
-<pre><code>micromamba create --name py311 python=3.11 -c conda-forge</code></pre>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<ul>
-<li>Use <code>.dmg</code> file to install Quarto.</li>
-</ul>
-</section>
-<section id="vim" class="level2">
-<h2 class="anchored" data-anchor-id="vim">Vim</h2>
-<ul>
-<li>Bash syntax highlighting was broken in Vim shipped by Macbook - <a href="https://github.com/vim/vim/issues/11937">see issue here</a>. I installed latest vim using Homebrew.</li>
-</ul>
+<p>Install <a href="https://github.com/banskt/dotfiles">dotfiles from Github</a>. But, I did not want to install everything from <code>.dotfiles</code>. So, I made a <code>dryrun</code> to import the functions and link individual dotfiles.</p>
+<pre><code>git clone https://github.com/banskt/dotfiles.git ~/.dotfiles
+source ~/.dotfiles/install dryrun
+DRYRUN=false
+backup_and_link .bashrc bash/bashrc
+backup_and_link .vimrc vim/vimrc
+backup_and_link .vim vim/dotvim
+cp ~/.dotfiles/git/gitconfig ~/.gitconfig
+cp ~/.dotfiles/ssh/config ~/.ssh/
+chmod 600 ~/.ssh/config</code></pre>
+<p>I edited the <code>.ssh/config</code> file and kept configurations for Github, vultr and feral. I edited the <code>.gitconfig</code> to include my email. Logout and login for the changes to take effect.</p>
+<p>Finally, create SSH keys for Github and connect!</p>
+<pre><code>cd ~/.ssh
+ssh-keygen -t ed25519 -f github_key</code></pre>
 
 
 </section>
@@ -573,14 +557,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/2023-04-27-gradvi-setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup GradVI workbench</span>
+      <a href="../code/2023-05-23-macos-setup.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup MacOS</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/2023-09-19-ashwini-setup.html" class="pagination-link">
-        <span class="nav-page-text">Setup Ashwini</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
