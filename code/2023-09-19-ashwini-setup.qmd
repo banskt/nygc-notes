@@ -3,10 +3,17 @@ title: Setup Ashwini
 ---
 
 Running documentation for the server setup in Ashwini.
+Here are some Linux references which I find useful:
+
+  - [Linux from Scratch](https://www.linuxfromscratch.org/) main book -- 
+  [Stable version](https://www.linuxfromscratch.org/lfs/view/stable/) | 
+  [All releases](https://www.linuxfromscratch.org/lfs/view/). 
+  There are many helpful installation notes in the subprojects, e.g.
+  [BLFS or Beyond Linux from Scratch](https://www.linuxfromscratch.org/blfs/view/stable/). 
 
 ## Update OS
 
-```
+```bash
 sudo apt update
 sudo apt upgrade
 sudo reboot
@@ -14,45 +21,73 @@ sudo apt install vim build-essential git
 ```
 
 ## Internet Connection
+
+For overview see, [Configuring Networks](https://ubuntu.com/server/docs/network-configuration) on Ubuntu Server.
+
   - Check ethernet name:
-  ```
+  ```bash
   ip -d address
   ```
   - Create configuration in `/etc/netplan/01-netcfg.yaml`.
-```
+```yaml
 network:
   version: 2
   renderer: networkd
   ethernets:
+    # interface name
     ens18:
       dhcp4: false
-      addresses: [109.122.221.228/25]
-      gateway4: 109.122.221.129
+      # IP address / subnet mask
+      # removed exact numbers for security
+      addresses:
+        - xxx.xxx.xxx.xxx/25
+      # default gateway
+      routes:
+        - to: default
+          via: xxx.xxx.xxx.xxx
       nameservers:
-        addresses: [8.8.8.8,8.8.4.4]
+        addresses:
+        - 1.1.1.1
+        - 8.8.8.8
+        - 8.8.4.4
       dhcp6: false
 ```
   - Apply configuration
-  ```
+  ```bash
   sudo netplan --debug apply
   ```
   - Ping local IP and external IP to check
-  ```
+  ```bash
   ping xxx.xxx.xxx.xxx
   ping google.com
   ```
+  - I like to see what is happening!
+  ```bash
+  ip -s link show ens18
+  ip route show
+  ```
+
+## Add User For Tasks
+
+user `minion`, group `minion` (not in sudoer list)
+```bash
+sudo groupadd minion
+sudo usermod -a -G minion banskt
+sudo useradd -g minion -m -c "User account for webstack" -s /bin/bash minion
+sudo passwd minion
+```
 
 ## SSH Security
 
   - Select a port to change the default SSH Port. 
   Do not choose a port already in use.
   Ports from 0 to 1023 are reserved and should not be used. Choose a port greater than 1023 and less than 65535. Check using:
-  ```
+  ```bash
   ss
   ss - tulpn
   ```
   - Change the following relevant lines in `/etc/ssh/sshd_config`
-  ```
+  ```ini
   # Change protocol
   Protocol 2
   # 
@@ -70,12 +105,13 @@ network:
   PrintLastLog no
   ```
   Save the file and restart SSH service.
-  ```
+  
+  ```bash
   sudo systemctl restart ssh
   sudo systemctl status ssh
   ```
   - Open the port in firewall
-  ```
+  ```bash
   sudo apt install ufw
   sudo ufw app list
   sudo ufw status verbose
@@ -88,7 +124,7 @@ network:
 
 ## Add Swap Memory
 
-```
+```bash
 sudo -i
 dd if=/dev/zero of=/swapfile bs=1024 count=1048576 #1GB: 1024 x 1024 = 1048576
 chmod 0600 /swapfile
@@ -102,22 +138,23 @@ free -m
 ## Mount Hard Disks
 
   - Check existing partitions and harddisks
-  ```
+  ```bash
   sudo lsblk
   sudo fdisk -l
   sudo lshw -C disk
   ```
   - Partition using `parted`.
   - Create entry in `etc/fstab`. You can check all uuid from `ls -lh /dev/disk/by-uuid/`
-  or individually from `sudo blkid /dev/sdb1`
-  ```
+  or individually from `sudo blkid /dev/sdb1`.
+  ```ini
   # /dev/sdb1 --> /opt
   /dev/disk/by-uuid/xxxx /opt ext4 defaults 0 2
   # /dev/sdb2 --> ~/local
-  /dev/disk/by-uuid/xxxx /home/banskt/local ext4 rw,suid,dev,exec,auto,user,async 0 2
+  /dev/disk/by-uuid/xxxx /home/banskt/local ext4 user,rw,suid,dev,exec,auto,async 0 2
   # /dev/sdb3 --> ~/data
-  /dev/disk/by-uuid/xxxx /home/banskt/data ext4 rw,suid,dev,exec,auto,user,async 0 2
+  /dev/disk/by-uuid/xxxx /home/banskt/data ext4 user,rw,suid,dev,exec,auto,async 0 2
   ```
+  The sequence of options are important.
   - After mounting you have to change the ownership of the directories, if required.
   - Reboot and check if the partitions are mounted automatically.
 
@@ -127,7 +164,7 @@ free -m
 Install [dotfiles from Github](https://github.com/banskt/dotfiles).
 But, I did not want to install everything from `.dotfiles`. 
 So, I made a `dryrun` to import the functions and link individual dotfiles.
-```
+```bash
 git clone https://github.com/banskt/dotfiles.git ~/.dotfiles
 source ~/.dotfiles/install dryrun
 DRYRUN=false
@@ -138,12 +175,174 @@ cp ~/.dotfiles/git/gitconfig ~/.gitconfig
 cp ~/.dotfiles/ssh/config ~/.ssh/
 chmod 600 ~/.ssh/config
 ```
-I edited the `.ssh/config` file and kept configurations for Github, vultr and feral.
+I edited the `.ssh/config` file and kept configurations for Github
+and my other servers (vultr and feral).
 I edited the `.gitconfig` to include my email.
 Logout and login for the changes to take effect.
 
-Finally, create SSH keys for Github and connect!
-```
+Finally, create SSH key for Github and add that key to the Github account!
+```bash
 cd ~/.ssh
 ssh-keygen -t ed25519 -f github_key
+git remote set-url origin git@github.com:banskt/dotfiles.git
+git remote show origin
+```
+
+**Note:** Any custom bash script for this server must go to `~/.custom_dotfiles/bashrc`.
+Common bash scripts go to the `~/.dotfiles`.
+
+**To-Do:** Include a `server` flag for installation.
+
+## Reduce Automatic Network Usage
+
+## Environment Modules
+
+I love [modules](https://github.com/cea-hpc/modules) to manage my shell environment.
+For a dedicated server, it may not be necessary, but it helps me to manage versions and updates.
+
+First, install the dependencies. 
+```bash
+# use apt-cache search for the latest version
+sudo apt install tcl8.6-dev 
+# dejagnu provides runtest. Only install if you want to run `make test`, skip otherwise
+# without dejagnu, configure produces this -->
+## WARNING: Install `dejagnu' if you want to run the testsuite
+sudo apt install dejagnu 
+```
+Note: I have not installed `dejagnu`.
+
+Next, install the package.
+```bash
+wget github.com/cea-hpc/modules/releases/download/v5.3.1/modules-5.3.1.tar.gz
+tar -zxf modules-5.3.1.tar.gz
+./configure --prefix=/opt/modules --modulefilesdir=/opt/modulefiles --with-tcl-ver=8.6
+make -j 2
+sudo make install
+```
+
+Finally, configure. Initialize modules in `~/.custom_dotfiles/bashrc`:
+```bash
+# Environment modules
+source /opt/modules/init/bash
+```
+Also, put all the example dotfiles in a separate directory:
+```bash
+sudo mkdir -p /opt/modules/examples
+cd /opt/modulefiles
+sudo mv dot module-git module-info modules null use.own /opt/modules/examples/
+```
+
+## LEMP Stack (nginx, MySQL, PHP)
+
+Previously, I installed a [webstack in Kalindi](https://github.com/banskt/dotfiles/blob/main/docs/webstack_kalindi.md).
+
+### Install nginx from source
+
+Compiling nginx from source affords more flexibility than prebuilt packages: 
+I can add particular modules (from nginx or third parties), and apply latest security patches.
+See [official documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources)
+for help. 
+
+**1. Installing some prerequisites**.
+
+#### PCRE2
+
+If you want to install PCRE2 from scratch, it can be done as:
+```bash
+sudo apt install zlib1g-dev libbz2-dev libreadline-dev libedit-dev
+wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
+tar -zxf pcre2-10.42.tar.gz
+cd pcre2-10.42
+./configure --prefix /opt/pcre2/10.42 --enable-unicode --enable-jit --enable-pcre2-16 --enable-pcre2-32 --enable-pcre2grep-libz --enable-pcre2grep-libbz2 --enable-pcre2test-libreadline --disable-static
+make -j 2
+make check
+sudo make install
+```
+I preferred to install the library files in the OS:
+```bash
+sudo apt install libpcre2-dev
+```
+**Surprise:** `pcre3` is older than `pcre2`. Do not install `pcre3`.
+
+#### Zlib
+```bash
+sudo apt install zlib1g-dev
+```
+
+#### OpenSSL
+nginx requires `libssl-dev` package. But before installing anything,
+I checked the distribution of current OpenSSL package:
+```bash
+openssl version -a
+```
+I have version 3.0.2 installed by default. 
+I wanted the latest version and control of OpenSSL, hence I configured myself ([see documentation](https://github.com/openssl/openssl/blob/master/INSTALL.md))
+using the options from [Linux from Scratch](https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html).
+Also, run `./Configure LIST` to see a list of configuration options.
+```bash
+wget https://www.openssl.org/source/openssl-3.1.3.tar.gz
+tar -zxf openssl-3.1.3.tar.gz
+mkdir openssl-3.1.3-build
+cd openssl-3.1.3-build/
+../openssl-3.1.3/Configure linux-x86_64 --prefix=/opt/openssl/3.1.3/ zlib-dynamic shared
+make -j 2
+make test
+sudo make install
+```
+
+I created a module file to load/unload the required OpenSSL version easily.
+```bash
+module load openssl/3.1.3
+module unload openssl/3.1.3
+```
+
+**2. Install nginx**
+
+#### Configure and build
+
+Download the source files from [nginx.org](https://www.nginx.org/en/download.html).
+I used the latest stable release.
+```bash
+wget https://nginx.org/download/nginx-1.24.0.tar.gz
+tar -zxf nginx-1.24.0.tar.gz
+```
+There are many configuration options for nginx. I read them in the [official docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources) and in their [open source project](https://nginx.org/en/docs/configure.html). 
+Other resources include:
+
+  - Erick T. Hitter discusses [compiling nginx with custom OpenSSL support](https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/) -- 
+  [mirror on waybackmachine](https://web.archive.org/web/20230920221352/https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/).
+  - Stackoverflow: [Can't compile nginx with SSL support, OpenSSL not found](https://serverfault.com/questions/416571)
+  - nginx forum: [build nginx with OpenSSL shared library not using the system OpenSSL library 
+  but using the shared library in a specific path](https://forum.nginx.org/read.php?2,275441,275447#msg-275447).
+
+Here are the configuration options I used:
+```bash
+./configure --prefix=/opt/nginx/1.24.0 --builddir=../nginx-1.24.0-build --with-http_ssl_module --with-pcre --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-threads --with-stream --with-stream_ssl_module --with-http_slice_module --with-mail --with-mail_ssl_module --with-file-aio --with-cc-opt="-I /opt/openssl/3.1.3/include" --with-ld-opt="-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"
+```
+Here is the configuration output which may be helpful later:
+```bash
+Configuration summary
+  + using threads
+  + using system PCRE2 library
+  + using system OpenSSL library
+  + using system zlib library
+
+  nginx path prefix: "/opt/nginx/1.24.0"
+  nginx binary file: "/opt/nginx/1.24.0/sbin/nginx"
+  nginx modules path: "/opt/nginx/1.24.0/modules"
+  nginx configuration prefix: "/opt/nginx/1.24.0/conf"
+  nginx configuration file: "/opt/nginx/1.24.0/conf/nginx.conf"
+  nginx pid file: "/opt/nginx/1.24.0/logs/nginx.pid"
+  nginx error log file: "/opt/nginx/1.24.0/logs/error.log"
+  nginx http access log file: "/opt/nginx/1.24.0/logs/access.log"
+  nginx http client request body temporary files: "client_body_temp"
+  nginx http proxy temporary files: "proxy_temp"
+  nginx http fastcgi temporary files: "fastcgi_temp"
+  nginx http uwsgi temporary files: "uwsgi_temp"
+  nginx http scgi temporary files: "scgi_temp"
+```
+Build nginx in the new build directory.
+```
+make -f ../nginx-1.24.0-build/Makefile -j 2
+sudo make -f ../nginx-1.24.0-build/Makefile install
 ```
