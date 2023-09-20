@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -175,10 +209,17 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#update-os" id="toc-update-os" class="nav-link active" data-scroll-target="#update-os">Update OS</a></li>
   <li><a href="#internet-connection" id="toc-internet-connection" class="nav-link" data-scroll-target="#internet-connection">Internet Connection</a></li>
+  <li><a href="#add-user-for-tasks" id="toc-add-user-for-tasks" class="nav-link" data-scroll-target="#add-user-for-tasks">Add User For Tasks</a></li>
   <li><a href="#ssh-security" id="toc-ssh-security" class="nav-link" data-scroll-target="#ssh-security">SSH Security</a></li>
   <li><a href="#add-swap-memory" id="toc-add-swap-memory" class="nav-link" data-scroll-target="#add-swap-memory">Add Swap Memory</a></li>
   <li><a href="#mount-hard-disks" id="toc-mount-hard-disks" class="nav-link" data-scroll-target="#mount-hard-disks">Mount Hard Disks</a></li>
   <li><a href="#bash" id="toc-bash" class="nav-link" data-scroll-target="#bash">Bash</a></li>
+  <li><a href="#reduce-automatic-network-usage" id="toc-reduce-automatic-network-usage" class="nav-link" data-scroll-target="#reduce-automatic-network-usage">Reduce Automatic Network Usage</a></li>
+  <li><a href="#environment-modules" id="toc-environment-modules" class="nav-link" data-scroll-target="#environment-modules">Environment Modules</a></li>
+  <li><a href="#lemp-stack-nginx-mysql-php" id="toc-lemp-stack-nginx-mysql-php" class="nav-link" data-scroll-target="#lemp-stack-nginx-mysql-php">LEMP Stack (nginx, MySQL, PHP)</a>
+  <ul class="collapse">
+  <li><a href="#install-nginx-from-source" id="toc-install-nginx-from-source" class="nav-link" data-scroll-target="#install-nginx-from-source">Install nginx from source</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-09-19-ashwini-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -202,123 +243,277 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Running documentation for the server setup in Ashwini.</p>
+<p>Running documentation for the server setup in Ashwini. Here are some Linux references which I find useful:</p>
+<ul>
+<li><a href="https://www.linuxfromscratch.org/">Linux from Scratch</a> main book – <a href="https://www.linuxfromscratch.org/lfs/view/stable/">Stable version</a> | <a href="https://www.linuxfromscratch.org/lfs/view/">All releases</a>. There are many helpful installation notes in the subprojects, e.g. <a href="https://www.linuxfromscratch.org/blfs/view/stable/">BLFS or Beyond Linux from Scratch</a>.</li>
+</ul>
 <section id="update-os" class="level2">
 <h2 class="anchored" data-anchor-id="update-os">Update OS</h2>
-<pre><code>sudo apt update
-sudo apt upgrade
-sudo reboot
-sudo apt install vim build-essential git</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt upgrade</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> reboot</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install vim build-essential git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="internet-connection" class="level2">
 <h2 class="anchored" data-anchor-id="internet-connection">Internet Connection</h2>
+<p>For overview see, <a href="https://ubuntu.com/server/docs/network-configuration">Configuring Networks</a> on Ubuntu Server.</p>
 <ul>
 <li>Check ethernet name:</li>
 </ul>
-<pre><code>ip -d address</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> <span class="at">-d</span> address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Create configuration in <code>/etc/netplan/01-netcfg.yaml</code>.</li>
 </ul>
-<pre><code>network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    ens18:
-      dhcp4: false
-      addresses: [109.122.221.228/25]
-      gateway4: 109.122.221.129
-      nameservers:
-        addresses: [8.8.8.8,8.8.4.4]
-      dhcp6: false</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">network</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">renderer</span><span class="kw">:</span><span class="at"> networkd</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ethernets</span><span class="kw">:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    # interface name</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ens18</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dhcp4</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">      # IP address / subnet mask</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">      # removed exact numbers for security</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">addresses</span><span class="kw">:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> xxx.xxx.xxx.xxx/25</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">      # default gateway</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">routes</span><span class="kw">:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">to</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">via</span><span class="kw">:</span><span class="at"> xxx.xxx.xxx.xxx</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">nameservers</span><span class="kw">:</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">addresses</span><span class="kw">:</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fl">1.1.1.1</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fl">8.8.8.8</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fl">8.8.4.4</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dhcp6</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Apply configuration</li>
 </ul>
-<pre><code>sudo netplan --debug apply</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> netplan <span class="at">--debug</span> apply</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Ping local IP and external IP to check</li>
 </ul>
-<pre><code>ping xxx.xxx.xxx.xxx
-ping google.com</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> xxx.xxx.xxx.xxx</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> google.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>I like to see what is happening!</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> <span class="at">-s</span> link show ens18</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> route show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="add-user-for-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="add-user-for-tasks">Add User For Tasks</h2>
+<p>user <code>minion</code>, group <code>minion</code> (not in sudoer list)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd minion</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-a</span> <span class="at">-G</span> minion banskt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd <span class="at">-g</span> minion <span class="at">-m</span> <span class="at">-c</span> <span class="st">"User account for webstack"</span> <span class="at">-s</span> /bin/bash minion</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd minion</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ssh-security" class="level2">
 <h2 class="anchored" data-anchor-id="ssh-security">SSH Security</h2>
 <ul>
 <li>Select a port to change the default SSH Port. Do not choose a port already in use. Ports from 0 to 1023 are reserved and should not be used. Choose a port greater than 1023 and less than 65535. Check using:</li>
 </ul>
-<pre><code>ss
-ss - tulpn</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ss</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ss</span> <span class="at">-</span> tulpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Change the following relevant lines in <code>/etc/ssh/sshd_config</code></li>
 </ul>
-<pre><code># Change protocol
-Protocol 2
-# 
-Port xxxxx
-LogLevel VERBOSE
-PermitRootLogin no
-# trusted hosts are still considered a security risk
-HostbasedAuthentication no
-IgnoreRhosts yes
-# do not allow eavesdropping
-PermitEmptyPasswords no
-AllowTcpForwarding no
-X11Forwarding no
-# last login info can provide available users to hackers
-PrintLastLog no</code></pre>
-<p>Save the file and restart SSH service. <code>sudo systemctl restart ssh   sudo systemctl status ssh</code> - Open the port in firewall <code>sudo apt install ufw   sudo ufw app list   sudo ufw status verbose   sudo ufw allow xxxxx/tcp # enter the SSH port here   sudo ufw enable   sudo ufw status verbose</code> - Set up <code>~/.ssh/config</code> and SSH key on the client side. - Check if SSH is working!</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change protocol</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Protocol 2</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Port xxxxx</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">LogLevel VERBOSE</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="dt">PermitRootLogin no</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># trusted hosts are still considered a security risk</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="dt">HostbasedAuthentication no</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="dt">IgnoreRhosts yes</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># do not allow eavesdropping</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="dt">PermitEmptyPasswords no</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="dt">AllowTcpForwarding no</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="dt">X11Forwarding no</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># last login info can provide available users to hackers</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="dt">PrintLastLog no</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save the file and restart SSH service.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart ssh</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Open the port in firewall</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ufw</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw app list</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status verbose</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow xxxxx/tcp <span class="co"># enter the SSH port here</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw enable</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status verbose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Set up <code>~/.ssh/config</code> and SSH key on the client side.</li>
+<li>Check if SSH is working!</li>
+</ul>
 </section>
 <section id="add-swap-memory" class="level2">
 <h2 class="anchored" data-anchor-id="add-swap-memory">Add Swap Memory</h2>
-<pre><code>sudo -i
-dd if=/dev/zero of=/swapfile bs=1024 count=1048576 #1GB: 1024 x 1024 = 1048576
-chmod 0600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile none swap sw 0 0" &gt;&gt; /etc/fstab
-swapon -s
-free -m</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-i</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dd</span> if=/dev/zero of=/swapfile bs=1024 count=1048576 <span class="co">#1GB: 1024 x 1024 = 1048576</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 0600 /swapfile</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mkswap</span> /swapfile</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">swapon</span> /swapfile</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"/swapfile none swap sw 0 0"</span> <span class="op">&gt;&gt;</span> /etc/fstab</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">swapon</span> <span class="at">-s</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mount-hard-disks" class="level2">
 <h2 class="anchored" data-anchor-id="mount-hard-disks">Mount Hard Disks</h2>
 <ul>
 <li>Check existing partitions and harddisks</li>
 </ul>
-<pre><code>sudo lsblk
-sudo fdisk -l
-sudo lshw -C disk</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> lsblk</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> fdisk <span class="at">-l</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> lshw <span class="at">-C</span> disk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Partition using <code>parted</code>.</li>
-<li>Create entry in <code>etc/fstab</code>. You can check all uuid from <code>ls -lh /dev/disk/by-uuid/</code> or individually from <code>sudo blkid /dev/sdb1</code></li>
+<li>Create entry in <code>etc/fstab</code>. You can check all uuid from <code>ls -lh /dev/disk/by-uuid/</code> or individually from <code>sudo blkid /dev/sdb1</code>.</li>
 </ul>
-<pre><code># /dev/sdb1 --&gt; /opt
-/dev/disk/by-uuid/xxxx /opt ext4 defaults 0 2
-# /dev/sdb2 --&gt; ~/local
-/dev/disk/by-uuid/xxxx /home/banskt/local ext4 rw,suid,dev,exec,auto,user,async 0 2
-# /dev/sdb3 --&gt; ~/data
-/dev/disk/by-uuid/xxxx /home/banskt/data ext4 rw,suid,dev,exec,auto,user,async 0 2</code></pre>
-<ul>
-<li>After mounting you have to change the ownership of the directories, if required.</li>
-<li>Reboot and check if the partitions are mounted automatically.</li>
-</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># /dev/sdb1 --&gt; /opt</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">/dev/disk/by-uuid/xxxx /opt ext4 defaults 0 2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># /dev/sdb2 --&gt; ~/local</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">/dev/disk/by-uuid/xxxx /home/banskt/local ext4 user,rw,suid,dev,exec,auto,async 0 2</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># /dev/sdb3 --&gt; ~/data</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">/dev/disk/by-uuid/xxxx /home/banskt/data ext4 user,rw,suid,dev,exec,auto,async 0 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The sequence of options are important. - After mounting you have to change the ownership of the directories, if required. - Reboot and check if the partitions are mounted automatically.</p>
 </section>
 <section id="bash" class="level2">
 <h2 class="anchored" data-anchor-id="bash">Bash</h2>
 <p>Install <a href="https://github.com/banskt/dotfiles">dotfiles from Github</a>. But, I did not want to install everything from <code>.dotfiles</code>. So, I made a <code>dryrun</code> to import the functions and link individual dotfiles.</p>
-<pre><code>git clone https://github.com/banskt/dotfiles.git ~/.dotfiles
-source ~/.dotfiles/install dryrun
-DRYRUN=false
-backup_and_link .bashrc bash/bashrc
-backup_and_link .vimrc vim/vimrc
-backup_and_link .vim vim/dotvim
-cp ~/.dotfiles/git/gitconfig ~/.gitconfig
-cp ~/.dotfiles/ssh/config ~/.ssh/
-chmod 600 ~/.ssh/config</code></pre>
-<p>I edited the <code>.ssh/config</code> file and kept configurations for Github, vultr and feral. I edited the <code>.gitconfig</code> to include my email. Logout and login for the changes to take effect.</p>
-<p>Finally, create SSH keys for Github and connect!</p>
-<pre><code>cd ~/.ssh
-ssh-keygen -t ed25519 -f github_key</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/banskt/dotfiles.git ~/.dotfiles</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.dotfiles/install dryrun</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="va">DRYRUN</span><span class="op">=</span>false</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">backup_and_link</span> .bashrc bash/bashrc</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">backup_and_link</span> .vimrc vim/vimrc</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">backup_and_link</span> .vim vim/dotvim</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/.dotfiles/git/gitconfig ~/.gitconfig</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/.dotfiles/ssh/config ~/.ssh/</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 600 ~/.ssh/config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I edited the <code>.ssh/config</code> file and kept configurations for Github and my other servers (vultr and feral). I edited the <code>.gitconfig</code> to include my email. Logout and login for the changes to take effect.</p>
+<p>Finally, create SSH key for Github and add that key to the Github account!</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.ssh</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-f</span> github_key</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github.com:banskt/dotfiles.git</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote show origin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note:</strong> Any custom bash script for this server must go to <code>~/.custom_dotfiles/bashrc</code>. Common bash scripts go to the <code>~/.dotfiles</code>.</p>
+<p><strong>To-Do:</strong> Include a <code>server</code> flag for installation.</p>
+</section>
+<section id="reduce-automatic-network-usage" class="level2">
+<h2 class="anchored" data-anchor-id="reduce-automatic-network-usage">Reduce Automatic Network Usage</h2>
+</section>
+<section id="environment-modules" class="level2">
+<h2 class="anchored" data-anchor-id="environment-modules">Environment Modules</h2>
+<p>I love <a href="https://github.com/cea-hpc/modules">modules</a> to manage my shell environment. For a dedicated server, it may not be necessary, but it helps me to manage versions and updates.</p>
+<p>First, install the dependencies.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use apt-cache search for the latest version</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tcl8.6-dev </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dejagnu provides runtest. Only install if you want to run `make test`, skip otherwise</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># without dejagnu, configure produces this --&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">## </span><span class="al">WARNING</span><span class="co">: Install `dejagnu' if you want to run the testsuite</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install dejagnu </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note: I have not installed <code>dejagnu</code>.</p>
+<p>Next, install the package.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> github.com/cea-hpc/modules/releases/download/v5.3.1/modules-5.3.1.tar.gz</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> modules-5.3.1.tar.gz</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/modules <span class="at">--modulefilesdir</span><span class="op">=</span>/opt/modulefiles <span class="at">--with-tcl-ver</span><span class="op">=</span>8.6</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, configure. Initialize modules in <code>~/.custom_dotfiles/bashrc</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Environment modules</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /opt/modules/init/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Also, put all the example dotfiles in a separate directory:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /opt/modules/examples</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/modulefiles</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv dot module-git module-info modules null use.own /opt/modules/examples/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lemp-stack-nginx-mysql-php" class="level2">
+<h2 class="anchored" data-anchor-id="lemp-stack-nginx-mysql-php">LEMP Stack (nginx, MySQL, PHP)</h2>
+<p>Previously, I installed a <a href="https://github.com/banskt/dotfiles/blob/main/docs/webstack_kalindi.md">webstack in Kalindi</a>.</p>
+<section id="install-nginx-from-source" class="level3">
+<h3 class="anchored" data-anchor-id="install-nginx-from-source">Install nginx from source</h3>
+<p>Compiling nginx from source affords more flexibility than prebuilt packages: I can add particular modules (from nginx or third parties), and apply latest security patches. See <a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources">official documentation</a> for help.</p>
+<p><strong>1. Installing some prerequisites</strong>.</p>
+<section id="pcre2" class="level4">
+<h4 class="anchored" data-anchor-id="pcre2">PCRE2</h4>
+<p>If you want to install PCRE2 from scratch, it can be done as:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zlib1g-dev libbz2-dev libreadline-dev libedit-dev</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> pcre2-10.42.tar.gz</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pcre2-10.42</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span> /opt/pcre2/10.42 <span class="at">--enable-unicode</span> <span class="at">--enable-jit</span> <span class="at">--enable-pcre2-16</span> <span class="at">--enable-pcre2-32</span> <span class="at">--enable-pcre2grep-libz</span> <span class="at">--enable-pcre2grep-libbz2</span> <span class="at">--enable-pcre2test-libreadline</span> <span class="at">--disable-static</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> check</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I preferred to install the library files in the OS:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libpcre2-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Surprise:</strong> <code>pcre3</code> is older than <code>pcre2</code>. Do not install <code>pcre3</code>.</p>
+</section>
+<section id="zlib" class="level4">
+<h4 class="anchored" data-anchor-id="zlib">Zlib</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zlib1g-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="openssl" class="level4">
+<h4 class="anchored" data-anchor-id="openssl">OpenSSL</h4>
+<p>nginx requires <code>libssl-dev</code> package. But before installing anything, I checked the distribution of current OpenSSL package:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> version <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I have version 3.0.2 installed by default. I wanted the latest version and control of OpenSSL, hence I configured myself (<a href="https://github.com/openssl/openssl/blob/master/INSTALL.md">see documentation</a>) using the options from <a href="https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html">Linux from Scratch</a>. Also, run <code>./Configure LIST</code> to see a list of configuration options.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.openssl.org/source/openssl-3.1.3.tar.gz</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> openssl-3.1.3.tar.gz</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> openssl-3.1.3-build</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> openssl-3.1.3-build/</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">../openssl-3.1.3/Configure</span> linux-x86_64 <span class="at">--prefix</span><span class="op">=</span>/opt/openssl/3.1.3/ zlib-dynamic shared</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> test</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I created a module file to load/unload the required OpenSSL version easily.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openssl/3.1.3</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> unload openssl/3.1.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>2. Install nginx</strong></p>
+</section>
+<section id="configure-and-build" class="level4">
+<h4 class="anchored" data-anchor-id="configure-and-build">Configure and build</h4>
+<p>Download the source files from <a href="https://www.nginx.org/en/download.html">nginx.org</a>. I used the latest stable release.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://nginx.org/download/nginx-1.24.0.tar.gz</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> nginx-1.24.0.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are many configuration options for nginx. I read them in the <a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources">official docs</a> and in their <a href="https://nginx.org/en/docs/configure.html">open source project</a>. Other resources include:</p>
+<ul>
+<li>Erick T. Hitter discusses <a href="https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/">compiling nginx with custom OpenSSL support</a> – <a href="https://web.archive.org/web/20230920221352/https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/">mirror on waybackmachine</a>.</li>
+<li>Stackoverflow: <a href="https://serverfault.com/questions/416571">Can’t compile nginx with SSL support, OpenSSL not found</a></li>
+<li>nginx forum: <a href="https://forum.nginx.org/read.php?2,275441,275447#msg-275447">build nginx with OpenSSL shared library not using the system OpenSSL library but using the shared library in a specific path</a>.</li>
+</ul>
+<p>Here are the configuration options I used:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/nginx/1.24.0 <span class="at">--builddir</span><span class="op">=</span>../nginx-1.24.0-build <span class="at">--with-http_ssl_module</span> <span class="at">--with-pcre</span> <span class="at">--with-http_v2_module</span> <span class="at">--with-http_realip_module</span> <span class="at">--with-http_addition_module</span> <span class="at">--with-http_sub_module</span> <span class="at">--with-http_dav_module</span> <span class="at">--with-http_flv_module</span> <span class="at">--with-http_mp4_module</span> <span class="at">--with-http_gunzip_module</span> <span class="at">--with-http_gzip_static_module</span> <span class="at">--with-http_random_index_module</span> <span class="at">--with-http_secure_link_module</span> <span class="at">--with-http_stub_status_module</span> <span class="at">--with-http_auth_request_module</span> <span class="at">--with-threads</span> <span class="at">--with-stream</span> <span class="at">--with-stream_ssl_module</span> <span class="at">--with-http_slice_module</span> <span class="at">--with-mail</span> <span class="at">--with-mail_ssl_module</span> <span class="at">--with-file-aio</span> <span class="at">--with-cc-opt</span><span class="op">=</span><span class="st">"-I /opt/openssl/3.1.3/include"</span> <span class="at">--with-ld-opt</span><span class="op">=</span><span class="st">"-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the configuration output which may be helpful later:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Configuration</span> summary</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using threads</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system PCRE2 library</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system OpenSSL library</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system zlib library</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> path prefix: <span class="st">"/opt/nginx/1.24.0"</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> binary file: <span class="st">"/opt/nginx/1.24.0/sbin/nginx"</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> modules path: <span class="st">"/opt/nginx/1.24.0/modules"</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration prefix: <span class="st">"/opt/nginx/1.24.0/conf"</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration file: <span class="st">"/opt/nginx/1.24.0/conf/nginx.conf"</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> pid file: <span class="st">"/opt/nginx/1.24.0/logs/nginx.pid"</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> error log file: <span class="st">"/opt/nginx/1.24.0/logs/error.log"</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http access log file: <span class="st">"/opt/nginx/1.24.0/logs/access.log"</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http client request body temporary files: <span class="st">"client_body_temp"</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http proxy temporary files: <span class="st">"proxy_temp"</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http fastcgi temporary files: <span class="st">"fastcgi_temp"</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http uwsgi temporary files: <span class="st">"uwsgi_temp"</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http scgi temporary files: <span class="st">"scgi_temp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Build nginx in the new build directory.</p>
+<pre><code>make -f ../nginx-1.24.0-build/Makefile -j 2
+sudo make -f ../nginx-1.24.0-build/Makefile install</code></pre>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
