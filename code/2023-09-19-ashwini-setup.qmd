@@ -298,7 +298,7 @@ module unload openssl/3.1.3
 
 **2. Install nginx**
 
-#### Configure and build
+#### Configure
 
 Download the source files from [nginx.org](https://www.nginx.org/en/download.html).
 I used the latest stable release.
@@ -341,8 +341,153 @@ Configuration summary
   nginx http uwsgi temporary files: "uwsgi_temp"
   nginx http scgi temporary files: "scgi_temp"
 ```
+
+#### Build
 Build nginx in the new build directory.
-```
+```bash
 make -f ../nginx-1.24.0-build/Makefile -j 2
 sudo make -f ../nginx-1.24.0-build/Makefile install
 ```
+
+**3. Post-installation configuration**
+
+#### nginx.conf
+
+Modify the configuration file for external access.
+Here is my initial nginx configuration in `/opt/nginx/1.24.0/conf/nginx.conf`.
+```default
+user  minion;
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        # replace xx with HTTP port
+        listen       *:xx;
+        # replace xxx.xxx.xxx.xxx with IP address
+        server_name  127.0.0.1 xxx.xxx.xxx.xxx;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        # redirect server error pages to the static page /50x.html
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+#### Open Port in Firewall
+
+To register `nginx` as an `ufw` application, create a file `/etc/ufw/applications.d/nginx`.
+Replace `xx` with port numbers for HTTP and HTTPS.
+If you are running nginx as a non-root user, then 
+you have to change the accessible port because the default port 80 
+is not available to non-root users. Therefore, it's necessary to use a port > 1000. 
+If you are running nginx as root, it is also advisable to change the default port 80 
+to avoid interest from idling internet bots.
+```ini
+[Nginx HTTP]
+title=Web Server (Nginx, HTTP)
+description=Small, but very powerful and efficient web server
+ports=xx/tcp
+
+[Nginx HTTPS]
+title=Web Server (Nginx, HTTPS)
+description=Small, but very powerful and efficient web server
+ports=xx/tcp
+
+[Nginx Full]
+title=Web Server (Nginx, HTTP + HTTPS)
+description=Small, but very powerful and efficient web server
+ports=xx,xx/tcp
+```
+Check the registered app and allow nginx HTTP.
+```bash
+sudo ufw app info 'Nginx Full'
+sudo ufw allow 'Nginx HTTP'
+```
+Log files should be accessible by the user `minion`.
+```bash
+chown -R root:minion /opt/nginx/1.24.0/logs
+chown minion:minion /opt/nginx/1.24.0/logs/access.log
+chown minion:minion /opt/nginx/1.24.0/logs/error.log
+chmod 775 /opt/nginx/1.24.0/logs
+```
+
+#### Useful Commands
+Check nginx configuration and start nginx.
+```bash
+# check configuration
+sudo /opt/nginx/1.24.0/sbin/nginx -t
+# start
+sudo /opt/nginx/1.24.0/sbin/nginx
+# stop
+sudo /opt/nginx/1.24.0/sbin/nginx -s stop
+# restart
+sudo /opt/nginx/1.24.0/sbin/nginx -s reload
+```
+
+#### systemd
+Create a systemd service file to control nginx using `systemctl` 
+as [described in the official documentation](https://www.nginx.com/resources/wiki/start/topics/examples/systemd/).
+In Ubuntu 22.04, the file is `/lib/systemd/system/nginx.service`.
+```ini
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=syslog.target network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/opt/nginx/1.24.0/logs/nginx.pid
+ExecStartPre=/opt/nginx/1.24.0/sbin/nginx -t
+ExecStart=/opt/nginx/1.24.0/sbin/nginx
+ExecReload=/opt/nginx/1.24.0/sbin/nginx -s reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+Now, I can use `systemctl` commands to control nginx.
+```bash
+sudo systemctl status nginx
+sudo systemctl start nginx
+sudo systemctl stop nginx
+sudo systemctl restart nginx
+```
+
+#### Check
+Fire up the browser and check both links:
+
+  - http://127.0.0.1:xx
+  - http://xxx.xxx.xxx.xxx:xx
+
+The second one should also work from external network.
+If you are installing on the server and you do not have access to the localhost (127.0.0.1),
+then you can access the remote server via ssh tunneling from your local machine.
+For example, I defined `ashwini` in `ssh/config` of the local machine and 
+installed `ssh-localportfwd` from [here](https://github.com/banskt/dotfiles/blob/main/bin/ssh-localportfwd).
+```bash
+ssh-localportfwd open ashwini remote_port local_port
+```
+Then the first link (127.0.0.1:xx) will be accesible where xx is now the `local_port`. 
+
+The SSL connection will still not work. Do not worry yet.
+
+#### Modular control
+
+#### 
+Tuning nginx can improve speed and performance. [Read more](https://github.com/denji/nginx-tuning).
