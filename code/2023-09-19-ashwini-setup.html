@@ -474,8 +474,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> unload openssl/3.1.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>2. Install nginx</strong></p>
 </section>
-<section id="configure-and-build" class="level4">
-<h4 class="anchored" data-anchor-id="configure-and-build">Configure and build</h4>
+<section id="configure" class="level4">
+<h4 class="anchored" data-anchor-id="configure">Configure</h4>
 <p>Download the source files from <a href="https://www.nginx.org/en/download.html">nginx.org</a>. I used the latest stable release.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://nginx.org/download/nginx-1.24.0.tar.gz</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> nginx-1.24.0.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -507,9 +507,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http fastcgi temporary files: <span class="st">"fastcgi_temp"</span></span>
 <span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http uwsgi temporary files: <span class="st">"uwsgi_temp"</span></span>
 <span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http scgi temporary files: <span class="st">"scgi_temp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="build" class="level4">
+<h4 class="anchored" data-anchor-id="build">Build</h4>
 <p>Build nginx in the new build directory.</p>
-<pre><code>make -f ../nginx-1.24.0-build/Makefile -j 2
-sudo make -f ../nginx-1.24.0-build/Makefile install</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-f</span> ../nginx-1.24.0-build/Makefile <span class="at">-j</span> 2</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make <span class="at">-f</span> ../nginx-1.24.0-build/Makefile install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>3. Post-installation configuration</strong></p>
+</section>
+<section id="nginx.conf" class="level4">
+<h4 class="anchored" data-anchor-id="nginx.conf">nginx.conf</h4>
+<p>Modify the configuration file for external access. Here is my initial nginx configuration in <code>/opt/nginx/1.24.0/conf/nginx.conf</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>user  minion;</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>worker_processes  1;</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>events {</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    worker_connections  1024;</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>http {</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    include       mime.types;</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    default_type  application/octet-stream;</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    sendfile        on;</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    keepalive_timeout  65;</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    server {</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>        # replace xx with HTTP port</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>        listen       *:xx;</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>        # replace xxx.xxx.xxx.xxx with IP address</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>        server_name  127.0.0.1 xxx.xxx.xxx.xxx;</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>        location / {</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>            index  index.html index.htm;</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>        # redirect server error pages to the static page /50x.html</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>        error_page   500 502 503 504  /50x.html;</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>        location = /50x.html {</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="open-port-in-firewall" class="level4">
+<h4 class="anchored" data-anchor-id="open-port-in-firewall">Open Port in Firewall</h4>
+<p>To register <code>nginx</code> as an <code>ufw</code> application, create a file <code>/etc/ufw/applications.d/nginx</code>. Replace <code>xx</code> with port numbers for HTTP and HTTPS. If you are running nginx as a non-root user, then you have to change the accessible port because the default port 80 is not available to non-root users. Therefore, it’s necessary to use a port &gt; 1000. If you are running nginx as root, it is also advisable to change the default port 80 to avoid interest from idling internet bots.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTP]</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP)</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">xx/tcp</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTPS]</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTPS)</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">xx/tcp</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx Full]</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP + HTTPS)</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">xx,xx/tcp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check the registered app and allow nginx HTTP.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw app info <span class="st">'Nginx Full'</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow <span class="st">'Nginx HTTP'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Log files should be accessible by the user <code>minion</code>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> root:minion /opt/nginx/1.24.0/logs</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/access.log</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/error.log</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 775 /opt/nginx/1.24.0/logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="useful-commands" class="level4">
+<h4 class="anchored" data-anchor-id="useful-commands">Useful Commands</h4>
+<p>Check nginx configuration and start nginx.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check configuration</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-t</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># start</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># stop</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> stop</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># restart</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> reload</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="systemd" class="level4">
+<h4 class="anchored" data-anchor-id="systemd">systemd</h4>
+<p>Create a systemd service file to control nginx using <code>systemctl</code> as <a href="https://www.nginx.com/resources/wiki/start/topics/examples/systemd/">described in the official documentation</a>. In Ubuntu 22.04, the file is <code>/lib/systemd/system/nginx.service</code>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">The NGINX HTTP and reverse proxy server</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">syslog.target network-online.target remote-fs.target nss-lookup.target</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Wants</span><span class="ot">=</span><span class="st">network-online.target</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">forking</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="dt">PIDFile</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/logs/nginx.pid</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStartPre</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -t</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecReload</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -s reload</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStop</span><span class="ot">=</span><span class="st">/bin/kill -s QUIT $MAINPID</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="dt">PrivateTmp</span><span class="ot">=</span><span class="kw">true</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, I can use <code>systemctl</code> commands to control nginx.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status nginx</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart nginx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check" class="level4">
+<h4 class="anchored" data-anchor-id="check">Check</h4>
+<p>Fire up the browser and check both links:</p>
+<ul>
+<li>http://127.0.0.1:xx</li>
+<li>http://xxx.xxx.xxx.xxx:xx</li>
+</ul>
+<p>The second one should also work from external network. If you are installing on the server and you do not have access to the localhost (127.0.0.1), then you can access the remote server via ssh tunneling from your local machine. For example, I defined <code>ashwini</code> in <code>ssh/config</code> of the local machine and installed <code>ssh-localportfwd</code> from <a href="https://github.com/banskt/dotfiles/blob/main/bin/ssh-localportfwd">here</a>.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-localportfwd</span> open ashwini remote_port local_port</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then the first link (127.0.0.1:xx) will be accesible where xx is now the <code>local_port</code>.</p>
+<p>The SSL connection will still not work. Do not worry yet.</p>
+</section>
+<section id="modular-control" class="level4">
+<h4 class="anchored" data-anchor-id="modular-control">Modular control</h4>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
+<p>Tuning nginx can improve speed and performance. <a href="https://github.com/denji/nginx-tuning">Read more</a>.</p>
 
 
 </section>
