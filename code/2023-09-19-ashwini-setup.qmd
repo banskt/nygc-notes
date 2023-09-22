@@ -11,15 +11,6 @@ Here are some Linux references which I find useful:
   There are many helpful installation notes in the subprojects, e.g.
   [BLFS or Beyond Linux from Scratch](https://www.linuxfromscratch.org/blfs/view/stable/). 
 
-## Update OS
-
-```bash
-sudo apt update
-sudo apt upgrade
-sudo reboot
-sudo apt install vim build-essential git
-```
-
 ## Internet Connection
 
 For overview see, [Configuring Networks](https://ubuntu.com/server/docs/network-configuration) on Ubuntu Server.
@@ -66,6 +57,67 @@ network:
   ip -s link show ens18
   ip route show
   ```
+
+## Update OS
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo reboot
+sudo apt install vim build-essential git
+```
+
+## Purge snap
+
+I do not like things happening in the background without my knowledge.
+For me, the first thing to do after a fresh install is to remove `snap`.
+```bash
+sudo snap list
+sudo systemctl disable snapd.service
+sudo systemctl disable snapd.socket
+sudo systemctl disable snapd.seeded.service
+sudo snap remove --purge lxd
+sudo snap remove --purge core20
+sudo snap list # this must not list anything else
+sudo apt remove --autoremove snapd
+sudo rm -rf ~/snap /snap /var/snap /var/lib/snapd /root/snap
+```
+The last command complains about "read-only file system".
+So, I had to reboot to stop the systemd services and rerun the command.
+
+
+I manually removed snap related systemd services, following [this Stackoverflow answer](https://superuser.com/a/936976).
+```bash
+cd /etc/systemd/system
+sudo systemctl stop snap-snapd-18357.mount
+sudo systemctl disable snap-snapd-18357.mount
+sudo rm -f snap-snapd-18357.mount
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+```
+I did the same thing for all these services:
+```default
+- snap-snapd-20092.mount
+- snapd.aa-prompt-listener.service
+- snapd.apparmor.service
+- snapd.autoimport.service
+- snapd.core-fixup.service
+- snapd.seeded.service 
+- snapd.snap-repair.timer
+- snapd.service
+- snapd.socket 
+- snapd.system-shutdown.service
+- snapd.recovery-chooser-trigger.service
+```
+**To-Do:** `snapd.seeded.service` is still being listed by `systemctl list-units -a`. How to remove?
+
+Prevent snap from re-installing.
+Create the file `/etc/apt/preferences.d/nosnap.pref` with the following content and save.
+```bash
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+```
 
 ## Add User For Tasks
 
@@ -195,6 +247,9 @@ Common bash scripts go to the `~/.dotfiles`.
 
 ## Reduce Automatic Network Usage
 
+There are some default packages or services that connects to the internet without my consent.
+[AskUbuntu Question](https://askubuntu.com/q/1057458).
+
 ## Environment Modules
 
 I love [modules](https://github.com/cea-hpc/modules) to manage my shell environment.
@@ -243,7 +298,7 @@ I can add particular modules (from nginx or third parties), and apply latest sec
 See [official documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources)
 for help. 
 
-**1. Installing some prerequisites**.
+**1. Install prerequisites**.
 
 #### PCRE2
 
@@ -349,7 +404,16 @@ make -f ../nginx-1.24.0-build/Makefile -j 2
 sudo make -f ../nginx-1.24.0-build/Makefile install
 ```
 
-**3. Post-installation configuration**
+**3. Post-install configuration**
+
+I initially considered using custom ports for HTTP and HTTPS 
+(instead of the default 80 and 443) but I rejected the idea
+because Let's Encrypt requires port 80 for generating and renewing certificates.
+These articles also helped in making the decision:
+
+  - [Let’s Encrypt explains why you should keep port 80 open](https://letsencrypt.org/docs/allow-port-80/)
+  - [Scott Helme argues against closing port 80](https://scotthelme.co.uk/why-closing-port-80-is-bad-for-security/)
+
 
 #### nginx.conf
 
@@ -372,10 +436,8 @@ http {
     keepalive_timeout  65;
 
     server {
-        # replace xx with HTTP port
-        listen       *:xx;
-        # replace xxx.xxx.xxx.xxx with IP address
-        server_name  127.0.0.1 xxx.xxx.xxx.xxx;
+        listen       80;
+        server_name  127.0.0.1 <ipv4_address>;
         location / {
             root   html;
             index  index.html index.htm;
@@ -388,34 +450,32 @@ http {
     }
 }
 ```
-#### Open Port in Firewall
+#### Open port in firewall
 
 To register `nginx` as an `ufw` application, create a file `/etc/ufw/applications.d/nginx`.
 Replace `xx` with port numbers for HTTP and HTTPS.
 If you are running nginx as a non-root user, then 
 you have to change the accessible port because the default port 80 
 is not available to non-root users. Therefore, it's necessary to use a port > 1000. 
-If you are running nginx as root, it is also advisable to change the default port 80 
-to avoid interest from idling internet bots.
 ```ini
 [Nginx HTTP]
 title=Web Server (Nginx, HTTP)
 description=Small, but very powerful and efficient web server
-ports=xx/tcp
+ports=80/tcp
 
 [Nginx HTTPS]
 title=Web Server (Nginx, HTTPS)
 description=Small, but very powerful and efficient web server
-ports=xx/tcp
+ports=443/tcp
 
 [Nginx Full]
 title=Web Server (Nginx, HTTP + HTTPS)
 description=Small, but very powerful and efficient web server
-ports=xx,xx/tcp
+ports=80,443/tcp
 ```
 Check the registered app and allow nginx HTTP.
 ```bash
-sudo ufw app info 'Nginx Full'
+sudo ufw app info 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTP'
 ```
 Log files should be accessible by the user `minion`.
@@ -426,7 +486,7 @@ chown minion:minion /opt/nginx/1.24.0/logs/error.log
 chmod 775 /opt/nginx/1.24.0/logs
 ```
 
-#### Useful Commands
+#### Useful commands
 Check nginx configuration and start nginx.
 ```bash
 # check configuration
@@ -472,22 +532,209 @@ sudo systemctl restart nginx
 #### Check
 Fire up the browser and check both links:
 
-  - http://127.0.0.1:xx
-  - http://xxx.xxx.xxx.xxx:xx
+  - http://127.0.0.1
+  - http://\<ipv4\_address\>
 
-The second one should also work from external network.
-If you are installing on the server and you do not have access to the localhost (127.0.0.1),
-then you can access the remote server via ssh tunneling from your local machine.
+If you are installing on the server and you do not have access to the 
+`localhost (127.0.0.1)` of the remote server,
+then you can ssh-tunnel to the remote server from your local machine.
 For example, I defined `ashwini` in `ssh/config` of the local machine and 
 installed `ssh-localportfwd` from [here](https://github.com/banskt/dotfiles/blob/main/bin/ssh-localportfwd).
 ```bash
-ssh-localportfwd open ashwini remote_port local_port
+ssh-localportfwd open ashwini 80 <local_port>
 ```
-Then the first link (127.0.0.1:xx) will be accesible where xx is now the `local_port`. 
+Then, I can access the `localhost` of the remote machine using `http://127.0.0.1:xx`
+where `xx` is the `local_port` of my local machine through which I tunneled. 
+The second IPv4 address should work from external network.
 
 The SSL connection will still not work. Do not worry yet.
 
 #### Modular control
+Once everything was working,
+I removed the external IP from the base configuration of nginx
+and created server configurations in `~/local/.nginx/sites-available/`
+For example, here is my `000-default-server.conf`:
+```default
+server {
+    listen      80 default_server;
+    server_name <ipv4_address>;
+    location / {
+        root        /path/to/webdata/base;
+        index       index.html index.htm;
+    }
+    # redirect server error pages to the static page /50x.html
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root        /path/to/webdata/base;
+    }
 
-#### 
-Tuning nginx can improve speed and performance. [Read more](https://github.com/denji/nginx-tuning).
+    # produce a directory listing using ngx_http_autoindex_module 
+    autoindex            on;
+    autoindex_exact_size off;
+    autoindex_localtime  on;
+
+    # Deny access to anything starting with .ht
+    location ~ /\.ht {
+        deny  all;
+    }
+}
+```
+I added the following line to `/opt/nginx/1.24.0/conf/nginx.conf`:
+```default
+include /home/banskt/local/.nginx/sites-enabled/*
+```
+And then created the `sites-enabled` directory:
+```bash
+mkdir -p ~/local/.nginx/sites-enabled
+cd ~/local/.nginx/sites-enabled
+ln -s /home/banskt/local/.nginx/sites-available/000-default-server.conf ./default
+```
+This way, I can manage adding domains, sub-domains, sub-directories 
+on my server directly from my `sites-available` and `sites-enabled` directories.
+
+At this point, `127.0.0.1` should serve the nginx welcome message
+and `<ipv4_address>` should serve the HTML files from `/path/to/webdata/base`.
+Again, check they are working with `ssh-localportfwd`.
+
+### Link domain name
+
+I had purchased several domain names. Now, it is time to put one of them to use.
+You can skip this step and access the server using IPv4 address instead.
+
+  - Login to [namesilo.com](https://namesilo.com)
+  - Manage DNS
+  - Use default nameservers of `namesilo.com`
+  - Change `A` record pointing to the VPS IPv4 address.
+  You can point different subdomains to different IP addresses.
+  If you want to point every subdomain to the same IP, you can use an asterisk (`*`) as your subdomain.
+  - Update `nginx.conf`, change IPv4 address to `mydomain.com`.
+
+#### Alias www to non-www
+
+I want to redirect all traffic from `www` to `non-www`.
+Easiest way is to define an `A` entry for `www.mydomain.com`
+and use 301 redirect from nginx configuration.
+However, when my IP changes then I have to change the `A` record for 
+both `mydomain.com` and `www.mydomain.com`.
+Another solution is to use `CNAME` entry in the DNS zone file
+and redirect in the server nginx configuration.
+Both of them are required as [explained in this Stackoverflow answer](https://serverfault.com/a/661562).
+
+> A CNAME record does not function the same way as a URL redirect.
+> A CNAME record directs web traffic for a particular domain
+> to the target domain’s IP address.
+> Once the visitor reaches that IP address,
+> the web server’s configuration will determine how the domain is handled.
+> If that domain is not configured on the server, 
+> the server will simply display its default web page (if any).
+> This may or may not be the web page for the 
+> target domain in the CNAME record,
+> depending on how the server is configured.
+
+  - Add `CNAME` entry in zonefile.
+  - Add 301 redirect in `nginx.conf`
+```default
+server {
+    listen      80;
+    server_name www.mydomain.com;
+    return 301 $scheme://mydomain.com$request_uri;
+}
+```
+
+#### Check DNS
+
+There are many DNS lookups, but I like [intoDNS](https://intodns.com).
+
+### SSL
+
+I did not use `certbot` because it enforced installation using `snap`.
+
+  - Install [acme](https://github.com/acmesh-official/acme.sh).
+  The options used for the installation are explained in the 
+  [documentation](https://github.com/acmesh-official/acme.sh/wiki/How-to-install#4-advanced-installation).
+  ```bash
+  git clone https://github.com/acmesh-official/acme.sh.git
+  cd acme.sh/
+  ./acme.sh --install --home /home/banskt/local/.acme --accountemail banskt.saikat@gmail.com
+  ```
+  Delete the entry in `~/.bashrc` and add it to `~/.custom_dotfiles/bashrc`.
+
+  ```bash
+  # Source acme.sh for SSL certificates
+  source "/home/banskt/local/.acme/acme.sh.env"
+  ```
+  After sourcing, `acme.sh` will be available on commandline. Check.
+
+  - Create the acme-challenge directory in the document root.
+  ```bash
+  cd /path/to/webdata/base
+  mkdir -p .well-known/acme-challenge/
+  sudo chown -R minion:minion .well-known
+  sudo chmod -R 770 .well-known
+  ```
+  and give permissions according to your setup.
+
+  - Create directory to store SSL certificates
+  ```bash
+  cd /home/banskt/local/.nginx/
+  mkdir -p ssl/mydomain.com/
+  ```
+
+  - Generate dhparams file
+  ```bash
+  cd /home/banskt/local/.nginx/ssl/
+  module load openssl/3.1.3
+  openssl dhparam -out dhparams.pem 4096
+  ```
+
+  - Issue certificates. Optionally,
+  use [DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi).
+  You can either issue certificate for a single domain,
+  ```bash
+  acme.sh --issue -d foo.mydomain.com -w /path/to/webdata/base -k 4096
+  ```
+  or have multiple domains in the same certificate.
+
+  ```bash
+  acme.sh --issue -d mydomain.com -d www.mydomain.com -w /path/to/webdata/base -k 4096
+  ```
+  Here, `-w` specifies the document root of the website where the acme-challenge is created,
+  `-k` specifies the domain key length.
+
+  - Generate SSL configurations from 
+  [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org).
+  Write the configuration in `/opt/nginx/1.24.0/conf/ssl_params.conf`
+  so that it can be included for all servers.
+  For each server, create the SSL nginx configuration, for example,
+  ```default
+    ssl_certificate         /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;
+    ssl_certificate_key     /home/banskt/local/.nginx/ssl/sbanerjee.in/privkey.pem;
+    # verify chain of trust of OCSP response using Root CA and Intermediate certs
+    ssl_trusted_certificate /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;
+    include                 /opt/nginx/1.24.0/conf/ssl_params.conf;
+  ```
+
+  - Install the issued certificate to nginx server
+  ```bash
+  acme.sh --install-cert -d mydomain.com \
+    --fullchain-file /home/banskt/local/.nginx/ssl/mydomain.com/fullchain.pem \
+    --key-file /home/banskt/local/.nginx/ssl/mydomain.com/privkey.pem \
+    --reloadcmd "sudo systemctl restart nginx"
+  acme.sh --install-cert -d foo.mydomain.com \
+    --fullchain-file /home/banskt/local/.nginx/ssl/foo.mydomain.com/fullchain.pem \
+    --key-file /home/banskt/local/.nginx/ssl/foo.mydomain.com/privkey.pem \
+    --reloadcmd "sudo systemctl restart nginx"
+  ```
+
+  - Check everything is working! Use browser and 
+  [Qualys SSL server test](https://www.ssllabs.com/ssltest/).
+  ```
+  acme.sh --help
+  acme.sh --list
+  ```
+
+### Improve speed and performance
+
+  - [Tuning nginx can improve speed and performance](https://github.com/denji/nginx-tuning).
+  - [Better SSL configuration](https://scaron.info/blog/improve-your-nginx-ssl-configuration.html)
+  - [Let's Encrypt without port 80](https://jmorahan.net/articles/lets-encrypt-without-port-80)
