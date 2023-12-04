@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../code/2023-09-23-ashwini-setup2.html" rel="next">
 <link href="../code/2023-05-23-macos-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -197,6 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Setup Ashwini</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/2023-09-23-ashwini-setup2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup Torrents</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -217,12 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bash" id="toc-bash" class="nav-link" data-scroll-target="#bash">Bash</a></li>
   <li><a href="#reduce-automatic-network-usage" id="toc-reduce-automatic-network-usage" class="nav-link" data-scroll-target="#reduce-automatic-network-usage">Reduce Automatic Network Usage</a></li>
   <li><a href="#environment-modules" id="toc-environment-modules" class="nav-link" data-scroll-target="#environment-modules">Environment Modules</a></li>
-  <li><a href="#lemp-stack-nginx-mysql-php" id="toc-lemp-stack-nginx-mysql-php" class="nav-link" data-scroll-target="#lemp-stack-nginx-mysql-php">LEMP Stack (nginx, MySQL, PHP)</a>
+  <li><a href="#webtack-nginx-ssl-php" id="toc-webtack-nginx-ssl-php" class="nav-link" data-scroll-target="#webtack-nginx-ssl-php">Webtack (nginx, SSL, PHP)</a>
   <ul class="collapse">
   <li><a href="#install-nginx-from-source" id="toc-install-nginx-from-source" class="nav-link" data-scroll-target="#install-nginx-from-source">Install nginx from source</a></li>
   <li><a href="#link-domain-name" id="toc-link-domain-name" class="nav-link" data-scroll-target="#link-domain-name">Link domain name</a></li>
   <li><a href="#ssl" id="toc-ssl" class="nav-link" data-scroll-target="#ssl">SSL</a></li>
   <li><a href="#improve-speed-and-performance" id="toc-improve-speed-and-performance" class="nav-link" data-scroll-target="#improve-speed-and-performance">Improve speed and performance</a></li>
+  <li><a href="#install-mysql" id="toc-install-mysql" class="nav-link" data-scroll-target="#install-mysql">Install MySQL</a></li>
+  <li><a href="#install-php-from-source" id="toc-install-php-from-source" class="nav-link" data-scroll-target="#install-php-from-source">Install PHP from source</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-09-19-ashwini-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -306,18 +315,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="purge-snap" class="level2">
 <h2 class="anchored" data-anchor-id="purge-snap">Purge snap</h2>
-<p>I do not like things happening in the background without my knowledge. For me, the first thing to do after a fresh install is to remove <code>snap</code>.</p>
+<p>I do not like things happening in the background without my consent. Therefore, I <a href="https://github.com/banskt/dotfiles/blob/main/docs/remove_snap.md">remove snap after a fresh Ubuntu install</a>. I list the <code>snap</code> packages, stop the <code>snap</code> daemon service(s), and remove each snap package individually, starting with non-canonical packages. I remove the <code>snapd</code> package and all the related directories.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap list</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.service</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.socket</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.seeded.service</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove <span class="at">--purge</span> lxd</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove <span class="at">--purge</span> core20</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap list <span class="co"># this must not list anything else</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove <span class="at">--autoremove</span> snapd</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> ~/snap /snap /var/snap /var/lib/snapd /root/snap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The last command complains about “read-only file system”. So, I had to reboot to stop the systemd services and rerun the command.</p>
-<p>I manually removed snap related systemd services, following <a href="https://superuser.com/a/936976">this Stackoverflow answer</a>.</p>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.service</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.socket</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snapd.seeded.service</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove <span class="at">--purge</span> lxd</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove <span class="at">--purge</span> core20</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap list <span class="co"># check this does not list anything else</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt remove <span class="at">--autoremove</span> snapd</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> ~/snap /snap /var/snap /var/lib/snapd /root/snap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The last command complained about “read-only file system”. So, I had to reboot and rerun the command. Some systemd services were still blocking the mount points. I manually <strong>obliterated</strong> snap related systemd services, following <a href="https://superuser.com/a/936976">this Stackoverflow answer</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /etc/systemd/system</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop snap-snapd-18357.mount</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable snap-snapd-18357.mount</span>
@@ -330,12 +342,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>- snapd.apparmor.service</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>- snapd.autoimport.service</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>- snapd.core-fixup.service</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>- snapd.seeded.service </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>- snapd.snap-repair.timer</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>- snapd.service</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>- snapd.socket </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>- snapd.system-shutdown.service</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>- snapd.recovery-chooser-trigger.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>- snapd.snap-repair.timer</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>- snapd.system-shutdown.service</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>- snapd.recovery-chooser-trigger.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>To-Do:</strong> <code>snapd.seeded.service</code> is still being listed by <code>systemctl list-units -a</code>. How to remove?</p>
 <p>Prevent snap from re-installing. Create the file <code>/etc/apt/preferences.d/nosnap.pref</code> with the following content and save.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Package:</span> snapd</span>
@@ -371,10 +380,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="dt">IgnoreRhosts yes</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># do not allow eavesdropping</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="dt">PermitEmptyPasswords no</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="dt">AllowTcpForwarding no</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="dt">X11Forwarding no</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># last login info can provide available users to hackers</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="dt">PrintLastLog no</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># better to not allow TCP forwarding, but required for SSH tunnels</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="dt">AllowTcpForwarding yes</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># don't have X11 on server</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="dt">X11Forwarding no</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># last login info can provide available users to hackers</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="dt">PrintLastLog no</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Save the file and restart SSH service.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart ssh</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -465,16 +476,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/modules <span class="at">--modulefilesdir</span><span class="op">=</span>/opt/modulefiles <span class="at">--with-tcl-ver</span><span class="op">=</span>8.6</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finally, configure. Initialize modules in <code>~/.custom_dotfiles/bashrc</code>:</p>
+<p>Finally, configure. Initialize modules in <code>~/.custom_dotfiles/bashrc</code>: This has to be included in bashrc of each user who need to access modulefiles. Alternative is to include it in <code>/etc/bash.bashrc</code> or <code>/etc/profile</code> but those are not guranteed to be invoked (see <a href="https://github.com/banskt/dotfiles/tree/main/bash">decision tree for loading config files in different shell environments</a>).</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Environment modules</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /opt/modules/init/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Also, put all the example dotfiles in a separate directory:</p>
+<p>Also, put all the example dotfiles in a separate directory so that do not show up in <code>module avail</code>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /opt/modules/examples</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/modulefiles</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv dot module-git module-info modules null use.own /opt/modules/examples/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="lemp-stack-nginx-mysql-php" class="level2">
-<h2 class="anchored" data-anchor-id="lemp-stack-nginx-mysql-php">LEMP Stack (nginx, MySQL, PHP)</h2>
+<section id="webtack-nginx-ssl-php" class="level2">
+<h2 class="anchored" data-anchor-id="webtack-nginx-ssl-php">Webtack (nginx, SSL, PHP)</h2>
 <p>Previously, I installed a <a href="https://github.com/banskt/dotfiles/blob/main/docs/webstack_kalindi.md">webstack in Kalindi</a>.</p>
 <section id="install-nginx-from-source" class="level3">
 <h3 class="anchored" data-anchor-id="install-nginx-from-source">Install nginx from source</h3>
@@ -482,18 +493,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>1. Install prerequisites</strong>.</p>
 <section id="pcre2" class="level4">
 <h4 class="anchored" data-anchor-id="pcre2">PCRE2</h4>
-<p>If you want to install PCRE2 from scratch, it can be done as:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zlib1g-dev libbz2-dev libreadline-dev libedit-dev</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> pcre2-10.42.tar.gz</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pcre2-10.42</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span> /opt/pcre2/10.42 <span class="at">--enable-unicode</span> <span class="at">--enable-jit</span> <span class="at">--enable-pcre2-16</span> <span class="at">--enable-pcre2-32</span> <span class="at">--enable-pcre2grep-libz</span> <span class="at">--enable-pcre2grep-libbz2</span> <span class="at">--enable-pcre2test-libreadline</span> <span class="at">--disable-static</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> check</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I preferred to install the library files in the OS:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libpcre2-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I prefer to manage the library files in the OS using <code>apt</code>. So, I use <code>apt install</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libpcre2-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Surprise:</strong> <code>pcre3</code> is older than <code>pcre2</code>. Do not install <code>pcre3</code>.</p>
+<p>If you want to configure, build and install PCRE2 from scratch, it can be done as:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zlib1g-dev libbz2-dev libreadline-dev libedit-dev</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> pcre2-10.42.tar.gz</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pcre2-10.42</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span> /opt/pcre2/10.42 <span class="at">--enable-unicode</span> <span class="at">--enable-jit</span> <span class="at">--enable-pcre2-16</span> <span class="at">--enable-pcre2-32</span> <span class="at">--enable-pcre2grep-libz</span> <span class="at">--enable-pcre2grep-libbz2</span> <span class="at">--enable-pcre2test-libreadline</span> <span class="at">--disable-static</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 2</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> check</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="zlib" class="level4">
 <h4 class="anchored" data-anchor-id="zlib">Zlib</h4>
@@ -503,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="openssl">OpenSSL</h4>
 <p>nginx requires <code>libssl-dev</code> package. But before installing anything, I checked the distribution of current OpenSSL package:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> version <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I have version 3.0.2 installed by default. I wanted the latest version and control of OpenSSL, hence I configured myself (<a href="https://github.com/openssl/openssl/blob/master/INSTALL.md">see documentation</a>) using the options from <a href="https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html">Linux from Scratch</a>. Also, run <code>./Configure LIST</code> to see a list of configuration options.</p>
+<p>I have version 3.0.2 installed by default. I wanted the latest version of OpenSSL, hence I configured myself (<a href="https://github.com/openssl/openssl/blob/master/INSTALL.md">see documentation</a>) using the configuration options of <a href="https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html">Linux from Scratch</a>. Run <code>./Configure LIST</code> to see a list of configuration options.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.openssl.org/source/openssl-3.1.3.tar.gz</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> openssl-3.1.3.tar.gz</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> openssl-3.1.3-build</span>
@@ -522,40 +533,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Download the source files from <a href="https://www.nginx.org/en/download.html">nginx.org</a>. I used the latest stable release.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://nginx.org/download/nginx-1.24.0.tar.gz</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> nginx-1.24.0.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>There are many configuration options for nginx. I read them in the <a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources">official docs</a> and in their <a href="https://nginx.org/en/docs/configure.html">open source project</a>. Other resources include:</p>
+<p>There are many configuration options for nginx – <a href="https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources">official docs</a> | <a href="https://nginx.org/en/docs/configure.html">open source project</a>.</p>
+<p>Other resources include:</p>
 <ul>
 <li>Erick T. Hitter discusses <a href="https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/">compiling nginx with custom OpenSSL support</a> – <a href="https://web.archive.org/web/20230920221352/https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/">mirror on waybackmachine</a>.</li>
 <li>Stackoverflow: <a href="https://serverfault.com/questions/416571">Can’t compile nginx with SSL support, OpenSSL not found</a></li>
 <li>nginx forum: <a href="https://forum.nginx.org/read.php?2,275441,275447#msg-275447">build nginx with OpenSSL shared library not using the system OpenSSL library but using the shared library in a specific path</a>.</li>
 </ul>
-<p>Here are the configuration options I used:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/nginx/1.24.0 <span class="at">--builddir</span><span class="op">=</span>../nginx-1.24.0-build <span class="at">--with-http_ssl_module</span> <span class="at">--with-pcre</span> <span class="at">--with-http_v2_module</span> <span class="at">--with-http_realip_module</span> <span class="at">--with-http_addition_module</span> <span class="at">--with-http_sub_module</span> <span class="at">--with-http_dav_module</span> <span class="at">--with-http_flv_module</span> <span class="at">--with-http_mp4_module</span> <span class="at">--with-http_gunzip_module</span> <span class="at">--with-http_gzip_static_module</span> <span class="at">--with-http_random_index_module</span> <span class="at">--with-http_secure_link_module</span> <span class="at">--with-http_stub_status_module</span> <span class="at">--with-http_auth_request_module</span> <span class="at">--with-threads</span> <span class="at">--with-stream</span> <span class="at">--with-stream_ssl_module</span> <span class="at">--with-http_slice_module</span> <span class="at">--with-mail</span> <span class="at">--with-mail_ssl_module</span> <span class="at">--with-file-aio</span> <span class="at">--with-cc-opt</span><span class="op">=</span><span class="st">"-I /opt/openssl/3.1.3/include"</span> <span class="at">--with-ld-opt</span><span class="op">=</span><span class="st">"-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here are the configuration options I used which can also be checked later using <code>nginx -V</code>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="dt">\</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--prefix</span><span class="op">=</span>/opt/nginx/1.24.0 <span class="dt">\</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--builddir</span><span class="op">=</span>../nginx-1.24.0-build <span class="dt">\</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_ssl_module</span> <span class="dt">\</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_v2_module</span> <span class="dt">\</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_realip_module</span> <span class="dt">\</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_addition_module</span> <span class="dt">\</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_sub_module</span> <span class="dt">\</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_dav_module</span> <span class="dt">\</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_flv_module</span> <span class="dt">\</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_mp4_module</span> <span class="dt">\</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_gunzip_module</span> <span class="dt">\</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_gzip_static_module</span> <span class="dt">\</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_random_index_module</span> <span class="dt">\</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_secure_link_module</span> <span class="dt">\</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_stub_status_module</span> <span class="dt">\</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_auth_request_module</span> <span class="dt">\</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-stream</span> <span class="dt">\</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-stream_ssl_module</span> <span class="dt">\</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-http_slice_module</span> <span class="dt">\</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-mail</span> <span class="dt">\</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-mail_ssl_module</span> <span class="dt">\</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-pcre</span> <span class="dt">\</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-threads</span> <span class="dt">\</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-file-aio</span> <span class="dt">\</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-cc-opt</span><span class="op">=</span><span class="st">"-I /opt/openssl/3.1.3/include"</span> <span class="dt">\</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-ld-opt</span><span class="op">=</span><span class="st">"-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One liner (for copy/paste):</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/nginx/1.24.0 <span class="at">--builddir</span><span class="op">=</span>../nginx-1.24.0-build <span class="at">--with-http_ssl_module</span> <span class="at">--with-pcre</span> <span class="at">--with-http_v2_module</span> <span class="at">--with-http_realip_module</span> <span class="at">--with-http_addition_module</span> <span class="at">--with-http_sub_module</span> <span class="at">--with-http_dav_module</span> <span class="at">--with-http_flv_module</span> <span class="at">--with-http_mp4_module</span> <span class="at">--with-http_gunzip_module</span> <span class="at">--with-http_gzip_static_module</span> <span class="at">--with-http_random_index_module</span> <span class="at">--with-http_secure_link_module</span> <span class="at">--with-http_stub_status_module</span> <span class="at">--with-http_auth_request_module</span> <span class="at">--with-threads</span> <span class="at">--with-stream</span> <span class="at">--with-stream_ssl_module</span> <span class="at">--with-http_slice_module</span> <span class="at">--with-mail</span> <span class="at">--with-mail_ssl_module</span> <span class="at">--with-file-aio</span> <span class="at">--with-cc-opt</span><span class="op">=</span><span class="st">"-I /opt/openssl/3.1.3/include"</span> <span class="at">--with-ld-opt</span><span class="op">=</span><span class="st">"-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here is the configuration output which may be helpful later:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Configuration</span> summary</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using threads</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system PCRE2 library</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system OpenSSL library</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system zlib library</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> path prefix: <span class="st">"/opt/nginx/1.24.0"</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> binary file: <span class="st">"/opt/nginx/1.24.0/sbin/nginx"</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> modules path: <span class="st">"/opt/nginx/1.24.0/modules"</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration prefix: <span class="st">"/opt/nginx/1.24.0/conf"</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration file: <span class="st">"/opt/nginx/1.24.0/conf/nginx.conf"</span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> pid file: <span class="st">"/opt/nginx/1.24.0/logs/nginx.pid"</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> error log file: <span class="st">"/opt/nginx/1.24.0/logs/error.log"</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http access log file: <span class="st">"/opt/nginx/1.24.0/logs/access.log"</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http client request body temporary files: <span class="st">"client_body_temp"</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http proxy temporary files: <span class="st">"proxy_temp"</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http fastcgi temporary files: <span class="st">"fastcgi_temp"</span></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http uwsgi temporary files: <span class="st">"uwsgi_temp"</span></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http scgi temporary files: <span class="st">"scgi_temp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Configuration</span> summary</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using threads</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system PCRE2 library</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system OpenSSL library</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">+</span> using system zlib library</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> path prefix: <span class="st">"/opt/nginx/1.24.0"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> binary file: <span class="st">"/opt/nginx/1.24.0/sbin/nginx"</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> modules path: <span class="st">"/opt/nginx/1.24.0/modules"</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration prefix: <span class="st">"/opt/nginx/1.24.0/conf"</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> configuration file: <span class="st">"/opt/nginx/1.24.0/conf/nginx.conf"</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> pid file: <span class="st">"/opt/nginx/1.24.0/logs/nginx.pid"</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> error log file: <span class="st">"/opt/nginx/1.24.0/logs/error.log"</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http access log file: <span class="st">"/opt/nginx/1.24.0/logs/access.log"</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http client request body temporary files: <span class="st">"client_body_temp"</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http proxy temporary files: <span class="st">"proxy_temp"</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http fastcgi temporary files: <span class="st">"fastcgi_temp"</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http uwsgi temporary files: <span class="st">"uwsgi_temp"</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">nginx</span> http scgi temporary files: <span class="st">"scgi_temp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="build" class="level4">
 <h4 class="anchored" data-anchor-id="build">Build</h4>
 <p>Build nginx in the new build directory.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-f</span> ../nginx-1.24.0-build/Makefile <span class="at">-j</span> 2</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make <span class="at">-f</span> ../nginx-1.24.0-build/Makefile install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-f</span> ../nginx-1.24.0-build/Makefile <span class="at">-j</span> 2</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make <span class="at">-f</span> ../nginx-1.24.0-build/Makefile install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>3. Post-install configuration</strong></p>
 <p>I initially considered using custom ports for HTTP and HTTPS (instead of the default 80 and 443) but I rejected the idea because Let’s Encrypt requires port 80 for generating and renewing certificates. These articles also helped in making the decision:</p>
 <ul>
@@ -566,98 +606,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nginx.conf" class="level4">
 <h4 class="anchored" data-anchor-id="nginx.conf">nginx.conf</h4>
 <p>Modify the configuration file for external access. Here is my initial nginx configuration in <code>/opt/nginx/1.24.0/conf/nginx.conf</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>user  minion;</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>worker_processes  1;</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>events {</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    worker_connections  1024;</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>http {</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    include       mime.types;</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    default_type  application/octet-stream;</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    sendfile        on;</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    keepalive_timeout  65;</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    server {</span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        listen       80;</span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>        server_name  127.0.0.1 &lt;ipv4_address&gt;;</span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        location / {</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>            index  index.html index.htm;</span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>        # redirect server error pages to the static page /50x.html</span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>        error_page   500 502 503 504  /50x.html;</span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>        location = /50x.html {</span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>user  minion;</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>worker_processes  1;</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>events {</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    worker_connections  1024;</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>http {</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    include       mime.types;</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    default_type  application/octet-stream;</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    sendfile        on;</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    keepalive_timeout  65;</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    server {</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>        listen       80;</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>        server_name  127.0.0.1 &lt;ipv4_address&gt;;</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>        location / {</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>            index  index.html index.htm;</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>        # redirect server error pages to the static page /50x.html</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>        error_page   500 502 503 504  /50x.html;</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        location = /50x.html {</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>            root   html;</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="open-port-in-firewall" class="level4">
 <h4 class="anchored" data-anchor-id="open-port-in-firewall">Open port in firewall</h4>
 <p>To register <code>nginx</code> as an <code>ufw</code> application, create a file <code>/etc/ufw/applications.d/nginx</code>. Replace <code>xx</code> with port numbers for HTTP and HTTPS. If you are running nginx as a non-root user, then you have to change the accessible port because the default port 80 is not available to non-root users. Therefore, it’s necessary to use a port &gt; 1000.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTP]</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP)</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">80/tcp</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTPS]</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTPS)</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">443/tcp</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx Full]</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP + HTTPS)</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">80,443/tcp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTP]</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP)</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">80/tcp</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx HTTPS]</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTPS)</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">443/tcp</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[Nginx Full]</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Web Server (Nginx, HTTP + HTTPS)</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span><span class="ot">=</span><span class="st">Small, but very powerful and efficient web server</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="dt">ports</span><span class="ot">=</span><span class="st">80,443/tcp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check the registered app and allow nginx HTTP.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw app info <span class="st">'Nginx HTTP'</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow <span class="st">'Nginx HTTP'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw app info <span class="st">'Nginx HTTP'</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow <span class="st">'Nginx HTTP'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Log files should be accessible by the user <code>minion</code>.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> root:minion /opt/nginx/1.24.0/logs</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/access.log</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/error.log</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 775 /opt/nginx/1.24.0/logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> root:minion /opt/nginx/1.24.0/logs</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/access.log</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> minion:minion /opt/nginx/1.24.0/logs/error.log</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 775 /opt/nginx/1.24.0/logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="useful-commands" class="level4">
 <h4 class="anchored" data-anchor-id="useful-commands">Useful commands</h4>
 <p>Check nginx configuration and start nginx.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check configuration</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-t</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># start</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># stop</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> stop</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># restart</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> reload</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check configuration</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-t</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># start</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># stop</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> stop</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># restart</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/nginx/1.24.0/sbin/nginx <span class="at">-s</span> reload</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="systemd" class="level4">
 <h4 class="anchored" data-anchor-id="systemd">systemd</h4>
 <p>Create a systemd service file to control nginx using <code>systemctl</code> as <a href="https://www.nginx.com/resources/wiki/start/topics/examples/systemd/">described in the official documentation</a>. In Ubuntu 22.04, the file is <code>/lib/systemd/system/nginx.service</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">The NGINX HTTP and reverse proxy server</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">syslog.target network-online.target remote-fs.target nss-lookup.target</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Wants</span><span class="ot">=</span><span class="st">network-online.target</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">forking</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="dt">PIDFile</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/logs/nginx.pid</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStartPre</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -t</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecReload</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -s reload</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStop</span><span class="ot">=</span><span class="st">/bin/kill -s QUIT $MAINPID</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="dt">PrivateTmp</span><span class="ot">=</span><span class="kw">true</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">The NGINX HTTP and reverse proxy server</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">syslog.target network-online.target remote-fs.target nss-lookup.target</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Wants</span><span class="ot">=</span><span class="st">network-online.target</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">forking</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="dt">PIDFile</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/logs/nginx.pid</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStartPre</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -t</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecReload</span><span class="ot">=</span><span class="st">/opt/nginx/1.24.0/sbin/nginx -s reload</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStop</span><span class="ot">=</span><span class="st">/bin/kill -s QUIT $MAINPID</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="dt">PrivateTmp</span><span class="ot">=</span><span class="kw">true</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, I can use <code>systemctl</code> commands to control nginx.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status nginx</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart nginx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status nginx</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart nginx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="check" class="level4">
 <h4 class="anchored" data-anchor-id="check">Check</h4>
@@ -667,42 +707,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>http://&lt;ipv4_address&gt;</li>
 </ul>
 <p>If you are installing on the server and you do not have access to the <code>localhost (127.0.0.1)</code> of the remote server, then you can ssh-tunnel to the remote server from your local machine. For example, I defined <code>ashwini</code> in <code>ssh/config</code> of the local machine and installed <code>ssh-localportfwd</code> from <a href="https://github.com/banskt/dotfiles/blob/main/bin/ssh-localportfwd">here</a>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-localportfwd</span> open ashwini 80 <span class="op">&lt;</span>local_port<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-localportfwd</span> open ashwini 80 <span class="op">&lt;</span>local_port<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, I can access the <code>localhost</code> of the remote machine using <code>http://127.0.0.1:xx</code> where <code>xx</code> is the <code>local_port</code> of my local machine through which I tunneled. The second IPv4 address should work from external network.</p>
 <p>The SSL connection will still not work. Do not worry yet.</p>
 </section>
 <section id="modular-control" class="level4">
 <h4 class="anchored" data-anchor-id="modular-control">Modular control</h4>
-<p>Once everything was working, I removed the external IP from the base configuration of nginx and created server configurations in <code>~/local/.nginx/sites-available/</code> For example, here is my <code>000-default-server.conf</code>:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>server {</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    listen      80 default_server;</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    server_name &lt;ipv4_address&gt;;</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    location / {</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        root        /path/to/webdata/base;</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        index       index.html index.htm;</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    # redirect server error pages to the static page /50x.html</span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    error_page   500 502 503 504  /50x.html;</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    location = /50x.html {</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        root        /path/to/webdata/base;</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    # produce a directory listing using ngx_http_autoindex_module </span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    autoindex            on;</span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    autoindex_exact_size off;</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    autoindex_localtime  on;</span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    # Deny access to anything starting with .ht</span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    location ~ /\.ht {</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>        deny  all;</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once everything was working, I removed the external IP from the base configuration of nginx and created server configurations in <code>~/local/etc/nginx/sites-available/</code> For example, here is my <code>000-default-server.conf</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>server {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    listen      80 default_server;</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    server_name &lt;ipv4_address&gt;;</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    location / {</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        root        /path/to/webdata/base;</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        index       index.html index.htm;</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    # redirect server error pages to the static page /50x.html</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    error_page   500 502 503 504  /50x.html;</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    location = /50x.html {</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        root        /path/to/webdata/base;</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    # produce a directory listing using ngx_http_autoindex_module </span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    autoindex            on;</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    autoindex_exact_size off;</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    autoindex_localtime  on;</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    # Deny access to anything starting with .ht</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    location ~ /\.ht {</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>        deny  all;</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I added the following line to <code>/opt/nginx/1.24.0/conf/nginx.conf</code>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>include /home/banskt/local/.nginx/sites-enabled/*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>include /home/banskt/local/etc/nginx/sites-enabled/*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then created the <code>sites-enabled</code> directory:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/local/.nginx/sites-enabled</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/local/.nginx/sites-enabled</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /home/banskt/local/.nginx/sites-available/000-default-server.conf ./default</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/local/etc/nginx/sites-enabled</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/local/etc/nginx/sites-enabled</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /home/banskt/local/etc/nginx/sites-available/000-default-server.conf ./default</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This way, I can manage adding domains, sub-domains, sub-directories on my server directly from my <code>sites-available</code> and <code>sites-enabled</code> directories.</p>
 <p>At this point, <code>127.0.0.1</code> should serve the nginx welcome message and <code>&lt;ipv4_address&gt;</code> should serve the HTML files from <code>/path/to/webdata/base</code>. Again, check they are working with <code>ssh-localportfwd</code>.</p>
 </section>
@@ -727,11 +767,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Add <code>CNAME</code> entry in zonefile.</li>
 <li>Add 301 redirect in <code>nginx.conf</code></li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>server {</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    listen      80;</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    server_name www.mydomain.com;</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    return 301 $scheme://mydomain.com$request_uri;</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>server {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    listen      80;</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    server_name www.mydomain.com;</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    return 301 $scheme://mydomain.com$request_uri;</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="check-dns" class="level4">
 <h4 class="anchored" data-anchor-id="check-dns">Check DNS</h4>
@@ -744,63 +784,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Install <a href="https://github.com/acmesh-official/acme.sh">acme</a>. The options used for the installation are explained in the <a href="https://github.com/acmesh-official/acme.sh/wiki/How-to-install#4-advanced-installation">documentation</a>.</li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/acmesh-official/acme.sh.git</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> acme.sh/</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./acme.sh</span> <span class="at">--install</span> <span class="at">--home</span> /home/banskt/local/.acme <span class="at">--accountemail</span> banskt.saikat@gmail.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/acmesh-official/acme.sh.git</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> acme.sh/</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./acme.sh</span> <span class="at">--install</span> <span class="at">--home</span> /home/banskt/local/apps/acme <span class="at">--accountemail</span> banskt.saikat@gmail.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Delete the entry in <code>~/.bashrc</code> and add it to <code>~/.custom_dotfiles/bashrc</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source acme.sh for SSL certificates</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">"/home/banskt/local/.acme/acme.sh.env"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source acme.sh for SSL certificates</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">"/home/banskt/local/apps/acme/acme.sh.env"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After sourcing, <code>acme.sh</code> will be available on commandline. Check.</p>
 <ul>
 <li>Create the acme-challenge directory in the document root.</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/webdata/base</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> .well-known/acme-challenge/</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> minion:minion .well-known</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod <span class="at">-R</span> 770 .well-known</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/webdata/base</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> .well-known/acme-challenge/</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> minion:minion .well-known</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod <span class="at">-R</span> 770 .well-known</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and give permissions according to your setup.</p>
 <ul>
 <li>Create directory to store SSL certificates</li>
 </ul>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/.nginx/</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ssl/mydomain.com/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/etc/nginx/</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ssl/mydomain.com/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Generate dhparams file</li>
 </ul>
-<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/.nginx/ssl/</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openssl/3.1.3</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> dhparam <span class="at">-out</span> dhparams.pem 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/etc/nginx/ssl/</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openssl/3.1.3</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> dhparam <span class="at">-out</span> dhparams.pem 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Issue certificates. Optionally, use <a href="https://github.com/acmesh-official/acme.sh/wiki/dnsapi">DNS API</a>. You can either issue certificate for a single domain,</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--issue</span> <span class="at">-d</span> foo.mydomain.com <span class="at">-w</span> /path/to/webdata/base <span class="at">-k</span> 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--issue</span> <span class="at">-d</span> foo.mydomain.com <span class="at">-w</span> /path/to/webdata/base <span class="at">-k</span> 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or have multiple domains in the same certificate.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--issue</span> <span class="at">-d</span> mydomain.com <span class="at">-d</span> www.mydomain.com <span class="at">-w</span> /path/to/webdata/base <span class="at">-k</span> 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--issue</span> <span class="at">-d</span> mydomain.com <span class="at">-d</span> www.mydomain.com <span class="at">-w</span> /path/to/webdata/base <span class="at">-k</span> 4096</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here, <code>-w</code> specifies the document root of the website where the acme-challenge is created, <code>-k</code> specifies the domain key length.</p>
 <ul>
-<li>Generate SSL configurations from <a href="https://ssl-config.mozilla.org">Mozilla SSL Configuration Generator</a>. Write the configuration in <code>/opt/nginx/1.24.0/conf/ssl_params.conf</code> so that it can be included for all servers. For each server, create the SSL nginx configuration, for example,</li>
+<li>Generate SSL configurations from <a href="https://ssl-config.mozilla.org">Mozilla SSL Configuration Generator</a>. Write the configuration in <code>/opt/nginx/1.24.0/conf/ssl_params.conf</code> so that it can be included for all servers. Remember to update your DNS resolver from <code>/etc/resolv.conf</code>. For each server, create the SSL nginx configuration, for example,</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>  ssl_certificate         /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  ssl_certificate_key     /home/banskt/local/.nginx/ssl/sbanerjee.in/privkey.pem;</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  # verify chain of trust of OCSP response using Root CA and Intermediate certs</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  ssl_trusted_certificate /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  include                 /opt/nginx/1.24.0/conf/ssl_params.conf;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>  ssl_certificate         /home/banskt/local/etc/nginx/ssl/sbanerjee.in/fullchain.pem;</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  ssl_certificate_key     /home/banskt/local/etc/nginx/ssl/sbanerjee.in/privkey.pem;</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  # verify chain of trust of OCSP response using Root CA and Intermediate certs</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  ssl_trusted_certificate /home/banskt/local/etc/nginx/ssl/sbanerjee.in/fullchain.pem;</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  include                 /opt/nginx/1.24.0/conf/ssl_params.conf;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Install the issued certificate to nginx server</li>
 </ul>
-<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--install-cert</span> <span class="at">-d</span> mydomain.com <span class="dt">\</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--fullchain-file</span> /home/banskt/local/.nginx/ssl/mydomain.com/fullchain.pem <span class="dt">\</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--key-file</span> /home/banskt/local/.nginx/ssl/mydomain.com/privkey.pem <span class="dt">\</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--reloadcmd</span> <span class="st">"sudo systemctl restart nginx"</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--install-cert</span> <span class="at">-d</span> foo.mydomain.com <span class="dt">\</span></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--fullchain-file</span> /home/banskt/local/.nginx/ssl/foo.mydomain.com/fullchain.pem <span class="dt">\</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--key-file</span> /home/banskt/local/.nginx/ssl/foo.mydomain.com/privkey.pem <span class="dt">\</span></span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--reloadcmd</span> <span class="st">"sudo systemctl restart nginx"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--install-cert</span> <span class="at">-d</span> mydomain.com <span class="dt">\</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">--fullchain-file</span> /home/banskt/local/etc/nginx/ssl/mydomain.com/fullchain.pem <span class="dt">\</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">--key-file</span>       /home/banskt/local/etc/nginx/ssl/mydomain.com/privkey.pem <span class="dt">\</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--reloadcmd</span> <span class="st">""</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--install-cert</span> <span class="at">-d</span> foo.mydomain.com <span class="dt">\</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">--fullchain-file</span> /home/banskt/local/etc/nginx/ssl/foo.mydomain.com/fullchain.pem <span class="dt">\</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">--key-file</span>       /home/banskt/local/etc/nginx/ssl/foo.mydomain.com/privkey.pem <span class="dt">\</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">--reloadcmd</span> <span class="st">"sudo systemctl restart nginx"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Check everything is working! Use browser and <a href="https://www.ssllabs.com/ssltest/">Qualys SSL server test</a>.</li>
 </ul>
-<pre><code>acme.sh --help
-acme.sh --list</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--help</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ex">acme.sh</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="improve-speed-and-performance" class="level3">
 <h3 class="anchored" data-anchor-id="improve-speed-and-performance">Improve speed and performance</h3>
@@ -808,6 +849,268 @@ acme.sh --list</code></pre>
 <li><a href="https://github.com/denji/nginx-tuning">Tuning nginx can improve speed and performance</a>.</li>
 <li><a href="https://scaron.info/blog/improve-your-nginx-ssl-configuration.html">Better SSL configuration</a></li>
 <li><a href="https://jmorahan.net/articles/lets-encrypt-without-port-80">Let’s Encrypt without port 80</a></li>
+<li><a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/">nginx full example config</a></li>
+</ul>
+<p>I modified my <code>nginx.conf</code> to improve speed, performance and security.</p>
+<p>I also setup custom locations for the worker process in <code>home/banskt/local/etc/nginx</code> and setup proper access.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /home/banskt/local/etc/nginx/worker</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> minion:minion /home/banskt/local/etc/nginx/worker</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use ssh port to login for user minion</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> minion@localhost <span class="at">-p</span> xxxxx </span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/etc/nginx</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir worker <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> worker</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> client_body fastcgi uwscgi scgi proxy logs</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> <span class="at">-R</span> 700 client_body/ fastcgi/ proxy/ scgi/ uwscgi/</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> logs</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> access.log error.log</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 644 access.log error.log</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="co"># exit and change owner of logs to root</span></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> root:minion /home/banskt/local/etc/nginx/worker/logs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Specify the new directories in <code>nginx.conf</code> and <code>/lib/systemd/system/nginx.service</code>. The PID file location must be same in both. After changing systemd file, we need to reload daemon.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop nginx</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl reset-failed</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start nginx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Bug:</strong> <code>nginx -t</code> still tries to open the default error log file with which it was compiled. It throws an alert if it does not find the file. I do not like alerts. Therefore, I created a dummy file at the compilation location.</p>
+<p><strong>Update:</strong> My nginx configuration files are now backed up <a href="https://github.com/banskt/dotfiles/tree/main/sysconfig/ashwini-ihostart-vps-storage/nginx">here</a>.</p>
+</section>
+<section id="install-mysql" class="level3">
+<h3 class="anchored" data-anchor-id="install-mysql">Install MySQL</h3>
+<p>Installing MySQL from source is mildly convoluted and risk non-optimal settings leading to reduced functionality, performance, or security (see <a href="https://dev.mysql.com/doc/refman/8.1/en/source-installation.html">here</a>). So, I installed a generic binary as explained <a href="https://dev.mysql.com/doc/refman/8.1/en/binary-installation.html">here</a>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://dev.mysql.com/get/Downloads/MySQL-8.1/mysql-8.1.0-linux-glibc2.28-x86_64.tar.xz <span class="at">--no-check-certificate</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /opt/mysql/</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar xf mysql-8.1.0-linux-glibc2.28-x86_64.tar.xz <span class="at">-C</span> /opt/mysql/</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64 /opt/mysql/8.1.0</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/mysql/8.1.0</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> root:root <span class="pp">*</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir etc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="post-install-setup-and-testing" class="level4">
+<h4 class="anchored" data-anchor-id="post-install-setup-and-testing">Post-install setup and testing</h4>
+<ul>
+<li>Create an initial configuration file in <code>/opt/mysql/8.1.0/etc/my.cnf</code>.</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[mysqld]</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="va">basedir</span><span class="op">=</span>/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="va">datadir</span><span class="op">=</span>/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/data</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable error log</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[mysqld_safe]</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="va">log_error</span><span class="op">=</span>/home/banskt/local/etc/mysql/logs/mysql_error.log</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[mysqld]</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="va">log_error</span><span class="op">=</span>/home/banskt/local/etc/mysql/logs/mysql_error.log</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co"># General query log</span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="ex">general_log_file</span> = /home/banskt/local/etc/mysql/logs/mysql.log</span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="ex">general_log</span>      = 1</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Slow Query Log</span></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="ex">slow_query_log</span> = 1</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a><span class="ex">slow_query_log_file</span> = /home/banskt/local/etc/mysql/logs/mysql_slow.log</span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a><span class="ex">long_query_time</span>  = 2</span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a><span class="ex">log_queries_not_using_indexes</span> = 1</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a><span class="ex">secure_file_priv</span> = /home/banskt/local/etc/mysql/mysql-files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Initialize the data directory and create the MySQL grant tables. <a href="https://dev.mysql.com/doc/refman/8.1/en/postinstallation.html">See detailed instructions</a>.</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/banskt/local/etc/</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mysql <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> mysql</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> logs mysql-files</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown minion:minion logs mysql-files</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 750 logs mysql-files</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /opt/mysql/8.1.0/bin/mysqld <span class="at">--defaults-file</span><span class="op">=</span>/opt/mysql/8.1.0/etc/my.cnf <span class="at">--initialize</span> <span class="at">--user</span><span class="op">=</span>minion </span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the temporary password created in the log file logs/mysql_error.log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Create systemd file <code>/lib/systemd/system/mysql.service</code>.</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">MySQL Community Server</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Documentation</span><span class="ot">=</span><span class="st">man:mysqld(8)</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Documentation</span><span class="ot">=</span><span class="st">http://dev.mysql.com/doc/refman/en/using-systemd.html</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">syslog.target</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="dt">User</span><span class="ot">=</span><span class="st">minion</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="dt">Group</span><span class="ot">=</span><span class="st">minion</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Have mysqld write its state to the systemd notify socket</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">notify</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="co"># PermissionsStartOnly=true</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ExecStartPre=/mysql-systemd-start pre</span></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Start main service</span></span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/bin/mysqld --defaults-file=/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/etc/my.cnf $MYSQLD_OPTS</span></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Disable service start and stop timeout logic of systemd for mysqld service.</span></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a><span class="dt">TimeoutSec</span><span class="ot">=</span><span class="dv">0</span></span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets open_files_limit</span></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a><span class="dt">LimitNOFILE </span><span class="ot">=</span><span class="st"> </span><span class="dv">10000</span></span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">on-failure</span></span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartPreventExitStatus</span><span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Always restart when mysqld exits with exit code of 16. This special exit code</span></span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a><span class="co"># is used by mysqld for RESTART SQL.</span></span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartForceExitStatus</span><span class="ot">=</span><span class="dv">16</span></span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Set enviroment variable MYSQLD_PARENT_PID. This is required for restart.</span></span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a><span class="dt">Environment</span><span class="ot">=</span><span class="st">MYSQLD_PARENT_PID=1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://dev.mysql.com/doc/refman/8.1/en/using-systemd.html">There are multiple ways to specify environment variable values for use by the MySQL server process managed by systemd</a>. To specify options for mysqld without modifying systemd configuration files directly, set or unset the <code>MYSQLD_OPTS</code> systemd variable. For example:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> set-environment MYSQLD_OPTS=<span class="st">"--general_log=1"</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> unset-environment MYSQLD_OPTS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>MYSQLD_OPTS</code> can also be set in the <code>/etc/sysconfig/mysql</code> file.</p>
+<ul>
+<li>Start the server and secure installation.</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl reset-failed</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start mysql</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status mysql</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/mysql/8.1.0/bin/mysql</span> <span class="at">-u</span> root <span class="at">-p</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter password from the error log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootpassword';</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>mysql&gt; FLUSH PRIVILEGES;</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>mysql&gt; SELECT user,authentication_string,plugin,host FROM mysql.user;</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>mysql&gt; exit;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><a href="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-configuration-file.html">Deployment configuration file</a></li>
+</ul>
+</section>
+</section>
+<section id="install-php-from-source" class="level3">
+<h3 class="anchored" data-anchor-id="install-php-from-source">Install PHP from source</h3>
+<ul>
+<li>Download latest package and untar.</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.php.net/distributions/php-8.2.10.tar.gz</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> php-8.2.10.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Install prerequisites</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pkg-config libxml2-dev libxmlrpc-epi-dev libsqlite3-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libonig-dev libxslt-dev libzip-dev</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install autoconf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Create configuration bash script</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openssl/3.1.3</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_CFLAGS</span><span class="op">=</span><span class="st">'-I/opt/openssl/3.1.3/include -L/opt/openssl/3.1.3/lib64 -lssl -lcrypto -Wl,-rpath,/opt/openssl/3.1.3/lib64'</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_LIBS</span><span class="op">=</span><span class="st">'/opt/openssl/3.1.3/lib64'</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="dt">\</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--prefix</span><span class="op">=</span>/opt/php/8.2.10 <span class="dt">\</span></span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-mbstring</span> <span class="dt">\</span></span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-curl</span> <span class="dt">\</span></span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-openssl</span> <span class="dt">\</span></span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-opcache</span> <span class="dt">\</span></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-zip</span> <span class="dt">\</span></span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-gd</span> <span class="dt">\</span></span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-jpeg</span> <span class="dt">\</span></span>
+<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-fpm</span> <span class="dt">\</span></span>
+<span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-cli</span> <span class="dt">\</span></span>
+<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-xml</span> <span class="dt">\</span></span>
+<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-xmlrpc</span> <span class="dt">\</span></span>
+<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">--enable-intl</span> <span class="dt">\</span></span>
+<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-xsl</span> <span class="dt">\</span></span>
+<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-zlib</span> <span class="dt">\</span></span>
+<span id="cb69-22"><a href="#cb69-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-mysql</span><span class="op">=</span>mysqlnd <span class="dt">\</span></span>
+<span id="cb69-23"><a href="#cb69-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-pdo-mysql</span><span class="op">=</span>mysqlnd <span class="dt">\</span></span>
+<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">--with-mysqli</span><span class="op">=</span>mysqlnd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Configure and build. Compilation takes a long time, better to use <code>tmux</code> or <code>screen</code>.</li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> config.sh</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> test</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Setup a development environment.</li>
+</ul>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/php/8.2.10/var/run/ <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> mkdir php-fpm</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="at">-</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp php.ini-development /opt/php/8.2.10/lib/php.ini</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp sapi/fpm/php-fpm.conf /opt/php/8.2.10/etc/php-fpm.conf</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp sapi/fpm/www.conf /opt/php/8.2.10/etc/php-fpm.d/www.conf</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vim /opt/php/8.2.10/etc/php-fpm.d/www.conf</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co"># edit the following:</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co"># user = minion</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="co"># group = minion</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co"># listen.owner = minion</span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co"># listen.group = minion</span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co"># listen = /opt/php/8.2.10/var/run/php-fpm/php-fpm.sock</span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /opt/php/8.2.10/etc/conf.d</span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vim /opt/php/8.2.10/etc/conf.d/modules.ini</span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="co"># zend_extension=opcache.so</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>To-Do:</strong> Change it to production environment.</p>
+<ul>
+<li>Create systemd file <code>/lib/systemd/system/php-fpm.service</code></li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">The PHP FastCGI Process Manager</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">syslog.target network.target</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">simple</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="dt">PIDFile</span><span class="ot">=</span><span class="st">/opt/php/8.2.10/var/run/php-fpm/php-fpm.pid</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/opt/php/8.2.10/sbin/php-fpm --nodaemonize --fpm-config /opt/php/8.2.10/etc/php-fpm.conf</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecReload</span><span class="ot">=</span><span class="st">/bin/kill -USR2 $MAINPID</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Start PHP. Check socket and version</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl reset-failed</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start php-fpm</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/php/8.2.10/bin/php</span> <span class="at">-v</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> /opt/php/8.2.10/var/run/php-fpm/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Create modulefile <code>/opt/modulefiles/php/8.2.10</code> and load module.</li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%Module</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="kw">proc</span> ModulesHelp <span class="kw">{</span> <span class="kw">}</span> <span class="kw">{</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> version prefix</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">puts</span> stderr <span class="st">"</span><span class="ch">\t</span><span class="st">Loads PHP bin directory in PATH."</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>module-whatis   <span class="st">"loads PHP bin directory in PATH"</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co"># for Tcl script use only</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> version     <span class="dv">8</span>.<span class="fl">2.10</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> prefix      <span class="kw">{</span>/opt/php/<span class="dv">8</span>.<span class="fl">2.10</span><span class="kw">}</span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>prepend-path    PATH            <span class="dt">$prefix</span>/bin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Install xmlrpc extension (required by rtorrent)</li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://pecl.php.net/get/xmlrpc-1.0.0RC3.tgz <span class="at">--no-check-certificate</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> zxf xmlrpc-1.0.0RC3.tgz</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> xmlrpc-1.0.0RC3/</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load php/8.2.10</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="ex">phpize</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Move the extension to the PHP extension directory.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="at">-i</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"extension_dir"</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="ex">extension_dir</span> =<span class="op">&gt;</span> /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829 =<span class="op">&gt;</span> /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp modules/xmlrpc.so /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Edit the <code>php.ini</code> file to include the line:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="dt">extension</span><span class="ot">=</span><span class="st">xmlrpc.so</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Restart the <code>php-fpm</code> service. To verify the installation, you can use something like this (should at least return the line “xmlrpc”):</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="at">-i</span> <span class="kw">|</span> <span class="fu">grep</span> xmlrpc <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"xmlrpc_error"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Configure the nginx server to use the php-fpm socket.</li>
 </ul>
 
 
@@ -1055,6 +1358,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../code/2023-09-23-ashwini-setup2.html" class="pagination-link">
+        <span class="nav-page-text">Setup Torrents</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

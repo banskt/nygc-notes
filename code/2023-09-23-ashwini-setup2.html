@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tajurba - Setup Python workbench</title>
+<title>Tajurba - Setup Torrents</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/2023-04-27-gradvi-setup.html" rel="next">
-<link href="../code/index.html" rel="prev">
+<link href="../code/2023-09-19-ashwini-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -148,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2023-04-25-cluster-setup.html">Setup Python workbench</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2023-09-23-ashwini-setup2.html">Setup Torrents</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/2023-04-25-cluster-setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../code/2023-04-25-cluster-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup Python workbench</span></a>
   </div>
 </li>
@@ -200,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/2023-09-23-ashwini-setup2.html" class="sidebar-item-text sidebar-link">
+  <a href="../code/2023-09-23-ashwini-setup2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setup Torrents</span></a>
   </div>
 </li>
@@ -214,21 +213,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#directory-structure" id="toc-directory-structure" class="nav-link active" data-scroll-target="#directory-structure">Directory structure</a></li>
-  <li><a href="#setup-modules" id="toc-setup-modules" class="nav-link" data-scroll-target="#setup-modules">Setup modules</a></li>
-  <li><a href="#setup-miniconda" id="toc-setup-miniconda" class="nav-link" data-scroll-target="#setup-miniconda">Setup Miniconda</a></li>
-  <li><a href="#install-python" id="toc-install-python" class="nav-link" data-scroll-target="#install-python">Install Python</a></li>
-  <li><a href="#connect-to-jupyterlab" id="toc-connect-to-jupyterlab" class="nav-link" data-scroll-target="#connect-to-jupyterlab">Connect to JupyterLab</a></li>
-  <li><a href="#load-r-libraries-with-python" id="toc-load-r-libraries-with-python" class="nav-link" data-scroll-target="#load-r-libraries-with-python">Load R libraries with Python</a></li>
+  <li><a href="#xmlrpc" id="toc-xmlrpc" class="nav-link active" data-scroll-target="#xmlrpc">XMLRPC</a></li>
+  <li><a href="#libtorrent" id="toc-libtorrent" class="nav-link" data-scroll-target="#libtorrent">libtorrent</a></li>
+  <li><a href="#rtorrent" id="toc-rtorrent" class="nav-link" data-scroll-target="#rtorrent">rTorrent</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-04-25-cluster-setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/banskt/nygc-notes/edit/main/code/2023-09-23-ashwini-setup2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setup Python workbench</h1>
+<h1 class="title">Setup Torrents</h1>
 </div>
 
 
@@ -243,143 +239,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Here is a short documentation for the setup of my <em>home</em> at the NYGC cluster. I started by cloning my dotfiles from GitHub.</p>
-<section id="directory-structure" class="level2">
-<h2 class="anchored" data-anchor-id="directory-structure">Directory structure</h2>
-<ul>
-<li><code>opt</code> for installing software</li>
-<li><code>software</code> for downloading and/or developing software</li>
-<li><code>work</code> for experiments / simulations / analysis</li>
-</ul>
+<section id="xmlrpc" class="level1">
+<h1>XMLRPC</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:mirror/xmlrpc-c.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> xmlrpc-c/stable</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/xmlrpc-c <span class="at">--disable-cplusplus</span> <span class="at">--disable-wininet-client</span> <span class="at">--disable-libwww-client</span> <span class="at">--disable-abyss-server</span> <span class="at">--disable-cgi-server</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="setup-modules" class="level2">
-<h2 class="anchored" data-anchor-id="setup-modules">Setup modules</h2>
-<ul>
-<li>Add <code>export MODULEPATH="${MODULEPATH}:${HOME}/modulefiles"</code> to include personal modulefiles.</li>
-</ul>
+<section id="libtorrent" class="level1">
+<h1>libtorrent</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libtool</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/rakshasa/libtorrent/archive/refs/tags/v0.13.8.tar.gz</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> zxf v0.13.8.tar.gz</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> libtorrent-0.13.8/</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openssl/3.1.3</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_CFLAGS</span><span class="op">=</span><span class="st">'-I/opt/openssl/3.1.3/include -L/opt/openssl/3.1.3/lib64 -lssl -lcrypto -Wl,-rpath,/opt/openssl/3.1.3/lib64'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_LIBS</span><span class="op">=</span><span class="st">'/opt/openssl/3.1.3/lib64'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/opt/libtorrent/0.13.8 <span class="at">--disable-debug</span> <span class="at">--with-posix-fallocate</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j2</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="setup-miniconda" class="level2">
-<h2 class="anchored" data-anchor-id="setup-miniconda">Setup Miniconda</h2>
+<section id="rtorrent" class="level1">
+<h1>rTorrent</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/rakshasa/rtorrent-archive/raw/master/rtorrent-0.9.8.tar.gz</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxf</span> rtorrent-0.9.8.tar.gz</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libncurses-dev </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">DEPENDENCIES_CFLAGS</span><span class="op">=</span><span class="st">'-I/opt/libtorrent/0.13.8/include -I/opt/xmlrpc-c/include'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">DEPENDENCIES_LIBS</span><span class="op">=</span><span class="st">'-L/opt/libtorrent/0.13.8/lib -L/opt/xmlrpc-c/lib'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span>/home/banskt/local/apps/rtorrent/0.9.8 <span class="at">--disable-debug</span> <span class="at">--with-xmlrpc-c</span><span class="op">=</span>/opt/xmlrpc-c/bin/xmlrpc-c-config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Download and install latest version of Miniconda (23.3.1).</li>
-<li>Copy conda init script from <code>.bashrc</code> to <code>opt/miniconda3/conda_bash_init.sh</code>.</li>
-<li>Create a modulefile to initialize conda on demand. <a href="https://github.com/conda/conda/issues/11087">Similar issue for LMOD modulefiles</a>.</li>
+<li><a href="https://www.reddit.com/r/seedboxes/comments/e2p4mv/install_rtorrent_libtorrent_and_xmlrpcc_from/">Installation of xmlrpc-c, libtorrent and rtorrent</a></li>
+<li></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%Module2.1.10#####################################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">## modulefiles conda/23.3.1</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> version <span class="dv">23</span>.<span class="fl">3.1</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> modroot /gpfs/commons/home/sbanerjee/opt/miniconda3</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">proc</span> ModulesHelp <span class="kw">{</span> <span class="kw">}</span> <span class="kw">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">global</span> version modroot</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">puts</span> stderr <span class="st">"conda/</span><span class="dt">$</span><span class="st">version - adds Miniconda to PATH"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>module-whatis   <span class="st">"Sets the environment for using Miniconda"</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Only one version at a time</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>conflict conda</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="kw">[</span>module-<span class="kw">info</span> mode <span class="kw">load]</span> <span class="kw">{</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">puts</span> stdout <span class="st">"source </span><span class="dt">$</span><span class="st">modroot/conda_bash_init.sh ;"</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="kw">[</span>module-<span class="kw">info</span> mode <span class="ot">remove</span><span class="kw">]</span> <span class="kw">{</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">puts</span> stdout <span class="st">"conda deactivate ;"</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="ot">remove</span>-path PATH <span class="dt">$modroot</span>/bin</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="ot">remove</span>-path PATH <span class="dt">$modroot</span>/condabin</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">## unset variable names.</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">## env | grep "CONDA"</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    unsetenv CONDA_SHLVL</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    unsetenv CONDA_EXE</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    unsetenv _CE_CONDA</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    unsetenv CONDA_PYTHON_EXE</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">## unset function names</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">## declare -F</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    unsetenv __conda_activate</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    unsetenv __conda_exe</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    unsetenv __conda_hashr</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    unsetenv __conda_reactivate</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    unsetenv conda</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Setup <code>.condarc</code> (see <a href="https://github.com/banskt/dotfiles">dotfiles</a>)</li>
-</ul>
-</section>
-<section id="install-python" class="level2">
-<h2 class="anchored" data-anchor-id="install-python">Install Python</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc/11.2.0 lapack/3.10 openmpi/4.1.4</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> py311 python=3.11 <span class="at">-c</span> conda-forge</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate py311</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--env</span> <span class="at">--add</span> channels conda-forge</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install numpy scipy pandas scikit-learn matplotlib</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="connect-to-jupyterlab" class="level2">
-<h2 class="anchored" data-anchor-id="connect-to-jupyterlab">Connect to JupyterLab</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/.jupyter</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /nfs/sw/jupyter3/jupyter3-4.1/.jupyter/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>There is no need for local port forwarding. (I want to know how it is set up, ask NYGC Cluster Linux help).</p>
-</section>
-<section id="load-r-libraries-with-python" class="level2">
-<h2 class="anchored" data-anchor-id="load-r-libraries-with-python">Load R libraries with Python</h2>
-<ul>
-<li>Set CXX17 path for compiling R packages</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'CXX17 = g++ -std=gnu++17 -fPIC'</span> <span class="op">&gt;</span> ~/.R/Makevars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Create modulefile for loading environment variables (required for loading R from Python) which are not set by NYGC.</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%Module2.1.10#####################################################################</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">## modulefiles Renv/4.2.3</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>prereq R/<span class="dv">4</span>.<span class="fl">2.3</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> version <span class="dv">4</span>.<span class="fl">2.3</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> rhome <span class="dt">$::env</span>(rhome)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">proc</span> ModulesHelp <span class="kw">{</span> <span class="kw">}</span> <span class="kw">{</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> version</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">puts</span> stderr <span class="st">"Renv/</span><span class="dt">$</span><span class="st">version - adds extra environment variables not provided by NYGC"</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>module-whatis <span class="st">"Sets the environment for using R/</span><span class="dt">$</span><span class="st">version"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Only one version at a time</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>conflict Renv</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>prepend-path    LIBRARY_PATH            <span class="dt">$rhome</span>/lib64/R/lib</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>prepend-path    CPATH                   <span class="dt">$rhome</span>/lib64/R/include</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>prepend-path    CMAKE_PREFIX_PATH       <span class="dt">$rhome</span>/</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>setenv          R_ROOT                  <span class="dt">$rhome</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>setenv          R_HOME                  <span class="dt">$rhome</span>/lib64/R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Load the R module and the environment variables</li>
-</ul>
-<pre><code>module load R/4.2.3
-module load Renv/4.2.3</code></pre>
-<ul>
-<li>Install some R packages (also checks that gcc is working)</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">Ncpus =</span> <span class="dv">48</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"ggplot2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Install and verify rpy2</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install tzlocal <span class="co"># other dependencies are already installed while installing the previous packages</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install rpy2</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rpy2.situation</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> import <span class="ex">rpy2.robjects</span> as robj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -620,14 +515,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Code</span>
+      <a href="../code/2023-09-19-ashwini-setup.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup Ashwini</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/2023-04-27-gradvi-setup.html" class="pagination-link">
-        <span class="nav-page-text">Setup GradVI workbench</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
