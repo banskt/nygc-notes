@@ -69,24 +69,34 @@ sudo apt install vim build-essential git
 
 ## Purge snap
 
-I do not like things happening in the background without my knowledge.
-For me, the first thing to do after a fresh install is to remove `snap`.
+I do not like things happening in the background without my consent.
+Therefore, I [remove snap after a 
+fresh Ubuntu install](https://github.com/banskt/dotfiles/blob/main/docs/remove_snap.md).
+I list the `snap` packages,
+stop the `snap` daemon service(s),
+and remove each snap package individually,
+starting with non-canonical packages.
+I remove the `snapd` package and all the related directories.
 ```bash
 sudo snap list
+
 sudo systemctl disable snapd.service
 sudo systemctl disable snapd.socket
 sudo systemctl disable snapd.seeded.service
+
 sudo snap remove --purge lxd
 sudo snap remove --purge core20
-sudo snap list # this must not list anything else
+
+sudo snap list # check this does not list anything else
+
 sudo apt remove --autoremove snapd
 sudo rm -rf ~/snap /snap /var/snap /var/lib/snapd /root/snap
 ```
-The last command complains about "read-only file system".
-So, I had to reboot to stop the systemd services and rerun the command.
-
-
-I manually removed snap related systemd services, following [this Stackoverflow answer](https://superuser.com/a/936976).
+The last command complained about "read-only file system".
+So, I had to reboot and rerun the command.
+Some systemd services were still blocking the mount points.
+I manually **obliterated** snap related systemd services, 
+following [this Stackoverflow answer](https://superuser.com/a/936976).
 ```bash
 cd /etc/systemd/system
 sudo systemctl stop snap-snapd-18357.mount
@@ -102,10 +112,7 @@ I did the same thing for all these services:
 - snapd.apparmor.service
 - snapd.autoimport.service
 - snapd.core-fixup.service
-- snapd.seeded.service 
 - snapd.snap-repair.timer
-- snapd.service
-- snapd.socket 
 - snapd.system-shutdown.service
 - snapd.recovery-chooser-trigger.service
 ```
@@ -151,7 +158,9 @@ sudo passwd minion
   IgnoreRhosts yes
   # do not allow eavesdropping
   PermitEmptyPasswords no
-  AllowTcpForwarding no
+  # better to not allow TCP forwarding, but required for SSH tunnels
+  AllowTcpForwarding yes
+  # don't have X11 on server
   X11Forwarding no
   # last login info can provide available users to hackers
   PrintLastLog no
@@ -276,18 +285,24 @@ sudo make install
 ```
 
 Finally, configure. Initialize modules in `~/.custom_dotfiles/bashrc`:
+This has to be included in bashrc of each user who need to access modulefiles.
+Alternative is to include it in `/etc/bash.bashrc` or `/etc/profile` but those are not
+guranteed to be invoked (see [decision tree for loading config files in different 
+shell environments](https://github.com/banskt/dotfiles/tree/main/bash)).
 ```bash
 # Environment modules
 source /opt/modules/init/bash
 ```
-Also, put all the example dotfiles in a separate directory:
+
+Also, put all the example dotfiles in a separate directory
+so that do not show up in `module avail`.
 ```bash
 sudo mkdir -p /opt/modules/examples
 cd /opt/modulefiles
 sudo mv dot module-git module-info modules null use.own /opt/modules/examples/
 ```
 
-## LEMP Stack (nginx, MySQL, PHP)
+## Webtack (nginx, SSL, PHP)
 
 Previously, I installed a [webstack in Kalindi](https://github.com/banskt/dotfiles/blob/main/docs/webstack_kalindi.md).
 
@@ -302,7 +317,13 @@ for help.
 
 #### PCRE2
 
-If you want to install PCRE2 from scratch, it can be done as:
+I prefer to manage the library files in the OS using `apt`. So, I use `apt install`.
+```bash
+sudo apt install libpcre2-dev
+```
+**Surprise:** `pcre3` is older than `pcre2`. Do not install `pcre3`.
+
+If you want to configure, build and install PCRE2 from scratch, it can be done as:
 ```bash
 sudo apt install zlib1g-dev libbz2-dev libreadline-dev libedit-dev
 wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
@@ -313,11 +334,6 @@ make -j 2
 make check
 sudo make install
 ```
-I preferred to install the library files in the OS:
-```bash
-sudo apt install libpcre2-dev
-```
-**Surprise:** `pcre3` is older than `pcre2`. Do not install `pcre3`.
 
 #### Zlib
 ```bash
@@ -331,9 +347,10 @@ I checked the distribution of current OpenSSL package:
 openssl version -a
 ```
 I have version 3.0.2 installed by default. 
-I wanted the latest version and control of OpenSSL, hence I configured myself ([see documentation](https://github.com/openssl/openssl/blob/master/INSTALL.md))
-using the options from [Linux from Scratch](https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html).
-Also, run `./Configure LIST` to see a list of configuration options.
+I wanted the latest version of OpenSSL, hence I configured myself ([see documentation](https://github.com/openssl/openssl/blob/master/INSTALL.md))
+using the configuration options of 
+[Linux from Scratch](https://www.linuxfromscratch.org/lfs/view/development/chapter08/openssl.html).
+Run `./Configure LIST` to see a list of configuration options.
 ```bash
 wget https://www.openssl.org/source/openssl-3.1.3.tar.gz
 tar -zxf openssl-3.1.3.tar.gz
@@ -361,7 +378,10 @@ I used the latest stable release.
 wget https://nginx.org/download/nginx-1.24.0.tar.gz
 tar -zxf nginx-1.24.0.tar.gz
 ```
-There are many configuration options for nginx. I read them in the [official docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources) and in their [open source project](https://nginx.org/en/docs/configure.html). 
+There are many configuration options for nginx -- 
+[official docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#sources) |
+[open source project](https://nginx.org/en/docs/configure.html). 
+
 Other resources include:
 
   - Erick T. Hitter discusses [compiling nginx with custom OpenSSL support](https://ethitter.com/2016/06/nginx-openssl-1-0-2-http-2-alpn/) -- 
@@ -370,7 +390,37 @@ Other resources include:
   - nginx forum: [build nginx with OpenSSL shared library not using the system OpenSSL library 
   but using the shared library in a specific path](https://forum.nginx.org/read.php?2,275441,275447#msg-275447).
 
-Here are the configuration options I used:
+Here are the configuration options I used which can also be checked later using `nginx -V`.
+```bash
+./configure \
+  --prefix=/opt/nginx/1.24.0 \
+  --builddir=../nginx-1.24.0-build \
+  --with-http_ssl_module \
+  --with-http_v2_module \
+  --with-http_realip_module \
+  --with-http_addition_module \
+  --with-http_sub_module \
+  --with-http_dav_module \
+  --with-http_flv_module \
+  --with-http_mp4_module \
+  --with-http_gunzip_module \
+  --with-http_gzip_static_module \
+  --with-http_random_index_module \
+  --with-http_secure_link_module \
+  --with-http_stub_status_module \
+  --with-http_auth_request_module \
+  --with-stream \
+  --with-stream_ssl_module \
+  --with-http_slice_module \
+  --with-mail \
+  --with-mail_ssl_module \
+  --with-pcre \
+  --with-threads \
+  --with-file-aio \
+  --with-cc-opt="-I /opt/openssl/3.1.3/include" \
+  --with-ld-opt="-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"
+```
+One liner (for copy/paste):
 ```bash
 ./configure --prefix=/opt/nginx/1.24.0 --builddir=../nginx-1.24.0-build --with-http_ssl_module --with-pcre --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-threads --with-stream --with-stream_ssl_module --with-http_slice_module --with-mail --with-mail_ssl_module --with-file-aio --with-cc-opt="-I /opt/openssl/3.1.3/include" --with-ld-opt="-L /opt/openssl/3.1.3/lib64 -ldl -Wl,-rpath,/opt/openssl/3.1.3/lib64"
 ```
@@ -552,7 +602,7 @@ The SSL connection will still not work. Do not worry yet.
 #### Modular control
 Once everything was working,
 I removed the external IP from the base configuration of nginx
-and created server configurations in `~/local/.nginx/sites-available/`
+and created server configurations in `~/local/etc/nginx/sites-available/`
 For example, here is my `000-default-server.conf`:
 ```default
 server {
@@ -581,13 +631,13 @@ server {
 ```
 I added the following line to `/opt/nginx/1.24.0/conf/nginx.conf`:
 ```default
-include /home/banskt/local/.nginx/sites-enabled/*
+include /home/banskt/local/etc/nginx/sites-enabled/*
 ```
 And then created the `sites-enabled` directory:
 ```bash
-mkdir -p ~/local/.nginx/sites-enabled
-cd ~/local/.nginx/sites-enabled
-ln -s /home/banskt/local/.nginx/sites-available/000-default-server.conf ./default
+mkdir -p ~/local/etc/nginx/sites-enabled
+cd ~/local/etc/nginx/sites-enabled
+ln -s /home/banskt/local/etc/nginx/sites-available/000-default-server.conf ./default
 ```
 This way, I can manage adding domains, sub-domains, sub-directories 
 on my server directly from my `sites-available` and `sites-enabled` directories.
@@ -655,13 +705,13 @@ I did not use `certbot` because it enforced installation using `snap`.
   ```bash
   git clone https://github.com/acmesh-official/acme.sh.git
   cd acme.sh/
-  ./acme.sh --install --home /home/banskt/local/.acme --accountemail banskt.saikat@gmail.com
+  ./acme.sh --install --home /home/banskt/local/apps/acme --accountemail banskt.saikat@gmail.com
   ```
   Delete the entry in `~/.bashrc` and add it to `~/.custom_dotfiles/bashrc`.
 
   ```bash
   # Source acme.sh for SSL certificates
-  source "/home/banskt/local/.acme/acme.sh.env"
+  source "/home/banskt/local/apps/acme/acme.sh.env"
   ```
   After sourcing, `acme.sh` will be available on commandline. Check.
 
@@ -676,13 +726,13 @@ I did not use `certbot` because it enforced installation using `snap`.
 
   - Create directory to store SSL certificates
   ```bash
-  cd /home/banskt/local/.nginx/
+  cd /home/banskt/local/etc/nginx/
   mkdir -p ssl/mydomain.com/
   ```
 
   - Generate dhparams file
   ```bash
-  cd /home/banskt/local/.nginx/ssl/
+  cd /home/banskt/local/etc/nginx/ssl/
   module load openssl/3.1.3
   openssl dhparam -out dhparams.pem 4096
   ```
@@ -705,36 +755,336 @@ I did not use `certbot` because it enforced installation using `snap`.
   [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org).
   Write the configuration in `/opt/nginx/1.24.0/conf/ssl_params.conf`
   so that it can be included for all servers.
+  Remember to update your DNS resolver from `/etc/resolv.conf`.
   For each server, create the SSL nginx configuration, for example,
   ```default
-    ssl_certificate         /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;
-    ssl_certificate_key     /home/banskt/local/.nginx/ssl/sbanerjee.in/privkey.pem;
+    ssl_certificate         /home/banskt/local/etc/nginx/ssl/sbanerjee.in/fullchain.pem;
+    ssl_certificate_key     /home/banskt/local/etc/nginx/ssl/sbanerjee.in/privkey.pem;
     # verify chain of trust of OCSP response using Root CA and Intermediate certs
-    ssl_trusted_certificate /home/banskt/local/.nginx/ssl/sbanerjee.in/fullchain.pem;
+    ssl_trusted_certificate /home/banskt/local/etc/nginx/ssl/sbanerjee.in/fullchain.pem;
     include                 /opt/nginx/1.24.0/conf/ssl_params.conf;
   ```
 
   - Install the issued certificate to nginx server
-  ```bash
-  acme.sh --install-cert -d mydomain.com \
-    --fullchain-file /home/banskt/local/.nginx/ssl/mydomain.com/fullchain.pem \
-    --key-file /home/banskt/local/.nginx/ssl/mydomain.com/privkey.pem \
-    --reloadcmd "sudo systemctl restart nginx"
-  acme.sh --install-cert -d foo.mydomain.com \
-    --fullchain-file /home/banskt/local/.nginx/ssl/foo.mydomain.com/fullchain.pem \
-    --key-file /home/banskt/local/.nginx/ssl/foo.mydomain.com/privkey.pem \
-    --reloadcmd "sudo systemctl restart nginx"
-  ```
+```bash
+acme.sh --install-cert -d mydomain.com \
+        --fullchain-file /home/banskt/local/etc/nginx/ssl/mydomain.com/fullchain.pem \
+        --key-file       /home/banskt/local/etc/nginx/ssl/mydomain.com/privkey.pem \
+        --reloadcmd ""
+#
+acme.sh --install-cert -d foo.mydomain.com \
+        --fullchain-file /home/banskt/local/etc/nginx/ssl/foo.mydomain.com/fullchain.pem \
+        --key-file       /home/banskt/local/etc/nginx/ssl/foo.mydomain.com/privkey.pem \
+        --reloadcmd "sudo systemctl restart nginx"
+```
 
   - Check everything is working! Use browser and 
   [Qualys SSL server test](https://www.ssllabs.com/ssltest/).
-  ```
-  acme.sh --help
-  acme.sh --list
-  ```
+```bash
+acme.sh --help
+acme.sh --list
+```
 
 ### Improve speed and performance
 
   - [Tuning nginx can improve speed and performance](https://github.com/denji/nginx-tuning).
   - [Better SSL configuration](https://scaron.info/blog/improve-your-nginx-ssl-configuration.html)
   - [Let's Encrypt without port 80](https://jmorahan.net/articles/lets-encrypt-without-port-80)
+  - [nginx full example config](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
+
+I modified my `nginx.conf` to improve speed, performance and security.
+
+I also setup custom locations for the worker process in `home/banskt/local/etc/nginx`
+and setup proper access.
+```bash
+mkdir -p /home/banskt/local/etc/nginx/worker
+sudo chown -R minion:minion /home/banskt/local/etc/nginx/worker
+# use ssh port to login for user minion
+ssh minion@localhost -p xxxxx 
+cd /home/banskt/local/etc/nginx
+sudo mkdir worker && cd worker
+mkdir client_body fastcgi uwscgi scgi proxy logs
+chmod -R 700 client_body/ fastcgi/ proxy/ scgi/ uwscgi/
+cd logs
+touch access.log error.log
+chmod 644 access.log error.log
+cd ..
+# exit and change owner of logs to root
+exit
+sudo chown -R root:minion /home/banskt/local/etc/nginx/worker/logs
+```
+Specify the new directories in `nginx.conf` and `/lib/systemd/system/nginx.service`.
+The PID file location must be same in both.
+After changing systemd file, we need to reload daemon.
+```bash
+sudo systemctl stop nginx
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+sudo systemctl start nginx
+```
+**Bug:** 
+`nginx -t` still tries to open the default error log file
+with which it was compiled. It throws an alert if it does not
+find the file. I do not like alerts. Therefore, I created a
+dummy file at the compilation location.
+
+**Update:** My nginx configuration files are now backed up
+[here](https://github.com/banskt/dotfiles/tree/main/sysconfig/ashwini-ihostart-vps-storage/nginx).
+
+### Install MySQL 
+
+Installing MySQL from source is mildly convoluted 
+and risk non-optimal settings leading to 
+reduced functionality, performance, or security 
+(see [here](https://dev.mysql.com/doc/refman/8.1/en/source-installation.html)).
+So, I installed a generic binary as explained 
+[here](https://dev.mysql.com/doc/refman/8.1/en/binary-installation.html).
+
+```bash
+wget https://dev.mysql.com/get/Downloads/MySQL-8.1/mysql-8.1.0-linux-glibc2.28-x86_64.tar.xz --no-check-certificate
+sudo mkdir -p /opt/mysql/
+sudo tar xf mysql-8.1.0-linux-glibc2.28-x86_64.tar.xz -C /opt/mysql/
+sudo ln -s /opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64 /opt/mysql/8.1.0
+cd /opt/mysql/8.1.0
+sudo chown -R root:root *
+sudo mkdir etc
+```
+#### Post-install setup and testing
+
+  - Create an initial configuration file in `/opt/mysql/8.1.0/etc/my.cnf`.
+```bash
+[mysqld]
+basedir=/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64
+datadir=/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/data
+
+# Enable error log
+[mysqld_safe]
+log_error=/home/banskt/local/etc/mysql/logs/mysql_error.log
+
+[mysqld]
+log_error=/home/banskt/local/etc/mysql/logs/mysql_error.log
+
+# General query log
+general_log_file = /home/banskt/local/etc/mysql/logs/mysql.log
+general_log      = 1
+
+# Slow Query Log
+slow_query_log = 1
+slow_query_log_file = /home/banskt/local/etc/mysql/logs/mysql_slow.log
+long_query_time  = 2
+log_queries_not_using_indexes = 1
+
+# 
+secure_file_priv = /home/banskt/local/etc/mysql/mysql-files
+```
+  - Initialize the data directory and create the MySQL grant tables. 
+  [See detailed instructions](https://dev.mysql.com/doc/refman/8.1/en/postinstallation.html).
+```bash
+cd /home/banskt/local/etc/
+mkdir mysql && cd mysql
+mkdir logs mysql-files
+sudo chown minion:minion logs mysql-files
+sudo chmod 750 logs mysql-files
+
+sudo /opt/mysql/8.1.0/bin/mysqld --defaults-file=/opt/mysql/8.1.0/etc/my.cnf --initialize --user=minion 
+# Note the temporary password created in the log file logs/mysql_error.log
+```
+  - Create systemd file `/lib/systemd/system/mysql.service`.
+```ini
+[Unit]
+Description=MySQL Community Server
+Documentation=man:mysqld(8)
+Documentation=http://dev.mysql.com/doc/refman/en/using-systemd.html
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=minion
+Group=minion
+
+# Have mysqld write its state to the systemd notify socket
+Type=notify
+# PermissionsStartOnly=true
+# ExecStartPre=/mysql-systemd-start pre
+
+# Start main service
+ExecStart=/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/bin/mysqld --defaults-file=/opt/mysql/mysql-8.1.0-linux-glibc2.28-x86_64/etc/my.cnf $MYSQLD_OPTS
+
+# Disable service start and stop timeout logic of systemd for mysqld service.
+TimeoutSec=0
+
+# Sets open_files_limit
+LimitNOFILE = 10000
+Restart=on-failure
+RestartPreventExitStatus=1
+
+# Always restart when mysqld exits with exit code of 16. This special exit code
+# is used by mysqld for RESTART SQL.
+RestartForceExitStatus=16
+
+# Set enviroment variable MYSQLD_PARENT_PID. This is required for restart.
+Environment=MYSQLD_PARENT_PID=1
+```
+[There are multiple ways to specify environment variable values for use by the MySQL server process managed by 
+systemd](https://dev.mysql.com/doc/refman/8.1/en/using-systemd.html).
+To specify options for mysqld without modifying systemd configuration files directly, 
+set or unset the `MYSQLD_OPTS` systemd variable. For example: 
+```bash
+systemctl set-environment MYSQLD_OPTS="--general_log=1"
+systemctl unset-environment MYSQLD_OPTS
+```
+`MYSQLD_OPTS` can also be set in the `/etc/sysconfig/mysql` file.
+
+  - Start the server and secure installation.
+```bash
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+sudo systemctl start mysql
+sudo systemctl status mysql
+/opt/mysql/8.1.0/bin/mysql -u root -p
+# Enter password from the error log
+```
+```default
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootpassword';
+mysql> FLUSH PRIVILEGES;
+mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+mysql> exit;
+```
+
+  - [Deployment configuration file](https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/secure-deployment-configuration-file.html)
+
+### Install PHP from source
+
+  - Download latest package and untar.
+```bash
+wget https://www.php.net/distributions/php-8.2.10.tar.gz
+tar -zxf php-8.2.10.tar.gz
+```
+  - Install prerequisites
+```bash
+sudo apt install pkg-config libxml2-dev libxmlrpc-epi-dev libsqlite3-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libonig-dev libxslt-dev libzip-dev
+sudo apt install autoconf
+```
+  - Create configuration bash script
+```bash
+#!/bin/bash
+module load openssl/3.1.3
+export OPENSSL_CFLAGS='-I/opt/openssl/3.1.3/include -L/opt/openssl/3.1.3/lib64 -lssl -lcrypto -Wl,-rpath,/opt/openssl/3.1.3/lib64'
+export OPENSSL_LIBS='/opt/openssl/3.1.3/lib64'
+
+./configure \
+  --prefix=/opt/php/8.2.10 \
+  --enable-mbstring \
+  --with-curl \
+  --with-openssl \
+  --enable-opcache \
+  --with-zip \
+  --enable-gd \
+  --with-jpeg \
+  --enable-fpm \
+  --enable-cli \
+  --enable-xml \
+  --with-xmlrpc \
+  --enable-intl \
+  --with-xsl \
+  --with-zlib \
+  --with-mysql=mysqlnd \
+  --with-pdo-mysql=mysqlnd \
+  --with-mysqli=mysqlnd
+```
+  - Configure and build. Compilation takes a long time, better to use `tmux` or `screen`.
+```bash
+source config.sh
+make 
+make test
+sudo make install
+```
+  - Setup a development environment.
+```bash
+cd /opt/php/8.2.10/var/run/ && sudo mkdir php-fpm
+cd -
+sudo cp php.ini-development /opt/php/8.2.10/lib/php.ini
+sudo cp sapi/fpm/php-fpm.conf /opt/php/8.2.10/etc/php-fpm.conf
+sudo cp sapi/fpm/www.conf /opt/php/8.2.10/etc/php-fpm.d/www.conf
+sudo vim /opt/php/8.2.10/etc/php-fpm.d/www.conf
+# edit the following:
+# user = minion
+# group = minion
+# listen.owner = minion
+# listen.group = minion
+# listen = /opt/php/8.2.10/var/run/php-fpm/php-fpm.sock
+sudo mkdir -p /opt/php/8.2.10/etc/conf.d
+sudo vim /opt/php/8.2.10/etc/conf.d/modules.ini
+# zend_extension=opcache.so
+```
+**To-Do:** Change it to production environment.
+
+  - Create systemd file `/lib/systemd/system/php-fpm.service`
+```ini
+[Unit]
+Description=The PHP FastCGI Process Manager
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/opt/php/8.2.10/var/run/php-fpm/php-fpm.pid
+ExecStart=/opt/php/8.2.10/sbin/php-fpm --nodaemonize --fpm-config /opt/php/8.2.10/etc/php-fpm.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+```
+  - Start PHP. Check socket and version
+```bash
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+sudo systemctl start php-fpm
+/opt/php/8.2.10/bin/php -v
+ls -lh /opt/php/8.2.10/var/run/php-fpm/
+```
+  - Create modulefile `/opt/modulefiles/php/8.2.10` and load module.
+```tcl
+#%Module
+
+proc ModulesHelp { } {
+    global version prefix
+    puts stderr "\tLoads PHP bin directory in PATH."
+}
+
+module-whatis	"loads PHP bin directory in PATH"
+
+# for Tcl script use only
+set	version		8.2.10
+set	prefix		{/opt/php/8.2.10}
+
+prepend-path    PATH			$prefix/bin
+```
+  - Install xmlrpc extension (required by rtorrent)
+```bash
+wget https://pecl.php.net/get/xmlrpc-1.0.0RC3.tgz --no-check-certificate
+tar zxf xmlrpc-1.0.0RC3.tgz
+cd xmlrpc-1.0.0RC3/
+module load php/8.2.10
+phpize
+./configure
+make
+```
+Move the extension to the PHP extension directory.
+```bash
+php -i | grep "extension_dir"
+extension_dir => /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829 => /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829
+sudo cp modules/xmlrpc.so /opt/php/8.2.10/lib/php/extensions/no-debug-non-zts-20220829/
+```
+Edit the `php.ini` file to include the line:
+```ini
+extension=xmlrpc.so
+```
+Restart the `php-fpm` service.
+To verify the installation, you can use something like this (should at least return the line "xmlrpc"):
+```bash
+php -i | grep xmlrpc | grep -v "xmlrpc_error"
+```
+  - Configure the nginx server to use the php-fpm socket.

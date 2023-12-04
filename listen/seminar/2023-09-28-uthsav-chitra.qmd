@@ -1,0 +1,57 @@
+---
+title: Uthsav Chitra, Spatial Transcriptomics
+---
+
+# Algorithms for modeling the spatial and network organization of biological systems
+
+## Spatially resolved transcriptomics
+
+Technologies: 10x Visium, MERFISH, etc
+
+High throughput: e.g. 10x Visium measures unique
+molecular identifiers (UMIs) of 20000 genes
+at 1000-5000 spatial locations
+
+Applications:
+
+  - Spatial organization of cell types
+  - Transcripts with spatially varying expression
+
+Low sequence coverage
+Sparse matrix: 75% 
+
+How to overcome sparsity by incorporating spatial information?
+
+Most algorithms use local models:
+nearby spots have similar cell type / expression.
+
+  - Hidden Markov Random Field: BayesSpace, SPICEMIX, Giotto
+  - Gaussian Processes: SpatialDE, SPARK
+  - Graph Neural networks (GNN): SpaGCN, STAGATE
+
+Uthsav is trying to develop new models to address these challenges.
+
+Consider a simple layered tissues,
+where the gene expression is constant along y-axis.
+That is, the cell types are parallel.
+Piecewise linear function models expression gradients.
+Pool sparse expression along y-axis.
+
+But, how to consider curved boundaries?
+They are using conformal maps and harmonic functions.
+A conformal map $\Phi : D \subset C \rightarrow C$
+locally preserves angles between curves.
+
+Layered tissue problem formulation.
+Input are the spot coordinates, transcript count matrix
+and number of layers.
+
+Topography of gene expression $\rightarrow$ isodepth
+
+  - **Isodepth:** contours of equal potential
+  - Generalizes relative depth from Belayer
+  - Gene expression function
+
+
+
+**Idea:** Use trendfiltering on graphs!

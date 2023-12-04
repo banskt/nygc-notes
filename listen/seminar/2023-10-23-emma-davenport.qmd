@@ -1,0 +1,35 @@
+---
+title: Emma Davenport, eQTL and sQTL
+---
+
+  - What are the genes, cell-types and pathways that mediate disease progression?
+
+Overview
+
+  - Expression based stratification of critical care patients
+  - Splicing and eQTLs
+
+Sepsis
+
+  - No reliable diagnostic marker
+  - Current therapy includes antibiotics and organ support (no targeted treatments)
+  - 150+ clinical trials
+  - Substantial individual variance in response
+
+**Genomic Advances in Sepsis (GAinS) study**
+
+Established in 2005 - www.ukccggains.com
+
+- Community Acquired Pneumonia (CAP)
+- Fecal Peritonitis (FP)
+
+Data collected for each patient on days 1, 3, and/or 5 after ICU admission 
+
+SepstratifieR: R package for SRS assignment and quantitative SRS score.
+
+## Genetic contribution to gene expression
+
+eQTL mapping. SRS eQTL interactions.
+Genome Biology 2018
+
+823 samples from 638 patients with RNA-seq and genotyping.

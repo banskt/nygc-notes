@@ -1,0 +1,17 @@
+---
+title: 2023-10-16
+---
+
+# The Big Brain Project
+
+## Presentation by Aline Real
+
+Gene expression and splicing from different parts of the brain.
+Different brain tissues grouped in 6 major brain regions.
+12,920 total samples.
+
+How can we harmonize data from different projects,
+different tissues and brain regions and sample prepped
+in different ways to reduce possible biases and brain effects?
+
+
