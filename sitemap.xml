@@ -1,191 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-09-19-ashwini-setup.html</loc>
-    <lastmod>2023-12-04T18:02:40.163Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/index.html</loc>
-    <lastmod>2023-12-04T18:02:38.663Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/code/2023-09-23-ashwini-setup2.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-04-27-gradvi-setup.html</loc>
-    <lastmod>2023-12-04T18:02:38.187Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/code/2023-05-23-macos-setup.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-10-23-emma-davenport.html</loc>
-    <lastmod>2023-12-04T18:02:37.455Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/code/2023-04-25-cluster-setup.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-09-28-uthsav-chitra.html</loc>
-    <lastmod>2023-12-04T18:02:36.895Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-10-23-emma-davenport.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-05-04-julia-domingo.html</loc>
-    <lastmod>2023-12-04T18:02:36.343Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2024-04-10-probgen24-day3.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-13-coop-book-chapter-6.html</loc>
-    <lastmod>2023-12-04T18:02:35.735Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2024-04-10-probgen24-day1.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-05-11-coop-book-chapter-8.html</loc>
-    <lastmod>2023-12-04T18:02:35.176Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-09-28-uthsav-chitra.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-06-22-coop-book-chapter-10.html</loc>
-    <lastmod>2023-12-04T18:02:34.576Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-07-25-peter-visscher.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-10-02-splam.html</loc>
-    <lastmod>2023-12-04T18:02:34.064Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-05-11-coop-book-chapter-8.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-07-13-geneformer.html</loc>
-    <lastmod>2023-12-04T18:02:33.544Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-07-13-geneformer.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-05-10-brielin-brown.html</loc>
-    <lastmod>2023-12-04T18:02:32.980Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-04-13-coop-book-chapter-6.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-08-16-karin.html</loc>
-    <lastmod>2023-12-04T18:02:32.416Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-08-10-deep-learning-models-transcriptome-variation.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-19-tatsuhiko-naito.html</loc>
-    <lastmod>2023-12-04T18:02:31.824Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-06-22-coop-book-chapter-10.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-10-16-aline-real.html</loc>
-    <lastmod>2023-12-04T18:02:31.260Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-04-12-adas-group-meeting.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-14-adsp-group-meeting.html</loc>
-    <lastmod>2023-12-04T18:02:30.720Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-04-26-scott-adamson.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-26-scott-adamson.html</loc>
-    <lastmod>2023-12-04T18:02:30.000Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-09-13-izzy-grabski.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-06-21-chirag-lakhani.html</loc>
-    <lastmod>2023-12-04T18:02:29.380Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-07-12-teresa-lin.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-08-09-sophia.html</loc>
-    <lastmod>2023-12-04T18:02:28.768Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-08-16-karin.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/think/risks-rates-odds.html</loc>
-    <lastmod>2023-12-04T18:02:28.180Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-05-10-brielin-brown.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-05.html</loc>
-    <lastmod>2023-12-04T18:02:27.632Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-04-19-tatsuhiko-naito.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/index.html</loc>
-    <lastmod>2023-12-04T18:02:26.920Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2024-01-10-megan-schertzer.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-06.html</loc>
-    <lastmod>2023-12-04T18:02:26.416Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-10-16-aline-real.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/index.html</loc>
-    <lastmod>2023-12-04T18:02:25.484Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-06-28-claire-harbison.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/read/index.html</loc>
-    <lastmod>2023-12-04T18:02:25.996Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2024-04-24-izzy-grabski.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-07.html</loc>
-    <lastmod>2023-12-04T18:02:26.692Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/think/risks-rates-odds.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/journal/2023-04.html</loc>
-    <lastmod>2023-12-04T18:02:27.284Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/read/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/think/index.html</loc>
-    <lastmod>2023-12-04T18:02:27.868Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/2023-05.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/index.html</loc>
-    <lastmod>2023-12-04T18:02:28.432Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-07-05-megan-schertzer.html</loc>
-    <lastmod>2023-12-04T18:02:29.056Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/2023-06.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-08-02-stella-park.html</loc>
-    <lastmod>2023-12-04T18:02:29.680Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/2023-12.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-09-18-scott-adamson.html</loc>
-    <lastmod>2023-12-04T18:02:30.280Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/2023-04.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-09-13-izzy-grabski.html</loc>
-    <lastmod>2023-12-04T18:02:30.992Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/journal/2023-07.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-07-12-teresa-lin.html</loc>
-    <lastmod>2023-12-04T18:02:31.532Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/think/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-04-12-adas-group-meeting.html</loc>
-    <lastmod>2023-12-04T18:02:32.124Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-09-18-scott-adamson.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-06-07-sei-chang.html</loc>
-    <lastmod>2023-12-04T18:02:32.708Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-04-14-adsp-group-meeting.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/group-meeting/2023-06-28-claire-harbison.html</loc>
-    <lastmod>2023-12-04T18:02:33.296Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-12-11-marcelo-zossi.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-04-27-coop-book-chapter-7.html</loc>
-    <lastmod>2023-12-04T18:02:33.816Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2024-01-31-teresa-lin.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-05-25-coop-book-chapter-9.html</loc>
-    <lastmod>2023-12-04T18:02:34.324Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-08-02-stella-park.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-06-01-otters.html</loc>
-    <lastmod>2023-12-04T18:02:34.848Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2024-01-17-claire-harbison.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/journal-club/2023-08-10-deep-learning-models-transcriptome-variation.html</loc>
-    <lastmod>2023-12-04T18:02:35.423Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-06-21-chirag-lakhani.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-06-01-william-fairbrother.html</loc>
-    <lastmod>2023-12-04T18:02:36.035Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2024-03-06-chirag-lakhani.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-07-25-peter-visscher.html</loc>
-    <lastmod>2023-12-04T18:02:36.603Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-08-09-sophia.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/listen/seminar/2023-06-29-gunnar-ratsch.html</loc>
-    <lastmod>2023-12-04T18:02:37.175Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-12-18-chirag-lakhani.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-05-23-macos-setup.html</loc>
-    <lastmod>2023-12-04T18:02:37.739Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-07-05-megan-schertzer.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-09-23-ashwini-setup2.html</loc>
-    <lastmod>2023-12-04T18:02:38.447Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/group-meeting/2023-06-07-sei-chang.html</loc>
+    <lastmod>2024-04-24T16:01:00.065Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/banskt/nygc-notes/code/2023-04-25-cluster-setup.html</loc>
-    <lastmod>2023-12-04T18:02:39.143Z</lastmod>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-06-01-otters.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-04-27-coop-book-chapter-7.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-05-25-coop-book-chapter-9.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/journal-club/2023-10-02-splam.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-05-04-julia-domingo.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2024-04-10-probgen24-day2.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-06-29-gunnar-ratsch.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-12-04-carlos-najar.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/listen/seminar/2023-06-01-william-fairbrother.html</loc>
+    <lastmod>2024-04-24T16:01:00.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/code/2023-09-19-ashwini-setup.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/code/2023-04-27-gradvi-setup.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
+  </url>
+  <url>
+    <loc>https://banskt.github.io/nygc-notes/code/index.html</loc>
+    <lastmod>2024-04-24T16:01:00.061Z</lastmod>
   </url>
 </urlset>

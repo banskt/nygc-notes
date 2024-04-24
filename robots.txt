@@ -1,1 +1,1 @@
-Sitemap: https://github.com/banskt/nygc-notes/sitemap.xml
+Sitemap: https://banskt.github.io/nygc-notes/sitemap.xml

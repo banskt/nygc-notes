@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tajurba - 2023-08-16</title>
+<title>Tajurba - ProbGen24 Day1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../listen/group-meeting/2023-09-13-izzy-grabski.html" rel="next">
-<link href="../../listen/group-meeting/2023-08-09-sophia.html" rel="prev">
+<link href="../../listen/seminar/2024-04-10-probgen24-day2.html" rel="next">
+<link href="../../listen/seminar/2023-12-04-carlos-najar.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -121,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">Group Meetings</a></li><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-08-16-karin.html">2023-08-16</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/seminar/2023-05-04-julia-domingo.html">Seminars</a></li><li class="breadcrumb-item"><a href="../../listen/seminar/2024-04-10-probgen24-day1.html">ProbGen24 Day1</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,13 +178,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Group Meetings</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html" class="sidebar-item-text sidebar-link">
@@ -230,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/group-meeting/2023-08-16-karin.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../listen/group-meeting/2023-08-16-karin.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2023-08-16</span></a>
   </div>
 </li>
@@ -363,13 +392,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Seminars</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../listen/seminar/2023-05-04-julia-domingo.html" class="sidebar-item-text sidebar-link">
@@ -414,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../listen/seminar/2024-04-10-probgen24-day1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../listen/seminar/2024-04-10-probgen24-day1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">ProbGen24 Day1</span></a>
   </div>
 </li>
@@ -442,23 +471,40 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#modeling-alternative-splicing-in-single-cells" id="toc-modeling-alternative-splicing-in-single-cells" class="nav-link active" data-scroll-target="#modeling-alternative-splicing-in-single-cells">Modeling alternative splicing in single cells</a>
+  <li><a href="#shamil-sunyaev" id="toc-shamil-sunyaev" class="nav-link active" data-scroll-target="#shamil-sunyaev">Shamil Sunyaev</a>
   <ul class="collapse">
-  <li><a href="#presentation-by-karin-isaev" id="toc-presentation-by-karin-isaev" class="nav-link" data-scroll-target="#presentation-by-karin-isaev">Presentation by Karin Isaev</a>
+  <li><a href="#joint-distribution-of-allele-frequencies-and-effect-sizes" id="toc-joint-distribution-of-allele-frequencies-and-effect-sizes" class="nav-link" data-scroll-target="#joint-distribution-of-allele-frequencies-and-effect-sizes">Joint distribution of allele frequencies and effect sizes</a></li>
+  <li><a href="#mental-model-neutrality" id="toc-mental-model-neutrality" class="nav-link" data-scroll-target="#mental-model-neutrality">Mental model – neutrality</a></li>
+  <li><a href="#bridging-biology-and-genetics" id="toc-bridging-biology-and-genetics" class="nav-link" data-scroll-target="#bridging-biology-and-genetics">Bridging biology and genetics</a></li>
+  </ul></li>
+  <li><a href="#molly-przeworski" id="toc-molly-przeworski" class="nav-link" data-scroll-target="#molly-przeworski">Molly Przeworski</a>
   <ul class="collapse">
-  <li><a href="#how-to-quantify-splicing" id="toc-how-to-quantify-splicing" class="nav-link" data-scroll-target="#how-to-quantify-splicing">How to quantify splicing?</a></li>
-  <li><a href="#what-is-leaflet" id="toc-what-is-leaflet" class="nav-link" data-scroll-target="#what-is-leaflet">What is Leaflet?</a></li>
+  <li><a href="#sources-of-germline-mutations-in-humans" id="toc-sources-of-germline-mutations-in-humans" class="nav-link" data-scroll-target="#sources-of-germline-mutations-in-humans">Sources of germline mutations in humans</a></li>
   </ul></li>
+  <li><a href="#laurent-duret" id="toc-laurent-duret" class="nav-link" data-scroll-target="#laurent-duret">Laurent Duret</a></li>
+  <li><a href="#machiki-katori-tsukuba-tokyo" id="toc-machiki-katori-tsukuba-tokyo" class="nav-link" data-scroll-target="#machiki-katori-tsukuba-tokyo">Machiki Katori, Tsukuba Tokyo</a>
+  <ul class="collapse">
+  <li><a href="#impacts-of-the-epigenome-induced-mutations-on-genetic-adaptation." id="toc-impacts-of-the-epigenome-induced-mutations-on-genetic-adaptation." class="nav-link" data-scroll-target="#impacts-of-the-epigenome-induced-mutations-on-genetic-adaptation.">Impacts of the epigenome-induced mutations on genetic adaptation.</a></li>
   </ul></li>
+  <li><a href="#marta-pelizzola" id="toc-marta-pelizzola" class="nav-link" data-scroll-target="#marta-pelizzola">Marta Pelizzola</a>
+  <ul class="collapse">
+  <li><a href="#integration-of-mutational-opportunities-to-estimate-robust-mutational-signatures" id="toc-integration-of-mutational-opportunities-to-estimate-robust-mutational-signatures" class="nav-link" data-scroll-target="#integration-of-mutational-opportunities-to-estimate-robust-mutational-signatures">Integration of mutational opportunities to estimate robust mutational signatures</a></li>
+  </ul></li>
+  <li><a href="#pier-palamara" id="toc-pier-palamara" class="nav-link" data-scroll-target="#pier-palamara">Pier Palamara</a></li>
+  <li><a href="#hrushikesh-loya" id="toc-hrushikesh-loya" class="nav-link" data-scroll-target="#hrushikesh-loya">Hrushikesh Loya</a>
+  <ul class="collapse">
+  <li><a href="#ghostbuster." id="toc-ghostbuster." class="nav-link" data-scroll-target="#ghostbuster.">GhostBuster.</a></li>
+  </ul></li>
+  <li><a href="#jonathan-terhorst" id="toc-jonathan-terhorst" class="nav-link" data-scroll-target="#jonathan-terhorst">Jonathan Terhorst</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/banskt/nygc-notes/edit/main/listen/group-meeting/2023-08-16-karin.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/banskt/nygc-notes/edit/main/listen/seminar/2024-04-10-probgen24-day1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-04-12-adas-group-meeting.html">Group Meetings</a></li><li class="breadcrumb-item"><a href="../../listen/group-meeting/2023-08-16-karin.html">2023-08-16</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../listen/seminar/2023-05-04-julia-domingo.html">Seminars</a></li><li class="breadcrumb-item"><a href="../../listen/seminar/2024-04-10-probgen24-day1.html">ProbGen24 Day1</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2023-08-16</h1>
+<h1 class="title">ProbGen24 Day1</h1>
 </div>
 
 
@@ -475,33 +521,137 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="modeling-alternative-splicing-in-single-cells" class="level1">
-<h1>Modeling alternative splicing in single cells</h1>
-<section id="presentation-by-karin-isaev" class="level2">
-<h2 class="anchored" data-anchor-id="presentation-by-karin-isaev">Presentation by Karin Isaev</h2>
-<p>Is splicing bimodal in cells? Cells with more reads often have better range. What influences the observed splicing output? Cell size, single cell vs single nuclei, transcription rate (?), etc.</p>
-<p>~4500 captured RNAs, ~1500-2400 captured genes in PBMC by different sequencing tools.</p>
-<p><strong>Smart-seq2</strong>: improved coverage, high level of mappable reads, higher sensitivity disadvantages: no early multiplexing, transcript length bias, lower throughput.</p>
-<p><strong>Split-seq</strong>: Higher throughput, improved coverage, lower cost, disadvantages: reduced sensitivity, less comprehensive alternative splicing information than full-length transcript methods.</p>
-<p><strong>Smart-seq3xpress</strong>: scalable single-cell RNA sequencing from full trnscripts. Is it possible to get high sensitivity and high throughput?</p>
-<section id="how-to-quantify-splicing" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-quantify-splicing">How to quantify splicing?</h3>
+<section id="shamil-sunyaev" class="level1">
+<h1>Shamil Sunyaev</h1>
+<p>Effect sizes are small. Number of loci vs median effect size is linear with a negative slope. More than 12000 associated variants for height GWAS.</p>
 <ul>
-<li><p><strong>Splice junctions</strong> can be used for quantifying splicing. In the mouse reference, most junctions are “common” and found in all transcript isoforms for a given gene. In human, many more partially and fully unique junctions compared to mouse.</p></li>
-<li><p><strong>Split reads</strong> quantify presence or absence of intron cluster.</p></li>
+<li>What is the balance of evolutionary forces stably maintaining polygenic variation?</li>
 </ul>
-<p>Tabula Muris dataset: Smart-seq + 10x sequencing on different cells in mouse. In bulk sample, 85,439 SJ before clustering, 9,390 after clustering. In pseudo-bulk sample (n = 432 cells), 101,801 SJ before clustering, 14,351 after clustering. In single cell, 9,731 before clustering, 481 after clustering.</p>
-<p>Splicing events: - Skipping exon - Mutually exclusive exons - Alternative 5’ splice site - Alternative 3’ splice site - Retained intron - First exon - Last exon</p>
-<p>How do you know the splice event from the PSI value?</p>
+<p>Connally et al.&nbsp;eLife 2022 showed that many genes under GWAS peaks and with independent evidence of the biological roles have eQTLs in the relevant tissue. But this eQTLs do not colocalize with GWAS variants.</p>
+<section id="joint-distribution-of-allele-frequencies-and-effect-sizes" class="level2">
+<h2 class="anchored" data-anchor-id="joint-distribution-of-allele-frequencies-and-effect-sizes">Joint distribution of allele frequencies and effect sizes</h2>
+<p>U-shaped plot with low MAF and high MAF have larger effect sizes, smaller effect sizes with common variants. This is not news. The strange property is the symmetry.</p>
 </section>
-<section id="what-is-leaflet" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-leaflet">What is Leaflet?</h3>
-<p>Input: BAM file (pseudobulk if single cells) Model: Binomial Mixture Model, Inference with CAVI. Output: Optimal K (# cell states), Proportion of each cell state in the data, junction usage values for each cell state (PSI), cell state labels for each cell (Z).</p>
-<p>Cell states inferred by Leaflet overlaps with FACS classification in the data.</p>
+<section id="mental-model-neutrality" class="level2">
+<h2 class="anchored" data-anchor-id="mental-model-neutrality">Mental model – neutrality</h2>
+<ul>
+<li>Many human diseases are late onset and the underlying variation is truly neutral – <strong>Strong</strong> version.</li>
+<li>The traits are under selection, but variants identify by GWAS have so small effects that they are insensitive to selection (below the drift barrier) – <strong>Weak</strong> version.</li>
+</ul>
+<p>The weak version is consistent with pleiotropy while the strong version is not.</p>
+<p>See Gazal et. al.&nbsp;2018.</p>
+<p>Is selection acting on human common diseases?</p>
+<ul>
+<li>Monogenic diabetes and familial hypercholesterolemia are very rare in the population.</li>
+<li>Polygenic form of T2D is common. Cholesterol levels vary in the population, even though the trait is heritable.</li>
+</ul>
+<p>Rare variants for some complex traits are under directional selection. Ganna et. al.&nbsp;2018, Huang et. al.&nbsp;2023.</p>
+<p>Influx of mutations increases disease liability and reduces fitness.</p>
+<p>Bulmer, 1972. The genetic variability of polygenic characters under optimizing selection, mutation and drift.</p>
+<p>Approach: <span class="math display">\[\psi(x \mid \beta)\]</span> –&gt; allele frequency <span class="math inline">\(x\)</span> and effect size <span class="math inline">\(\beta\)</span> distribution of allele frequency conditional on effect size.</p>
+<p>GWAS ascertainment, LD, Sampling noise.</p>
+<p>Simulations: directional selection has assymetry in the distribution. 1-D stabilizing and High-D stabilizing shows symmetric distribution.</p>
+<p>LD Score Regression <span class="math inline">\(\righarrow\)</span> LDSPEC.</p>
+<p>High proportion of zero effects kills correlations. Clustering of functional effects rescues correlations.</p>
+<p>One-sided mutation: Hill-Robertson effect</p>
+<p>Take-Home: Stabilizing selection is consistent with distribution of allele frequencies and effect sizes, also consistent with effect size correlations.</p>
+</section>
+<section id="bridging-biology-and-genetics" class="level2">
+<h2 class="anchored" data-anchor-id="bridging-biology-and-genetics">Bridging biology and genetics</h2>
+<ul>
+<li>Increase power by integrating network of biological assays.</li>
+</ul>
+<p>Rare variant analysis at the level of pathways and gene networks. - incorporate network relationship of genes.</p>
+<p>NERINE. Network-based rare variant enrichment. <span class="math inline">\(\alpha \sim MVN(0, \theta \cdot \Sigma)\)</span> pathway effect <span class="math inline">\(\theta\)</span>.</p>
+<p>Khurana lab. Khurana, Peng et al.&nbsp;Cell Systems 2017. Gene network in Parkinson’s disease.</p>
+<p>Independent neuronal survival CRIPRi screen in <span class="math inline">\(\alpha\)</span>-Sunucleinopathy model. Several genes from this network are associated with “PD” neurons.</p>
+</section>
+</section>
+<section id="molly-przeworski" class="level1">
+<h1>Molly Przeworski</h1>
+<section id="sources-of-germline-mutations-in-humans" class="level2">
+<h2 class="anchored" data-anchor-id="sources-of-germline-mutations-in-humans">Sources of germline mutations in humans</h2>
+<p>Germline mutation <span class="math inline">\(\rightarrow\)</span> Point mutation</p>
+<p>Source: Replication error, DNA damage + repair.</p>
+<p>Paternal bias in germline mutation. Many more germ-cell divisions over age. Gao et al.&nbsp;2019.</p>
+<p>Maternal age also affects number of phased DNMs per proband.</p>
+<p>Wu et al.&nbsp;2020. Narrow range of paternal bias in mutation across mammals. Degree of paternal bias is uncorrelated with paternal age. Stable with age in humans and other mammals.</p>
+<p>Hypothesis: Mutations does not arise with replication, but from DNA damage + repair. Repair – inefficient vs efficient but error-prone?</p>
+<p>https://cancer.sanger.ac.uk/signatures/</p>
+<p>SBS1 and SBS5 germline mutations. SBS5: Etiology unknown, SBS1: Spontaneous deamination of methylated CpGs.</p>
+<p>SBS1 accrues with age in dividing cells, SBS5 accrues with age in dividing cells and post-mitotic ones.</p>
+<ul>
+<li>Mutuations can accumulate with time due to distinct mechanisms: constant rates of cell divisions or constant rates of damage.</li>
+<li>Most germline mutations are assigned to SBS5.</li>
+</ul>
+<p>Spisak et al.&nbsp;2023 bioRxiv.</p>
+</section>
+</section>
+<section id="laurent-duret" class="level1">
+<h1>Laurent Duret</h1>
+<p>Meiotic recombination –&gt; segregation of homologous chromosomes, maintain genetic diversity.</p>
+<p>Recombination hotspots.</p>
+<p>Fine-scale recombination maps available for a few species. Hotspots in promoter-like regions – evolutionarily stable. Some organisms do not have hotspots, e.g.&nbsp;Drosophila, C elegans. In other organisms, hotspots are directed by PRDM9, e.g.&nbsp;Humans, Mice, Salmonids – hotspots are located away from promoters – very rapid evolution of hotspot location (self-destruction caused by PRDM9 activity).</p>
+<p>PRDM9 dependent hotspots - away from promoter-like regions (CpG islands). PRDM9 independent hotspots: near promoter-like regions (CpG islands).</p>
+<p>Is the location of default hotspots conserved across PRDM-9 deficient mammals?</p>
+<p>Mutant mice - no PRDM-9. Dog LD-based recombination rate: Laplace with peak near 0, plotted against distance to MDH loci of mutant mice.</p>
+<p>93% of mouse default hotspots are hypomethaled.</p>
+<p>What is the recombination activity at default hotspots in mammals with a functional PRDM9 gene?</p>
+<p>GC-biased gene conversion (gBGC) signatures can be used as a measure of recombination activity.</p>
+<p>Take-Home: PRDM-9 independent hotspots are also in promoter-like regions.</p>
+<p>See julian Joseph, Djivan Prentout, Alexandre Laverre, Theo Tricou and Larent Duret, BioRxiv. High prevalence of PRDM9-independent recombination hotspots in placental mammals.</p>
+</section>
+<section id="machiki-katori-tsukuba-tokyo" class="level1">
+<h1>Machiki Katori, Tsukuba Tokyo</h1>
+<p>Can mutation rates be biased by experiences? Do epigenetic patterns predict mutation rates?</p>
+<p>Accumulation line of <em>Arabidopsis thaliana</em>. Plants rely more extensively on epigenetic mechanisms compared to mammals.</p>
+<p><strong>epiNMF</strong></p>
+<p>Epigenetic features - NMF - clusterings - find epigenetic patterns - GLM with exons.</p>
+<p>Take-home: Epigenetic patterns partially predict mutation rates.</p>
+<section id="impacts-of-the-epigenome-induced-mutations-on-genetic-adaptation." class="level2">
+<h2 class="anchored" data-anchor-id="impacts-of-the-epigenome-induced-mutations-on-genetic-adaptation.">Impacts of the epigenome-induced mutations on genetic adaptation.</h2>
+<p>Is a purely random mutation process sufficient? Cisplatin induced various types of DNA damages. Resistant cells appered after 7 days from treatment.</p>
+</section>
+</section>
+<section id="marta-pelizzola" class="level1">
+<h1>Marta Pelizzola</h1>
+<section id="integration-of-mutational-opportunities-to-estimate-robust-mutational-signatures" class="level2">
+<h2 class="anchored" data-anchor-id="integration-of-mutational-opportunities-to-estimate-robust-mutational-signatures">Integration of mutational opportunities to estimate robust mutational signatures</h2>
+<p>COSMIC repository of mutational signatures. Tate et a;.</p>
+<p>Input data: rows <span class="math inline">\(\rightarrow\)</span> patients. columns <span class="math inline">\(\rightarrow\)</span> mutation types. Each cell contains count of the mutation type.</p>
+<p>Perform NMF.</p>
+<p>With zero flanking nucleotides, there are 6 mutation types. With one flanking nucleotide, there are 96 types – trinucleotide context. One can also consider pentanucleotide or heptanucleotide context.</p>
+<p>Negative Binomial NMF with opportunites.</p>
+<p>Metric: Reconstruction error on the BRCA dataset, GKL divergence plotted against the number of signatures.</p>
+<p>Model with opportunities (NB-NMF) improves prediction.</p>
+<p>Take-Home: Extended sequence context facilitate the investigation into the reasons for the excess of certain types of mutations. Including mutation opportunities improve prediction.</p>
+<p>Mutational opportunites: number of sites for a mutation type to occur, e.g.&nbsp;TTT has a larger opportunity than other types.</p>
+</section>
+</section>
+<section id="pier-palamara" class="level1">
+<h1>Pier Palamara</h1>
+<p>Threads algorithm for ARG. - Add (“thread”) a new sample to an existing genealogy.</p>
+<p>Zhang et al, Nat Genet, 2023. And inferred ARG allows inferring the presence of unobserved variants. Complex traits can be studied using ARGs. Linear mixed model, using GRM (genetic relationship matrix) derived from ARG.</p>
+<p>h2 using GCTA - <span class="math inline">\(O(n^3)\)</span>. ARG-RHE reduces time complexity to <span class="math inline">\(O(n)\)</span>.</p>
+</section>
+<section id="hrushikesh-loya" class="level1">
+<h1>Hrushikesh Loya</h1>
+<section id="ghostbuster." class="level2">
+<h2 class="anchored" data-anchor-id="ghostbuster.">GhostBuster.</h2>
+<p>Large-scale genealogies.</p>
+<p>An admixture is defined by its inverse coalescence rates with reference panel. Assume there a re 3 types of trees in the generalogy. Comp1 ICRs, 1 coalescece faster than 2 to give target. Comp2 ICRs, 2 coalescece faster than 1 to give target. Comp3 ICRs, both have similar rates.</p>
+<p>The Eurasian ancestry explains the Neanderthal ancestry in Africa and is 5000-20000 years old.</p>
+</section>
+</section>
+<section id="jonathan-terhorst" class="level1">
+<h1>Jonathan Terhorst</h1>
+<p>Bayesian algorithm for PSMC.</p>
+<ul>
+<li>Parallelization using exponential forgetting.</li>
+</ul>
+<p>phlash. https://github.com/jthlab/phlash</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -916,13 +1066,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../listen/group-meeting/2023-08-09-sophia.html" class="pagination-link" aria-label="2023-08-09">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2023-08-09</span>
+      <a href="../../listen/seminar/2023-12-04-carlos-najar.html" class="pagination-link" aria-label="Carlos F Buen Abad Najar (Aberrant Splicing)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Carlos F Buen Abad Najar (Aberrant Splicing)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../listen/group-meeting/2023-09-13-izzy-grabski.html" class="pagination-link" aria-label="2023-09-13">
-        <span class="nav-page-text">2023-09-13</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../listen/seminar/2024-04-10-probgen24-day2.html" class="pagination-link" aria-label="ProbGen24 Day2">
+        <span class="nav-page-text">ProbGen24 Day2</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -931,4 +1081,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/banskt/nygc-notes/edit/main/listen/group-meeting/2023-08-16-karin.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/banskt/nygc-notes/edit/main/listen/seminar/2024-04-10-probgen24-day1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/banskt/nygc-notes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
