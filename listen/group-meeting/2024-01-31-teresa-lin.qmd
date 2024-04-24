@@ -1,0 +1,10 @@
+---
+title: 2024-01-31
+---
+
+## Presentation by Teresa Lin
+
+She is working on developing a SVI method for incorporating
+functional annotations to predict PRS for Alzheimer's disease.
+The model is similar to PRS-CS, but she is using SVI
+instead of MCMC.

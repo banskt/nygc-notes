@@ -1,0 +1,19 @@
+---
+title: 2024-03-06
+---
+
+## Presentation by Chirag Lakhani
+
+Localizing AD polygenic signal using deep learning
+
+GWAS of AD shows it is a polygenic disease.
+Functional annotations aid in finding molecular features that best explain a polygenic trait.
+
+Previously, people used DL delta scores to predict the functional effect of variants.
+
+More than 50% of AD heritability is captured by SNPs which have cis-regulatory regions in microglia.
+CRE elements $\rightarrow$ enhancers, promoters, open chromatin regions.
+There is 10x enrichment of average heritability explained by these variants 
+with respect to the global average.
+
+DL delta scores from Enformer can be used as a prior probability in finemapping.

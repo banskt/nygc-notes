@@ -1,0 +1,43 @@
+---
+title: 2023-12-11
+---
+
+# 
+
+## Presentation by Marcelo Zossi, Lappalainen Lab
+
+Generation and characterization of a Cas3 reporter in 
+CRISPRi and CRISPRa K562 cells
+
+The apoptopic role in K562 cells is controversial.
+They study the apoptopic activity of K562 cells in presence of TNF-alpha.
+
+CRISPRa perturbation of TNFR1 increase TNF induced apoptosis,
+but CRISPRi pertutbation of TNRF1 does not change TNF induced apoptosis.
+
+CRISPRi genome-wide screen.
+
+Identify mechanisms involved in TNF-alpha resistance.
+Perturn 18000 genes using the CIAPO system. 
+Sort GFP-(non-apoptopic) and GPP+(apoptopic) cells.
+
+The samples were indexed as:
+  - TNF-/GFP-
+  - TNF-/GFP+
+  - TNF+/GFP-
+  - TNF+/GFP+
+
+Guides recovered from the samples were genotyped using NextSeq.
+
+Statistical analysis target:
+Compare guides in 4 diffferent samples.
+
+  - [Methods for sgRNA analysis for CRISPR
+  screens](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8786280/)
+  - [High content CRISPR screening](https://doi.org/10.1038/s43586-021-00093-4)
+  - [Comparing fold changes](https://doi.org/10.1093/nargab/lqaa072)
+
+## Presentation by Stella Park, Knowles Lab
+
+Alternative splicing produces different mRNAs.
+Identify both annotated and unannotated RBPs.

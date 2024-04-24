@@ -1,0 +1,23 @@
+---
+title: 2024-04-24
+---
+
+## Presentation by Izzy Grabski
+
+Framework to deconvolute drug targets using CRISPR perturbation screens.
+
+Statistical framework:
+  1. Estimate denoised perturbation effects from perturbation screen data.
+  This can be confounded by cell cycle and other sources of baseline hetrogeneity.
+  Multi-condition latent factor model. Non-targeting cells will have only baseline variation.
+  Cells receiving perturbation will have an addition perturbation component.
+  2. Deconvolve drug-treated cells in terms of these perturbation effects.
+  Scale, sparsity and uncertainty. Analogous to fine-mapping in GWAS. Use SuSiE.
+  3. Calibrate estimated probabilities within credible sets.
+
+CPA-Perturb-Seq (Kowalski, 2023). Perturbation screens of cleavage and polyadenylation
+regulators in HEK cells. 
+
+K562 cells in Genome-wide Perturb-Seq (Replogle et al, 2022)
+
+Application on HDACs.

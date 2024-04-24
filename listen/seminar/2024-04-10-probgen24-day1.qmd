@@ -1,0 +1,211 @@
+---
+title: ProbGen24 Day1
+---
+
+# Shamil Sunyaev
+
+Effect sizes are small. Number of loci vs median effect size is linear with a negative slope.
+More than 12000 associated variants for height GWAS. 
+
+- What is the balance of evolutionary forces stably maintaining polygenic variation?
+
+Connally et al. eLife 2022 showed that many genes under GWAS peaks and with
+independent evidence of the biological roles have eQTLs in the relevant tissue.
+But this eQTLs do not colocalize with GWAS variants.
+
+## Joint distribution of allele frequencies and effect sizes
+
+U-shaped plot with low MAF and high MAF have larger effect sizes,
+smaller effect sizes with common variants. This is not news.
+The strange property is the symmetry.
+
+## Mental model -- neutrality
+- Many human diseases are late onset and the underlying variation is truly neutral -- **Strong** version.
+- The traits are under selection, but variants identify by GWAS have so small effects that they are insensitive to selection (below the drift barrier) -- **Weak** version.
+
+The weak version is consistent with pleiotropy while the strong version is not.
+
+See Gazal et. al. 2018.
+
+Is selection acting on human common diseases?
+
+- Monogenic diabetes and familial hypercholesterolemia are very rare in the population.
+- Polygenic form of T2D is common. Cholesterol levels vary in the population, even though the trait is heritable.
+
+Rare variants for some complex traits are under directional selection. Ganna et. al. 2018, Huang et. al. 2023.
+
+Influx of mutations increases disease liability and reduces fitness.
+
+Bulmer, 1972. The genetic variability of polygenic characters under optimizing selection, 
+mutation and drift. 
+
+Approach: 
+$$\psi(x \mid \beta)$$ --> allele frequency $x$ and effect size $\beta$
+distribution of allele frequency conditional on effect size.
+
+GWAS ascertainment, LD, Sampling noise.
+
+Simulations: directional selection has assymetry in the distribution. 1-D stabilizing and High-D stabilizing shows symmetric distribution.
+
+LD Score Regression $\righarrow$ LDSPEC.
+
+High proportion of zero effects kills correlations. 
+Clustering of functional effects rescues correlations.
+
+One-sided mutation: Hill-Robertson effect
+
+Take-Home: Stabilizing selection is consistent with distribution of allele frequencies and effect sizes, also consistent with effect size correlations.
+
+## Bridging biology and genetics
+
+- Increase power by integrating network of biological assays.
+
+Rare variant analysis at the level of pathways and gene networks.
+- incorporate network relationship of genes.
+
+NERINE. Network-based rare variant enrichment.
+$\alpha \sim MVN(0, \theta \cdot \Sigma)$ pathway effect $\theta$.
+
+Khurana lab. Khurana, Peng et al. Cell Systems 2017. Gene network in Parkinson's disease.
+
+Independent neuronal survival CRIPRi screen in $\alpha$-Sunucleinopathy model.
+Several genes from this network are associated with "PD" neurons.
+
+# Molly Przeworski
+
+## Sources of germline mutations in humans
+
+Germline mutation $\rightarrow$ Point mutation
+
+Source: Replication error, DNA damage + repair.
+
+Paternal bias in germline mutation. Many more germ-cell divisions over age. Gao et al. 2019.
+
+Maternal age also affects number of phased DNMs per proband.
+
+Wu et al. 2020. Narrow range of paternal bias in mutation across mammals. 
+Degree of paternal bias is uncorrelated with paternal age. Stable with age in humans and other mammals.
+
+Hypothesis: Mutations does not arise with replication, but from DNA damage + repair.
+Repair -- inefficient vs efficient but error-prone?
+
+https://cancer.sanger.ac.uk/signatures/
+
+SBS1 and SBS5 germline mutations. 
+SBS5: Etiology unknown, SBS1: Spontaneous deamination of methylated CpGs.
+
+SBS1 accrues with age in dividing cells, SBS5 accrues with age in dividing cells and post-mitotic ones.
+
+- Mutuations can accumulate with time due to distinct mechanisms: constant rates of cell divisions or constant rates of damage.
+- Most germline mutations are assigned to SBS5. 
+
+Spisak et al. 2023 bioRxiv.
+
+# Laurent Duret
+
+Meiotic recombination -->  segregation of homologous chromosomes, maintain genetic diversity.
+
+Recombination hotspots.
+
+Fine-scale recombination maps available for a few species.
+Hotspots in promoter-like regions -- evolutionarily stable.
+Some organisms do not have hotspots, e.g. Drosophila, C elegans.
+In other organisms, hotspots are directed by PRDM9, e.g. Humans, Mice, Salmonids -- hotspots are located away from promoters -- very rapid evolution of hotspot location (self-destruction caused by PRDM9 activity). 
+
+PRDM9 dependent hotspots - away from promoter-like regions (CpG islands). PRDM9 independent hotspots: near promoter-like regions (CpG islands).
+
+Is the location of default hotspots conserved across PRDM-9 deficient mammals?
+
+Mutant mice - no PRDM-9. Dog LD-based recombination rate: Laplace with peak near 0, plotted against distance to MDH loci of mutant mice.
+
+93% of mouse default hotspots are hypomethaled. 
+
+What is the recombination activity at default hotspots in mammals with a functional PRDM9 gene?
+
+GC-biased gene conversion (gBGC) signatures can be used as a measure of recombination activity.
+
+Take-Home: PRDM-9 independent hotspots are also in promoter-like regions.
+
+See julian Joseph, Djivan Prentout, Alexandre Laverre, Theo Tricou and Larent Duret, BioRxiv.
+High prevalence of PRDM9-independent recombination hotspots in placental mammals.
+
+# Machiki Katori, Tsukuba Tokyo
+
+Can mutation rates be biased by experiences?
+Do epigenetic patterns predict mutation rates?
+
+Accumulation line of *Arabidopsis thaliana*. 
+Plants rely more extensively on epigenetic mechanisms compared to mammals.
+
+**epiNMF**
+
+Epigenetic features - NMF - clusterings
+- find epigenetic patterns - GLM with exons.
+
+Take-home: Epigenetic patterns partially predict mutation rates.
+
+## Impacts of the epigenome-induced mutations on genetic adaptation.
+
+Is a purely random mutation process sufficient?
+Cisplatin induced various types of DNA damages.
+Resistant cells appered after 7 days from treatment.
+
+# Marta Pelizzola
+
+## Integration of mutational opportunities to estimate robust mutational signatures
+
+COSMIC repository of mutational signatures. Tate et a;. 
+
+Input data: rows $\rightarrow$ patients. columns $\rightarrow$ mutation types. Each cell contains count of the mutation type.
+
+Perform NMF. 
+
+With zero flanking nucleotides, there are 6 mutation types.
+With one flanking nucleotide, there are 96 types -- trinucleotide context. One can also consider pentanucleotide or heptanucleotide context.
+
+Negative Binomial NMF with opportunites. 
+
+Metric: Reconstruction error on the BRCA dataset, GKL divergence plotted against the number of signatures.
+
+Model with opportunities (NB-NMF) improves prediction.
+
+Take-Home: Extended sequence context facilitate the investigation into the reasons for the excess of certain types of mutations. Including mutation opportunities improve prediction.
+
+Mutational opportunites: number of sites for a mutation type to occur, e.g. TTT has a larger opportunity than other types.
+
+# Pier Palamara
+
+Threads algorithm for ARG.
+- Add ("thread") a new sample to an existing genealogy.
+
+Zhang et al, Nat Genet, 2023.
+And inferred ARG allows inferring the presence of unobserved variants.
+Complex traits can be studied using ARGs. Linear mixed model,
+using GRM (genetic relationship matrix) derived from ARG.
+
+h2 using GCTA - $O(n^3)$. 
+ARG-RHE reduces time complexity to $O(n)$.
+
+# Hrushikesh Loya
+
+## GhostBuster.
+
+Large-scale genealogies. 
+
+An admixture is defined by its inverse coalescence rates with reference panel.
+Assume there a re 3 types of trees in the generalogy. 
+Comp1 ICRs, 1 coalescece faster than 2 to give target.
+Comp2 ICRs, 2 coalescece faster than 1 to give target.
+Comp3 ICRs, both have similar rates.
+
+The Eurasian ancestry explains the Neanderthal ancestry in Africa and is 5000-20000 years old.
+
+# Jonathan Terhorst
+
+Bayesian algorithm for PSMC. 
+
+- Parallelization using exponential forgetting.
+
+phlash.
+https://github.com/jthlab/phlash
+

@@ -1,0 +1,79 @@
+---
+title: ProbGen24 Day3
+---
+
+# Brian Clarke
+
+**DeepRVAT** uses deep learning to find non-linear associations 
+for rare variants. Improves phenotype prediction.
+
+https://doi.org/10.1101/2023.07.12.548506
+
+# Roka Borbely
+
+A simple biophysical model of transcriptional regulation.
+
+cis-regulatory element. 
+Occupancy of a binding site: increases concentration, reduces mismatch number
+
+Binding site at every position. 
+
+Total occupancy: additive contribution of all BSs
+
+Time vs fitness.
+
+Theoretical limit: low TF concentration, sharp activation threshold.
+
+
+# Yun S. Song
+
+Nonparametric density estimation using deep learning. 
+
+Protein language models: mask out some position and try to predict the masked amino acid.
+Very effective. What sequence should be used in training the model?
+Can we apply the same model to DNA?
+What part of the genome shall we use to train?
+In fact, using the whole genome does not work.
+
+Genomic Pre-trained Network (GPN). 
+
+Why should it work? Functional information occurs multiple times in the genome.
+
+Challenges
+
+- Highly variable levels of conservation along the genome.
+- Curse of repeats. Repeatitive elements, overly represented.
+
+Arabidopsis Thaliana, simpler - 20% repetitive compared to 50% in humans.
+PNAS 2023, Benegas et al.
+
+Model could predict genomic context (appeared as separate clusters in UMAP).
+It learned context-dependent probability distribution. 
+GPN understands pathogenicity of different variant types.
+Ranking of variant types is correlated with pathogenicity.
+Low GPN scores related to enrichment of GWAS hits.
+
+## DNA LLM for Humans
+
+NVIDIA tried using 128 GPUs for 28 days. But failed.
+
+Nucleotide Transformer.
+GPN-MSA performs significantly better than HyenaDNA and NVIDIA model. 
+
+# Matthew Aguirre
+
+GRN graph network construction
+
+Bollobas et al 2003. 
+Extend that algorithm, construct sparse graph with n nodes, put into k groups.
+Sparsity $p$. Group affinity $w$. In-degree uniformity $\delta_{\textrm{in}}$.
+After constructing the graph, use *difference equation* to simulate expression of genes:
+terms for synthesis, degradation and noise. 
+Find steady-state expression for genes.
+
+Perturb a gene: Measure effects. In-silico knockout.
+Perturbation effects in many structurally diverse GRNs.
+Compare synthetic GRNs with Perturb-Seq, Replogle et al, Cell 2022.
+
+Realistic synthetic GRNs. Correlation tracks co-regulation due to sparsity and hub regulation.
+Co-regulation is still hypothesis driven.

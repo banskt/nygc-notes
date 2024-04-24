@@ -1,0 +1,25 @@
+---
+title: 2024-01-17
+---
+
+## Presentation by Claire Harbison
+
+Dead Cas13 (dCas13) has been shown to modulate alternative splicing.
+
+A classic and useful example of exon skipping is the SMN2 gene.
+Two different versions of the SMN2 gene were made with fluoroscent protein
+on the ends to allow for easier quantification.
+  - DualIN minigene. Inclusion of exon 7 causes dual fluorescence.
+  Exclusion of exon 7 causes only GFP fluorescence.
+  - DualEX minigene. Inclusion of exon 7 causes only GFP fluorescence.
+  Exclusion of exon 7 causes dual fluorescence.
+gRNAs tiled along the gene to see which guides cause 
+exon 7 to be included or excluded.
+
+Testing.
+Take dCas13 $/rightarrow$ DualIN / DualEX $/rightarrow$ inclusion guide / exclusion guide
+
+1. dCas13 + DualIN + exclusion guide $/rightarrow$ GFP signal
+2. dCas13 + DualIN + inclusion guide $/rightarrow$ dual signal
+3. dCas13 + DualEX + exclusion guide $/rightarrow$ dual signal
+4. dCas13 + DualEX + inclusion guide $/rightarrow$ GFP signal

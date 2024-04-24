@@ -1,0 +1,48 @@
+---
+title: ProbGen24 Day2
+---
+
+# Sebastian Prillo
+
+Protein evolution model tells us about the evolution of protein structures over time.
+Classical model is WAG rate matrix.
+Key simplifying assumption: Each site of a protein evolves independently. 
+Converts the model into a matrix of 400 numbers.
+
+Likelihood computation is typically slow.
+**CherryML**.
+Composite likelihood is unbiased. 
+
+We live in an age of massive datasets. 
+Speed is more important than accuracy. 
+CherryML is less accurate than EM,
+but 100x faster
+
+Optimize the composite likelihood with a deep model.
+
+1. Use a classical model to estimate trees for each MSA.
+2. Extract training cherries (x,y,t) from each tree.
+3. Fit a neural network to all the (x,y,t) triples.
+
+RNN decoder. Antoine Koehl. 
+
+Applications.
+- Ancestral sequence reconstruction.
+- Variant effect prediction.
+- Protein sequence alignment.
+- Protein design.
+
+Importance of time and phylogeny in these application?
+
+# M. Elise Lauterbur
+
+Epidemiological triad: Host, pathogen, environment.
+
+Hypothesis: Estimate impact of ecological factors over evolutionary timescales.
+Adaptation at Virus Interacting Proteins. Enard et al. 2016, Elife.
+
+Host genomic response to viruses / Environment
+
+How to quantify adaptation at Virus Interacting Proteins?
+Proportion of positively selected codons
+-- accounting for complex evolutionary patterns. 

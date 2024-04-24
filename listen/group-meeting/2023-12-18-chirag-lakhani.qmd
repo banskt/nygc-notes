@@ -1,0 +1,11 @@
+---
+title: 2023-12-18
+---
+
+## Presentation by Chirag Lakhani
+
+Functional annotations aid in finding molecular features that best
+explain a polygenic trait.
+
+Variants in enhancer/promoter regions in microglia capture
+most amount of $h^2$ signal for AD.

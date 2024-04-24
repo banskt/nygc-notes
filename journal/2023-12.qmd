@@ -1,0 +1,13 @@
+---
+title: 2023, December
+---
+
+I missed all updates from August, September, October and November.
+I will try again to journal my progress here. 
+
+## 2023-12-04
+
+  - Group meeting. Guest speaker Carlos F Buen Abad Najar,
+  from UChicago. He talked about
+  ["Global impact of aberrant splicing on human gene
+  expression levels"](../listen/seminar/2023-12-04-carlos-najar.qmd).

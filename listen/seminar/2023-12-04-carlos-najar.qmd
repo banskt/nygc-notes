@@ -1,0 +1,70 @@
+---
+title: Carlos F Buen Abad Najar (Aberrant Splicing)
+---
+
+## Global impact of aberrant splicing on human gene expression levels
+
+ - Genetic variants are associated with disease.
+ - How are the genetic variants causing the disease?
+ - Regulation of expression; eQTLs.
+ - RNA splicing is a primary link between genetic variants
+ and disease risk.
+
+Mature transcripts $\rightarrow$ keep exons, remove introns
+$\rightarrow$ isoforms: different transcripts with varying 
+combination of exons (and sometimes, retained introns).
+Normal isoform ratio is a mixture of 
+isoforms under normal circumstances.
+Sometimes the process produces isoforms
+which are different from the normal behaviour
+$\rightarrow$ alternate splicing.
+
+Genetic control of mRNA expression level is not well understood. 
+
+Enhancer/Promoter Histone marks (H3K27AC / H3K4ME3 CHIP-seq)
+$\rightarrow$ Transcription (H3K36ME3 CUT&Tag)
+$\rightarrow$ Splicing (nascent RNA-seq)
+$\rightarrow$ Export and Decay
+$\rightarrow$ Steady-state RNA.
+
+Nascent RNA-seq captures RNA associated with chromation.
+Collected naRNA from LCLs from 86 Yoruba individuals.
+naRNA is enriched in unproductive splice junctions.
+
+Are the naRNA-seqs reproducible?
+
+Mis-splicing is prevalent across the transcriptome.
+Long introns produce more unproductive splice junctions.
+
+Estimate -- 2.4\% of junctions induce NMD.
+
+## Example: Unexplained eQTL in TTC38
+
+rs73886792: Variant is not a chromatin eQTL.
+
+na-RNA: strong sQTL, weak eQTL
+mRNA: strong sQTL, strong eQTL
+
+$\rightarrow$ sQTLs are associated with non-chromatin eQTL.
+
+  - 65\% of eQTLs are explained by hQTLs.
+  - Half eQTL that colocalize with molQTLs but not hQTLs
+  are associated with sQTLs.
+  - sQTLs of NMD junctions are strongly enriched for eQTL signals.
+
+## Effects on expression
+
+  - Chromatin QTLs affect expression.
+  - Protein coding sQTLs do not affect expression.
+  - Unproductive sQTLs affect expression.
+
+Also, eQTLs driven by u-sQTLs are conserved across tissues.
+
+-----------
+Unproductive splicing networks - 
+do they have a different hierarchical organization 
+compared with transcriptional networks? 
+Far fewer master regulators and many more regulatory connections among RBPs 
+than between RBPs and other genes.
+In other words, what is the relationship 
+between the expression of the NMD isoform and the mRNA or protein levels?
