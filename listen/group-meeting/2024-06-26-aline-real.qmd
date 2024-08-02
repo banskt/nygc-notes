@@ -1,0 +1,14 @@
+---
+title: 2024-06-26
+---
+
+## Presentation by Aline Real
+
+Meta-analysis approach to discover sQTLs in the BigBrain dataset
+
+sQTLs are enriched among Alzheimer's disease GWAS and Parkinson's disease GWAS.
+
+Use mmQTL for analysis. Biao Zang, Nature Genetics 2022.
+Within each brain region using a linear mixed model to
+account for population stratification.
+Random effects meta-analysis.

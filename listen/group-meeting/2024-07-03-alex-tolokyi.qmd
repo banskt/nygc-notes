@@ -1,0 +1,26 @@
+---
+title: 2024-07-03
+---
+
+## Presentation by Alex Tolokyi
+
+The INTERVAL blood donor cohort, $n=~50000$
+individuals sampled during blood donation across England.
+Most have been genotyped. 
+Few (~4000-5000) have RNA and proteins sequenced.
+Further, ~40000 have 230 metabolites sequenced
+(Nightingale Health). Metabolon HD4 (913 metabolites)
+for ~10000 individuals.
+
+eQTL and sQTL mapping, colocalization analysis and
+mediation analysis are available in their RNA-Seq portal.
+
+SpliceQTLs were annotated. They were more downstream (~5-10kb?) from TSS compared to eQTLs.
+Trans-sQTLs discovered 754 trans-sSNP, 642 splice events and 208 target trans-sGenes.
+For comparison, GTEx detects 29 trans-sQTLs only 2 of which are in whole blood.
+
+Most trans-sQTL associations with the cis-eSNP for the RNA-binding splice factor QKI.
+
+iGLUT cells and iGABA cells
+
+Cis- and genome-wide heritability of transcript splicing.
