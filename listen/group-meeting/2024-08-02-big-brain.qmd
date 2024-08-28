@@ -1,0 +1,11 @@
+---
+title: Big Brain Meeting
+---
+
+# Aline Real
+
+44 tissue-cohort pairs.
+10887 samples for sQTL analysis. 
+14 cohorts, ~29 tissues, 7 brain regions.
+
+

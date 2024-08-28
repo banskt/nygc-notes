@@ -1,0 +1,32 @@
+---
+title: Isoform diversity
+---
+
+# Scott Adamson
+
+High throughput methods for identifying and validating variant effects on splicing regulation.
+Massively Parallel Reporter Assays (MPRAs). 
+
+### Framework for high-throughput identification. 
+
+Aim 1. Hematological phenotype GWAS variants - coloc and ML predictions. 
+Splicing relevant variants (sQTLs), SpliceAI high delta score, RNAprot high delta score. 
+
+Aim 2. Assay effects on splicing. CRISPR base editing, scRNA-seq library construction,
+hybrid capture of specific junctions and gRNAs, identification of splice-altering variants,
+validation of splice-altering variants on isoforms with ONT and mass spectrometry.
+
+### Prioritization of variants
+
+sQTLs in 2953 clusters $\rightarrow$ 7122 genomic loci for 15 phenotypes (UKBB and BCX)
+$\rightarrow$ coloc with blood traits. 
+
+### CRISPR base editing
+
+
+
+44 tissue-cohort pairs.
+10887 samples for sQTL analysis. 
+14 cohorts, ~29 tissues, 7 brain regions.
+
+
