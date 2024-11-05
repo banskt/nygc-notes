@@ -1,0 +1,14 @@
+---
+title: Stella Park
+---
+
+# RNA binding proteins in alternate splicing
+
+RBPs are important regulator of neurodevelopment.
+
+Analyze ENCODE4 long-read data to identify isoform landscape of given dataset.
+Perform function predictions on protein isoform sequences by looking at
+localization, protein domains and disordered regions.
+Zomm into isoform localization and experimentally validate our prediction.
+
+Systematic study + resources for the community by providing a master table.

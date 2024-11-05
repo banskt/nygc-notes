@@ -1,0 +1,52 @@
+---
+title: Karin Isaev
+---
+
+# RNA splicing as a source of cellular diversity
+
+https://thetransmitter.org
+
+Neurons express different genes at different times with
+major changes that depend on activity levels and patterns, hormones.
+Differences in cell state -- cells of the same type 
+expressing different genes under different conditions
+vs differences in cell types?
+Is there a terminal state?
+
+- How do neural cell types diversify, differentiate and mature?
+- Which cell types are evolutionarily conserved and which arise to meet the needs of particular species?
+- What cell types are affected in neurological and psychiatric diseases?
+
+Single-cell long-read sequencing-based mapping
+reveals specialized splicing patterns 
+in developing and adult mouse and human brain. Jogelkar et. al.
+
+sQTLs -- list of splice junctions -- look at their prevalence 
+across specific cell types of interest to get a more granular view 
+of their expression and potentially functional relevance.
+
+Studying RBP regulation on single cell level -- contribution to 
+differences in cell identity and phenotype..
+
+Using exon coverage to estimate splice junctions -- Leafcutter ITI (Xingpei).
+
+Datasets for deep learning models beyond SpliceAI + Pangolin (Tatsu).
+
+## Alternative Transcript Structure Event (ATSE).
+
+$$
+y ~ \mathrm{Binomial} (N, p)
+$$
+
+Beta-Dirichlet factor model for splicing.
+Use variational inference, approximate log Bayes Factor (ALBF).
+
+Data simulated from mouse brain single cell data. 
+AnnData / simulation model.
+
+Allen Brain Cell Atlas. 
+
+- Train on >110,000 single cells (Smart-seq2)
+- Train on >70,000 single cells (Smart-seq2)
+
+Mapping more sparse single cell data onto reference.
