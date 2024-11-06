@@ -1,0 +1,71 @@
+---
+title: ASHG 2024 - Day 1
+---
+
+# Bruce Gelb
+
+He discussed the concepts of penetrance and expressivity.
+They are variable parameters and depend on several environmental contexts.
+Penetrance calculated from familial history is generally not the same as 
+that calculated from biobank-scale population of genotyped inviduals.
+He argues to bring back the concept of "norms of reaction" to explain
+the effects of environment on gene:trait pair penetrance and expressivity.
+
+# Marie-Julie Fave
+
+They profiled mosaic chromosal alterations (mCAs) in more than 66k samples
+with diverse ancestries. Quebec French Canadians (founder population) and
+other populations across continenets. They found genomic hotspots across
+continental groups (African and European). They found association of mCA 
+with blood traits and incident cancers. Leading to clonal hematopoiesis.
+
+# Rajiv McCoy
+
+## SMC1B regulates maternal meiotic aneuploidy (?)
+
+Less than half of human embryos leads to live births. They collected
+PGT-A data from Natera. They developed a hidden Markov model for inferring
+crossovers and aneuploidies. Aneuploidies are common in blastocyst-stage
+human embryos, and aneuploidy rates vary across chromosomes. 
+Aneuploidies of maternal meiotic origin increase with maternal age,
+but paternal origin aneuploidy does not depend on age. 
+Common variation in meiosis genes drives variation in crossover rate.
+PRDM9 in chr5 is strongly associated with crossover.
+
+The maternal meiotic aneuploidy is associated with a locus in chr21, 
+a haplotype spanning the meiotic cohesin component SMC1B.
+Aneuploidy risk allele is associated with other reproductive traits, 
+and also reduced expression of SMC1B. Potential regulatory mechanism
+driving the association.
+
+# Nahyun Kong
+
+Congenital heart disease is a genetically heterogeneous disorder.
+1.3m babies are born every year with CHD.
+
+Uniparental disomy (UPD) does not follow Mendelian inheritance.
+Both chromosomes are inherited from the same parents.
+They developed a method to detect UPD based on Mendelian violation
+(see PMID: 36617634). 
+
+They found that UPD is associated with 12-fold increased risk of CHD.
+There was a higher prevalence of maternally transmitted UPD with 
+advanced maternal age. UPD can link maternal age with CHD.
+
+Why won't the mother carrying the same chromosomes develop CHD?
+
+# Giovanni Quinones-Valdez
+
+## Analysing RNA splicing using long-read RNA sequencing 
+
+Long reads demarcates different modes of splicing regulation.
+Alternative splicing is tissue-specific while genetic linkage is donor-specific.
+They developed a method to classify splicing events as
+predominantly influenced by either cis- or trans-directed mechanisms.
+They discover splicing associated variants (SAVs).
+The SAVs are functionally enriched in splicing QTL studies of matching tissues.
+SAVs are functionally enriched in RBP binding regions.
+
+Interestingly, SAVs also overlap with risk variants for Alzheimer's Disease.
+
+# Duncan Palmer
