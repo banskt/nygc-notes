@@ -69,3 +69,5 @@ SAVs are functionally enriched in RBP binding regions.
 Interestingly, SAVs also overlap with risk variants for Alzheimer's Disease.
 
 # Duncan Palmer
+
+He talked about the Biobank Rare Variants consortium.

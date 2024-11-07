@@ -1,0 +1,113 @@
+---
+title: ASHG 2024 - Day 2
+---
+
+# Yixuan He
+
+Multi-trait multi-ancestry association analysis revealed new loci
+and improved PRS for comorbid traits related to lung.
+COPD, lung cancer, asthma, FEV, FVC, etc. 
+PRSxtra captures ancestry-specific information across diverse populations
+and genetic information from multiple related traits at the SNP level.
+
+Preprint: 10.1101/2024.08.25.24312558
+
+# Ozvan Bocher
+
+T2D is a global and heterogeneous disease, associated with 1,289 index variants!
+Which genes and proteins are causally associated? 
+They performed 2-sample MR, significance assessed on IVW (independent eQTL or pQTL).
+No evidence of pleiotropy, no heterogeneity. 
+Discovery on eQTLgen and replication on AFR (GENOA AA) and AMR (GALAII). 
+They found 81 genes and 5 proteins causal to T2D with little heterogeneity.
+14 genes and 6 proteins are detected in only non-EUR populations.
+
+# Yuchang Wu
+
+X-PIGEON: quantifying gene-population effects.
+PIGEON framework includes the gene-environment interactions
+using multiple regression. 
+Inputs for X-PIGEON: Genome-wide interaction summary statistics
+(Robust to LD and allele frequency differences!)
+and meta-analysis summary statistics.
+They applied their method to continuous traits with available EAS and EUR
+GWAS summary statistics.
+
+The audience think that SNPs can be core causal and marginally causal, 
+the first one would not vary much across populations but the second 
+one would.
+
+# Wenbo Wang
+
+## Large-scale multi-ancestry whole genome sequencing studies
+
+TOPMed: over 200k WGS from ancestrally diverse samples with more than 1m PASS variants.
+Freeze 8 has N=150000 samples.
+
+Based on genetics similarity, they identify individuals with four genetic ancestry pops:
+African, East Asian, European and Admixed.
+
+The Ancestry-Informed (AI) framework. Inputs: Genotypes, Covariates.
+GLM for unrelated and related individuals.
+
+Observed allelic effect sizes correlated with ancestry: heterogeneity in allele freq,
+LD and environmental factors. Apply ensemble test (Yu et al).
+
+Weighting can be applied to single variants (AI-GWA) and variant sets (AI-STAAR).
+
+They applied AI to TOPMed Freeze 8 kidney function data. AI-GWA increases power.
+They discover 3 new variant-trait associations for UACR, another 3 new variants for eGFR.
+
+# Abram Kamiza
+
+## Cervical cancer
+
+Annually, more than 520k women are diagnosed with cervical cancer. HPV infection is the main risk factor.
+GWAS have identified genetic loci associated with cervical cancer.
+They conducted GWAS in the black South Africa women.
+
+Johannesburg Cancer Study (JCS). 1,742 cases, total 2,218 controls.
+For multi-ancestry, they used UKBB, FinnGen and Biobank Japan.
+They identified five loci associated with cervical cancer in JCS,
+and 16 loci in the meta-analysis.
+Out of the 5 loci in JCS, four are new.
+The strong peak in chr6 appears in other populations as well.
+In the multi-ancestry analysis, they found 6 novel loci.
+
+Fine-mapping identified loci with posterior probability > 99%.
+
+They developed PRS for JCS as target cohort, 50% used for developing and 50% for validation.
+Summary data from other cohorts were also used for the PRS.
+Multi-ancestry PRS performed better than others.
+
+# Nayane S. Brito Silva
+
+MHC region  has the highest number of associations for infectious and autoimmune diseases in GWAS.
+They transformed a SNP-based association to HLA allele-based association.
+**SHLARC. SNP-HLA Reference consortium.**
+
+They trained HIBAG software on SNP + HLA data to create a reference panel.
+Across all populations, the accuracy of all reference panels
+consistently exceeded 90% for most evaluated genes.
+The errors were mostly related to low-frequency HLA-DRB1 alleles.
+
+# Emma Wilson
+
+Muscle eQTL meta-analysis identified 20,253 signals for 13,093 genes.
+
+Also see, T2D heterogeneity: https://doi.org/10.1038/s41586-024-07019-6
+
+# Robert Warmerdam
+
+eQTLGen phase 2 uncover additional disease variant--gene links.
+Phase 2 identified 58,956 trans-eQTLs compared to 19,351 in phase 1.
+Replicated approximately 1000 eQTLs in OneK1K blood samples (6 tissues).
+Many hub variants show enrichment for transcription factor activity.
+Trans-eQTLs closer to GWAS hits, often colocalize with complex traits.
+This time, they are testing all SNP-gene pairs.
+
+# Hope Tanudisastro
+
+Tandem repeats are understudied in population genetics. 
+TenK10K Phase 1 has ~2000 individuals, WGS genotype and scRNA sequencing.
+
