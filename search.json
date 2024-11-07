@@ -1184,6 +1184,90 @@
     ]
   },
   {
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html",
+    "href": "listen/seminar/2024-11-05-ashg2024-day1.html",
+    "title": "ASHG 2024 - Day 1",
+    "section": "",
+    "text": "He discussed the concepts of penetrance and expressivity. They are variable parameters and depend on several environmental contexts. Penetrance calculated from familial history is generally not the same as that calculated from biobank-scale population of genotyped inviduals. He argues to bring back the concept of “norms of reaction” to explain the effects of environment on gene:trait pair penetrance and expressivity.",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "ASHG 2024 - Day 1"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html#smc1b-regulates-maternal-meiotic-aneuploidy",
+    "href": "listen/seminar/2024-11-05-ashg2024-day1.html#smc1b-regulates-maternal-meiotic-aneuploidy",
+    "title": "ASHG 2024 - Day 1",
+    "section": "SMC1B regulates maternal meiotic aneuploidy (?)",
+    "text": "SMC1B regulates maternal meiotic aneuploidy (?)\nLess than half of human embryos leads to live births. They collected PGT-A data from Natera. They developed a hidden Markov model for inferring crossovers and aneuploidies. Aneuploidies are common in blastocyst-stage human embryos, and aneuploidy rates vary across chromosomes. Aneuploidies of maternal meiotic origin increase with maternal age, but paternal origin aneuploidy does not depend on age. Common variation in meiosis genes drives variation in crossover rate. PRDM9 in chr5 is strongly associated with crossover.\nThe maternal meiotic aneuploidy is associated with a locus in chr21, a haplotype spanning the meiotic cohesin component SMC1B. Aneuploidy risk allele is associated with other reproductive traits, and also reduced expression of SMC1B. Potential regulatory mechanism driving the association.",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "ASHG 2024 - Day 1"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html#analysing-rna-splicing-using-long-read-rna-sequencing",
+    "href": "listen/seminar/2024-11-05-ashg2024-day1.html#analysing-rna-splicing-using-long-read-rna-sequencing",
+    "title": "ASHG 2024 - Day 1",
+    "section": "Analysing RNA splicing using long-read RNA sequencing",
+    "text": "Analysing RNA splicing using long-read RNA sequencing\nLong reads demarcates different modes of splicing regulation. Alternative splicing is tissue-specific while genetic linkage is donor-specific. They developed a method to classify splicing events as predominantly influenced by either cis- or trans-directed mechanisms. They discover splicing associated variants (SAVs). The SAVs are functionally enriched in splicing QTL studies of matching tissues. SAVs are functionally enriched in RBP binding regions.\nInterestingly, SAVs also overlap with risk variants for Alzheimer’s Disease.",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "ASHG 2024 - Day 1"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2023-05-04-julia-domingo.html",
+    "href": "listen/seminar/2023-05-04-julia-domingo.html",
+    "title": "Julia Domingo, Modulation of TF Levels",
+    "section": "",
+    "text": "She started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "Julia Domingo, Modulation of TF Levels"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2023-05-04-julia-domingo.html#julia-domingo",
+    "href": "listen/seminar/2023-05-04-julia-domingo.html#julia-domingo",
+    "title": "Julia Domingo, Modulation of TF Levels",
+    "section": "",
+    "text": "She started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "Julia Domingo, Modulation of TF Levels"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2023-06-29-gunnar-ratsch.html",
+    "href": "listen/seminar/2023-06-29-gunnar-ratsch.html",
+    "title": "Gunnar Ratsch, Multi-omics Analyses",
+    "section": "",
+    "text": "240 patients, melanoma. Health records, pathology, NGS, cfDNA, bulk RNA, drug testing, single cell genomics and transcriptomics, cfDNA, etc \\(\\rightarrow\\) data integration \\(\\rightarrow\\) molecular research report \\(\\rightarrow\\) summary \\(\\rightarrow\\) decision \\(\\rightarrow\\) treatment\nMulti-omics treatment suggestions improved overall treatment outcome (?) No randomized trial.\nChallenges:\n\nPredict protein abundance from cell morphology.\nSingle-cell integration via deep learning and matching.\nModeling in-vitro single-cell drug responses. They measure in vitro treatment response on many cells. Can they predict their response in advance for new cells, new patients, new drugs?\nMeasuring a cell destroys it, cannot measure same cell before and after treatment. Can you predict cells after perturbation? Primal Optimal transport problem. Dual formulation. Brenier’s Theorem. CellOT. Bunne, Stark et al, Nature Methods, 2023.\n\n\n\n\nMetagraph framework\n\ngiven raw sequencing data from thousands of experiments\nassemble clean graphs for each experiment\nintegrate into joint graph index\nlink to informative metadata (experiment, organism, clinical data, etc.)\nBinary relation wavelet trees (BRWT) Use \\(k = 1\\) to obtain.",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "Gunnar Ratsch, Multi-omics Analyses"
+    ]
+  },
+  {
+    "objectID": "listen/seminar/2023-06-29-gunnar-ratsch.html#gunnar-ratsch-eth-zurich",
+    "href": "listen/seminar/2023-06-29-gunnar-ratsch.html#gunnar-ratsch-eth-zurich",
+    "title": "Gunnar Ratsch, Multi-omics Analyses",
+    "section": "",
+    "text": "240 patients, melanoma. Health records, pathology, NGS, cfDNA, bulk RNA, drug testing, single cell genomics and transcriptomics, cfDNA, etc \\(\\rightarrow\\) data integration \\(\\rightarrow\\) molecular research report \\(\\rightarrow\\) summary \\(\\rightarrow\\) decision \\(\\rightarrow\\) treatment\nMulti-omics treatment suggestions improved overall treatment outcome (?) No randomized trial.\nChallenges:\n\nPredict protein abundance from cell morphology.\nSingle-cell integration via deep learning and matching.\nModeling in-vitro single-cell drug responses. They measure in vitro treatment response on many cells. Can they predict their response in advance for new cells, new patients, new drugs?\nMeasuring a cell destroys it, cannot measure same cell before and after treatment. Can you predict cells after perturbation? Primal Optimal transport problem. Dual formulation. Brenier’s Theorem. CellOT. Bunne, Stark et al, Nature Methods, 2023.\n\n\n\n\nMetagraph framework\n\ngiven raw sequencing data from thousands of experiments\nassemble clean graphs for each experiment\nintegrate into joint graph index\nlink to informative metadata (experiment, organism, clinical data, etc.)\nBinary relation wavelet trees (BRWT) Use \\(k = 1\\) to obtain.",
+    "crumbs": [
+      "Listen",
+      "Seminars",
+      "Gunnar Ratsch, Multi-omics Analyses"
+    ]
+  },
+  {
     "objectID": "listen/seminar/2024-04-10-probgen24-day1.html",
     "href": "listen/seminar/2024-04-10-probgen24-day1.html",
     "title": "ProbGen24 Day1",
@@ -1280,87 +1364,39 @@
     ]
   },
   {
-    "objectID": "listen/seminar/2023-06-29-gunnar-ratsch.html",
-    "href": "listen/seminar/2023-06-29-gunnar-ratsch.html",
-    "title": "Gunnar Ratsch, Multi-omics Analyses",
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day2.html",
+    "href": "listen/seminar/2024-11-05-ashg2024-day2.html",
+    "title": "ASHG 2024 - Day 2",
     "section": "",
-    "text": "240 patients, melanoma. Health records, pathology, NGS, cfDNA, bulk RNA, drug testing, single cell genomics and transcriptomics, cfDNA, etc \\(\\rightarrow\\) data integration \\(\\rightarrow\\) molecular research report \\(\\rightarrow\\) summary \\(\\rightarrow\\) decision \\(\\rightarrow\\) treatment\nMulti-omics treatment suggestions improved overall treatment outcome (?) No randomized trial.\nChallenges:\n\nPredict protein abundance from cell morphology.\nSingle-cell integration via deep learning and matching.\nModeling in-vitro single-cell drug responses. They measure in vitro treatment response on many cells. Can they predict their response in advance for new cells, new patients, new drugs?\nMeasuring a cell destroys it, cannot measure same cell before and after treatment. Can you predict cells after perturbation? Primal Optimal transport problem. Dual formulation. Brenier’s Theorem. CellOT. Bunne, Stark et al, Nature Methods, 2023.\n\n\n\n\nMetagraph framework\n\ngiven raw sequencing data from thousands of experiments\nassemble clean graphs for each experiment\nintegrate into joint graph index\nlink to informative metadata (experiment, organism, clinical data, etc.)\nBinary relation wavelet trees (BRWT) Use \\(k = 1\\) to obtain.",
+    "text": "Multi-trait multi-ancestry association analysis revealed new loci and improved PRS for comorbid traits related to lung. COPD, lung cancer, asthma, FEV, FVC, etc. PRSxtra captures ancestry-specific information across diverse populations and genetic information from multiple related traits at the SNP level.\nPreprint: 10.1101/2024.08.25.24312558",
     "crumbs": [
       "Listen",
       "Seminars",
-      "Gunnar Ratsch, Multi-omics Analyses"
+      "ASHG 2024 - Day 2"
     ]
   },
   {
-    "objectID": "listen/seminar/2023-06-29-gunnar-ratsch.html#gunnar-ratsch-eth-zurich",
-    "href": "listen/seminar/2023-06-29-gunnar-ratsch.html#gunnar-ratsch-eth-zurich",
-    "title": "Gunnar Ratsch, Multi-omics Analyses",
-    "section": "",
-    "text": "240 patients, melanoma. Health records, pathology, NGS, cfDNA, bulk RNA, drug testing, single cell genomics and transcriptomics, cfDNA, etc \\(\\rightarrow\\) data integration \\(\\rightarrow\\) molecular research report \\(\\rightarrow\\) summary \\(\\rightarrow\\) decision \\(\\rightarrow\\) treatment\nMulti-omics treatment suggestions improved overall treatment outcome (?) No randomized trial.\nChallenges:\n\nPredict protein abundance from cell morphology.\nSingle-cell integration via deep learning and matching.\nModeling in-vitro single-cell drug responses. They measure in vitro treatment response on many cells. Can they predict their response in advance for new cells, new patients, new drugs?\nMeasuring a cell destroys it, cannot measure same cell before and after treatment. Can you predict cells after perturbation? Primal Optimal transport problem. Dual formulation. Brenier’s Theorem. CellOT. Bunne, Stark et al, Nature Methods, 2023.\n\n\n\n\nMetagraph framework\n\ngiven raw sequencing data from thousands of experiments\nassemble clean graphs for each experiment\nintegrate into joint graph index\nlink to informative metadata (experiment, organism, clinical data, etc.)\nBinary relation wavelet trees (BRWT) Use \\(k = 1\\) to obtain.",
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day2.html#large-scale-multi-ancestry-whole-genome-sequencing-studies",
+    "href": "listen/seminar/2024-11-05-ashg2024-day2.html#large-scale-multi-ancestry-whole-genome-sequencing-studies",
+    "title": "ASHG 2024 - Day 2",
+    "section": "Large-scale multi-ancestry whole genome sequencing studies",
+    "text": "Large-scale multi-ancestry whole genome sequencing studies\nTOPMed: over 200k WGS from ancestrally diverse samples with more than 1m PASS variants. Freeze 8 has N=150000 samples.\nBased on genetics similarity, they identify individuals with four genetic ancestry pops: African, East Asian, European and Admixed.\nThe Ancestry-Informed (AI) framework. Inputs: Genotypes, Covariates. GLM for unrelated and related individuals.\nObserved allelic effect sizes correlated with ancestry: heterogeneity in allele freq, LD and environmental factors. Apply ensemble test (Yu et al).\nWeighting can be applied to single variants (AI-GWA) and variant sets (AI-STAAR).\nThey applied AI to TOPMed Freeze 8 kidney function data. AI-GWA increases power. They discover 3 new variant-trait associations for UACR, another 3 new variants for eGFR.",
     "crumbs": [
       "Listen",
       "Seminars",
-      "Gunnar Ratsch, Multi-omics Analyses"
+      "ASHG 2024 - Day 2"
     ]
   },
   {
-    "objectID": "listen/seminar/2023-05-04-julia-domingo.html",
-    "href": "listen/seminar/2023-05-04-julia-domingo.html",
-    "title": "Julia Domingo, Modulation of TF Levels",
-    "section": "",
-    "text": "She started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva",
+    "objectID": "listen/seminar/2024-11-05-ashg2024-day2.html#cervical-cancer",
+    "href": "listen/seminar/2024-11-05-ashg2024-day2.html#cervical-cancer",
+    "title": "ASHG 2024 - Day 2",
+    "section": "Cervical cancer",
+    "text": "Cervical cancer\nAnnually, more than 520k women are diagnosed with cervical cancer. HPV infection is the main risk factor. GWAS have identified genetic loci associated with cervical cancer. They conducted GWAS in the black South Africa women.\nJohannesburg Cancer Study (JCS). 1,742 cases, total 2,218 controls. For multi-ancestry, they used UKBB, FinnGen and Biobank Japan. They identified five loci associated with cervical cancer in JCS, and 16 loci in the meta-analysis. Out of the 5 loci in JCS, four are new. The strong peak in chr6 appears in other populations as well. In the multi-ancestry analysis, they found 6 novel loci.\nFine-mapping identified loci with posterior probability &gt; 99%.\nThey developed PRS for JCS as target cohort, 50% used for developing and 50% for validation. Summary data from other cohorts were also used for the PRS. Multi-ancestry PRS performed better than others.",
     "crumbs": [
       "Listen",
       "Seminars",
-      "Julia Domingo, Modulation of TF Levels"
-    ]
-  },
-  {
-    "objectID": "listen/seminar/2023-05-04-julia-domingo.html#julia-domingo",
-    "href": "listen/seminar/2023-05-04-julia-domingo.html#julia-domingo",
-    "title": "Julia Domingo, Modulation of TF Levels",
-    "section": "",
-    "text": "She started talking about the genotype-to-phenotype problem. Molecular phenotype vs cellular phenotype. Molecular phenotype – changes in expression of downstream genes. How cis-gene dosage modifies the trans-gene dosage? –&gt; Modulate the expression of few genes and look at the modulation of many targeted gene expressions.\nMorris et al, Science, 2023 discovered target genes and pathways at GWAS loci by pooled single-cell CRISPR screens. Some cis-genes are GF1B, NFE2, MYB, TET2.\n\n\nECCITE-seq framework\nHTOs, targeted cDNA, sgRNAs\nCRISPRi and CRISPRa\nQC and demultiplexing pipeline:\n\ncDNA\nGDOs (sgRNAs)\nHTOs\n\nQuestions and Answers:\n1. What is the best unbiased approach to modulate gene expression?\n\nWide range of fold changes spanned using different types of sgRNAs. Number of single cells, ON-/OFF- guide target activity don’t affect gene expression.\n\n2. What are the key determinants of dosage effects in cis?\n\nDistance to TSS, Local chromatin environment\n\n3. How do trans effects relate to dosage changes of the cis gene?\n\nCis gene fold change.\nSigmoid model is a good fit for all the 4 genes (GF1B, NFE2, MYB, TET2).\n\n4. Are transcriptional non-linear dosage response important for downstream phenotype, complex traits or disease?\n\nCorrelation fold changes with mean gene expression. Cell differentiation “pseudophenotype”.\nDisease and GWAS genes are enriched in non-linear responses.\n\n5. Are dosage response of trans genes correlated to gene or network properties?\n\nRelationship with transcriptional network properties, Mariia Minaeva",
-    "crumbs": [
-      "Listen",
-      "Seminars",
-      "Julia Domingo, Modulation of TF Levels"
-    ]
-  },
-  {
-    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html",
-    "href": "listen/seminar/2024-11-05-ashg2024-day1.html",
-    "title": "ASHG 2024 - Day 1",
-    "section": "",
-    "text": "He discussed the concepts of penetrance and expressivity. They are variable parameters and depend on several environmental contexts. Penetrance calculated from familial history is generally not the same as that calculated from biobank-scale population of genotyped inviduals. He argues to bring back the concept of “norms of reaction” to explain the effects of environment on gene:trait pair penetrance and expressivity.",
-    "crumbs": [
-      "Listen",
-      "Seminars",
-      "ASHG 2024 - Day 1"
-    ]
-  },
-  {
-    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html#smc1b-regulates-maternal-meiotic-aneuploidy",
-    "href": "listen/seminar/2024-11-05-ashg2024-day1.html#smc1b-regulates-maternal-meiotic-aneuploidy",
-    "title": "ASHG 2024 - Day 1",
-    "section": "SMC1B regulates maternal meiotic aneuploidy (?)",
-    "text": "SMC1B regulates maternal meiotic aneuploidy (?)\nLess than half of human embryos leads to live births. They collected PGT-A data from Natera. They developed a hidden Markov model for inferring crossovers and aneuploidies. Aneuploidies are common in blastocyst-stage human embryos, and aneuploidy rates vary across chromosomes. Aneuploidies of maternal meiotic origin increase with maternal age, but paternal origin aneuploidy does not depend on age. Common variation in meiosis genes drives variation in crossover rate. PRDM9 in chr5 is strongly associated with crossover.\nThe maternal meiotic aneuploidy is associated with a locus in chr21, a haplotype spanning the meiotic cohesin component SMC1B. Aneuploidy risk allele is associated with other reproductive traits, and also reduced expression of SMC1B. Potential regulatory mechanism driving the association.",
-    "crumbs": [
-      "Listen",
-      "Seminars",
-      "ASHG 2024 - Day 1"
-    ]
-  },
-  {
-    "objectID": "listen/seminar/2024-11-05-ashg2024-day1.html#analysing-rna-splicing-using-long-read-rna-sequencing",
-    "href": "listen/seminar/2024-11-05-ashg2024-day1.html#analysing-rna-splicing-using-long-read-rna-sequencing",
-    "title": "ASHG 2024 - Day 1",
-    "section": "Analysing RNA splicing using long-read RNA sequencing",
-    "text": "Analysing RNA splicing using long-read RNA sequencing\nLong reads demarcates different modes of splicing regulation. Alternative splicing is tissue-specific while genetic linkage is donor-specific. They developed a method to classify splicing events as predominantly influenced by either cis- or trans-directed mechanisms. They discover splicing associated variants (SAVs). The SAVs are functionally enriched in splicing QTL studies of matching tissues. SAVs are functionally enriched in RBP binding regions.\nInterestingly, SAVs also overlap with risk variants for Alzheimer’s Disease.",
-    "crumbs": [
-      "Listen",
-      "Seminars",
-      "ASHG 2024 - Day 1"
+      "ASHG 2024 - Day 2"
     ]
   },
   {
